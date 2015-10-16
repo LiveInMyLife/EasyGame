@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hot_car_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_std_white"
+    android:orientation="vertical" >
+    <RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingLeft="@dimen/custom_margin_tiny"
+	    android:paddingTop="5dp"
+	    android:paddingBottom="5dp"
+	    android:paddingRight="@dimen/custom_margin_tiny"
+	    android:background="@color/color_std_white" >
+	    
+	    <TextView 
+	        android:id="@+id/tv_pay_desc"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="9dp"
+	        android:text="热门游戏"
+	        android:textSize="@dimen/custom_text_size_small"
+	        android:textColor="@color/text_color_black"
+	        />
+	    <ImageView
+	        android:id="@+id/iv_arrow"
+	        android:layout_width="7dp"
+	        android:layout_height="13dp"
+	        android:layout_centerVertical="true"
+	        android:layout_alignParentRight="true"
+	        android:src="@drawable/arrow_right_grey_icon"
+	        />
+	    <TextView 
+	        android:id="@+id/tv_check"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginRight="3dp"
+			android:layout_toLeftOf="@id/iv_arrow"
+	        android:text="更多游戏"
+	        android:textSize="@dimen/custom_text_size_small"
+	        android:textColor="@color/text_color_grey"
+	        />
+	    
+	
+	</RelativeLayout>
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="1.0px"
+        android:background="@color/div_line_color" />
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="@dimen/custom_margin_tiny"
+        android:layout_marginRight="@dimen/custom_margin_tiny"
+	    android:layout_marginBottom="@dimen/custom_margin_tiny"
+	    android:orientation="horizontal" >
+        <LinearLayout
+            android:id="@+id/hot_car0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand0"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"	            
+	            android:src="@drawable/lol" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name0"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"	            
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:layout_gravity="center_horizontal"	
+	            android:gravity="center_horizontal"		            
+	            android:includeFontPadding="false"
+	            android:text="英雄联盟"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/hot_car1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand1"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/dota2" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name1"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:gravity="center_horizontal"
+	            android:layout_gravity="center_horizontal"
+	            android:includeFontPadding="false"
+	            android:text="DOTA2"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+       
+        <LinearLayout
+            android:id="@+id/hot_car2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand2"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/wot" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name2"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:gravity="center_horizontal"
+	            android:layout_gravity="center_horizontal"
+	            android:includeFontPadding="false"
+	            android:text="坦克世界"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+       
+        <LinearLayout
+            android:id="@+id/hot_car3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand3"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/bs" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name3"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:gravity="center_horizontal"
+	            android:layout_gravity="center_horizontal"
+	            android:includeFontPadding="false"
+	            android:text="剑灵"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+        
+
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="@dimen/custom_margin_tiny"
+        android:layout_marginRight="@dimen/custom_margin_tiny"
+	    android:layout_marginBottom="@dimen/custom_margin_tiny"
+	    android:orientation="horizontal" >
+        <LinearLayout
+            android:id="@+id/hot_car4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand4"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/dnf" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name4"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:gravity="center_horizontal"
+	            android:layout_gravity="center_horizontal"
+	            android:includeFontPadding="false"
+	            android:text="地下城勇士"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/hot_car5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand5"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/dn" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name5"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:gravity="center_horizontal"
+	            android:layout_gravity="center_horizontal"
+	            android:includeFontPadding="false"
+	            android:text="龙之谷"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+       
+        <LinearLayout
+            android:id="@+id/hot_car6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand6"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/aion" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name6"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:gravity="center_horizontal"
+	            android:layout_gravity="center_horizontal"
+	            android:includeFontPadding="false"
+	            android:text="永恒之塔"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+       
+        <LinearLayout
+            android:id="@+id/hot_car7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_margin_wee"
+            android:layout_marginBottom="@dimen/custom_margin_wee"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/bg_std_item_selector"
+             >
+             <ImageView
+	            android:id="@+id/img_hot_car_brand7"
+	            android:layout_width="@dimen/hot_car_brand_img_width"
+	            android:layout_height="@dimen/hot_car_brand_img_width"
+	            android:layout_gravity="center_horizontal"
+	            android:src="@drawable/eve" />
+
+	        <TextView
+	            android:id="@+id/hot_car_name7"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_marginTop="@dimen/custom_margin_tiny"
+	            android:gravity="center_horizontal"
+	            android:layout_gravity="center_horizontal"
+	            android:includeFontPadding="false"
+	            android:text="EVE"
+	            android:textColor="@color/color_std_black"
+	            android:textSize="@dimen/custom_text_size_very_mini" />
+            
+        </LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>

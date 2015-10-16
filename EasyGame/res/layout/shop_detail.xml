@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/commen_gray_bg">
+    <include
+        android:id="@+id/layout_actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_actionbar" />
+
+    <RelativeLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:background="@drawable/strawberries"
+        android:padding="@dimen/custom_margin_tiny" >
+
+       <ImageView
+           android:id="@+id/shop_detail_img"
+           android:layout_width="@dimen/item_img_weight"
+           android:layout_height="@dimen/item_img_height"
+           android:layout_gravity = "left|top"           
+           android:background="@drawable/lol"
+       />
+       <RelativeLayout 
+           android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:layout_toRightOf="@id/shop_detail_img" >
+	       <TextView
+	           android:id="@+id/shop_detail_gamename"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           
+	           android:singleLine="true"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_very_medium"
+	           android:text="英雄联盟"
+	           />
+	       <TextView
+	           android:id="@+id/shop_detail_shopname"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_toRightOf="@id/shop_detail_gamename" 
+	           android:singleLine="true"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_very_medium"
+	           android:text="董导代练团"
+	           />
+	       <RelativeLayout
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_below="@id/shop_detail_gamename"
+	           android:layout_alignLeft="@id/shop_detail_gamename"
+	           android:layout_marginTop="@dimen/custom_margin_tiny"  
+	           android:background="@color/color_std_red_pressed" >
+		       <ImageView
+		           android:id="@+id/sparing_list_item_score"
+		           android:layout_width="15dp"
+		           android:layout_height="15dp"
+		             
+		           android:background="@drawable/shop_detail_notice"
+		       />
+		       <TextView
+		           android:id="@+id/shop_detail_notice"
+		           android:layout_width="wrap_content"
+		           android:layout_height="wrap_content"
+		           android:singleLine="true"
+		           android:ellipsize="marquee"
+		           android:layout_toRightOf="@id/sparing_list_item_score"
+		           android:textSize="@dimen/custom_text_size_mini"
+		           android:textColor="@color/text_color_white"
+		           android:layout_marginLeft = "2dp"
+		           android:text="董导代练团欢迎下单，安全高效，封号包赔，黄金上钻石100元，黄金上王者500"
+		           />
+	       </RelativeLayout>
+
+	        
+       </RelativeLayout>
+   
+    </RelativeLayout>
+    
+
+</LinearLayout>

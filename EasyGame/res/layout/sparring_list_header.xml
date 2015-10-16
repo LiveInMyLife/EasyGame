@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/commen_gray_bg"
+    android:orientation="vertical" >
+	<!-- 主题图片 -->
+	<com.easyplay.easygame.view.SlideShowView
+	    android:id="@+id/slideshowView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="150dp"
+	    android:layout_centerHorizontal="true" />
+	
+	<include
+	    android:id="@+id/layout_hotgame"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="15dp"
+	    layout="@layout/hot_game_select"/> 
+
+</LinearLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- tutorial -->
+    <color name="tutorial_page_1_color">#f3ac1e</color>
+    <color name="tutorial_page_2_color">#ee6a55</color>
+    <color name="tutorial_page_3_color">#2dbcc0</color>
+    <color name="tutorial_page_4_color">#1fbfed</color>
+    <color name="actionbar_title_color">#FFFFFF</color>
+    <color name="actionbar_bg_color">#284269</color>
+    <color name="main_tab_bg_color">#182e4f</color>
+    <color name="home_activity_text_color">#40597f</color>
+    <color name="normal_bg_color">#F8F8F8</color>
+    <color name="home_fragment_limit_driver_no_text_color">#337a9c</color>
+    <color name="tutorial_dot_black_color">#40000000</color>
+
+    <!-- 文字颜色值 -->
+    <color name="text_color_black">#333333</color>
+    <color name="text_color_grey">#999999</color>
+    <color name="text_color_light_grey">#c2c2c2</color>
+    <color name="text_color_hint">#b5b5b5</color>
+    <color name="text_color_green">#54c745</color>
+    <color name="text_color_red">#f45656</color>
+    <color name="text_color_blue">#56C1F4</color>
+    <color name="text_color_sky_blue">#32e1ff</color>
+    <color name="text_color_light_blue">#82afdf</color>
+    <color name="text_color_light_yellow">#dcb566</color>
+    <color name="text_color_yellow">#d7a101</color>
+    <color name="text_color_white">#ffffff</color>
+    <color name="text_color_light_white">#dfe6ed</color>
+    <color name="text_color_grey_pressed">#f4f4f4</color>
+    <color name="text_color_dark_blue">#40597F</color>
+    <color name="bg_boder_avatar">#00000000</color>
+    <color name="text_color_dark">#252d3a</color>
+    <color name="text_color_light_dark">#c8c7cc</color>
+    <color name="bg_color_blue">#5ec2f2</color>
+    <color name="bg_color_blue_pressed">#9edaf7</color>
+    <color name="text_color_cancel">#4f91e1</color>
+    <color name="text_color_header">#4786d4</color>
+    <color name="sidebar_text">#4f91e1</color>
+    <color name="text_color_light_grey2">#888888</color>
+    <color name="text_wheelview_grey">#d3d3d3</color>
+
+    <!-- 常用颜色 -->
+    <color name="commen_gray_bg">#F4F4F4</color>
+    <color name="transparent">#00000000</color>
+    <color name="div_line_color">#b2b2b2</color>
+    <color name="color_dialog_btn_normal">#f6f6f6</color>
+    <color name="color_dialog_btn_pressed">#F4F4F4</color>
+    <color name="color_mine_progress_text_normal">#4fc2c2c2</color>
+    <color name="color_edit_text_cursor">#6082f4</color>
+    <color name="color_line_grey">#F0F0F0</color>
+    <color name="setting_line_color">#dedede</color>
+    <color name="home_shadow_black">#ff000000</color>
+    <color name="grey_line_bg">#eaeaea</color>
+    <color name="grey_line_light">#e5e5e5</color>
+
+    <!-- 规范主色 -->
+    <color name="color_std_pm">#0e2947</color>
+    <color name="color_std_yellow">#d7a101</color>
+    <color name="color_std_white">#ffffff</color>
+    <color name="color_std_light_white">#f8f8f8</color>
+    <color name="color_std_black">#333333</color>
+    <color name="color_std_light_black">#666666</color>
+    <color name="color_std_grey">#999999</color>
+    <color name="color_std_light_grey">#c2c2c2</color>
+    <color name="color_std_green">#54c745</color>
+    <color name="color_std_red">#f26060</color>
+    <color name="color_std_blue">#5e8bbb</color>
+    <color name="color_std_sky_blue">#56c1f4</color>
+    <color name="color_std_light_blue">#82afdf</color>
+    <color name="color_std_light_yellow">#dcb566</color>
+    <color name="color_std_grey_pressed">#f4f4f4</color>
+    <color name="color_std_yellow_pressed">#c69500</color>
+    <color name="color_std_red_pressed">#dd5152</color>
+    <color name="color_std_green_pressed">#62be68</color>
+    <color name="color_std_disenable">#c2c2c2</color>
+    <color name="transparent_background">#50000000</color>
+    <color name="order_submit_success_hint_bg">#fffde6</color>
+    <color name="order_submit_success_hint_blue">#52a6e9</color>
+    <color name="order_submit_success_btn_blue">#52a6e9</color>
+    <color name="order_submit_success_divider_bg">#c8c7cc</color>
+    <color name="order_pay_success_left_text_grey">#888888</color>
+    <color name="color_call_black">#252d3a</color>
+
+    <color name="dash_line_color">#c9c9c9</color>
+
+    <!-- pull refresh -->
+    <color name="tc_red">#C33F51</color>
+    <color name="tc_default">#938268</color>
+    <color name="order_un_pay_dialog_divider_bg">#dcdcdc</color>
+    <color name="order_un_pay_dialog_text_color">#007fff</color>
+
+    <color name="title_operator_text_enable_color">#59BDED</color>
+    <color name="title_operator_text_disable_color">#888888</color>
+    
+</resources>

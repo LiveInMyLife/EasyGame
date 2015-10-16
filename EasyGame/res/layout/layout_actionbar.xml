@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/actionbar_bg_color"
+        android:paddingBottom="1dp" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="43dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:layout_marginLeft="@dimen/custom_text_size_tiny"
+            android:src="@drawable/selector_bg_actionbar_back_btn" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:textColor="@color/actionbar_title_color"
+            android:textSize="@dimen/custom_text_size_large" />
+
+        <TextView
+            android:id="@+id/tv_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="手机注册"
+            android:textColor="@color/text_color_white"
+            android:textSize="@dimen/custom_text_size_medium"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_operate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="23dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="#59BDED"
+            android:textSize="@dimen/custom_text_size_small"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_right_operator"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/tv_operate"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#233862"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+                android:id="@+id/home_actionbar"
+                android:layout_width="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_height="36dp">
+
+            <TextView
+                    android:id="@+id/action_bar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/custom_margin_tiny"
+                    android:text="@string/app_name"
+                    android:textColor="@color/text_color_light_white"
+                    android:textSize="@dimen/custom_text_size_small"/>
+            <Button
+			        android:id="@+id/sparring_or_leveling_button"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_centerInParent="true"
+			        android:layout_gravity = "center_vertical"
+			        android:text="陪练 |代练" />
+
+            <TextView
+                    android:id="@+id/text_home_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:includeFontPadding="false"
+                    android:paddingRight="@dimen/custom_margin_mini"
+                    android:textColor="@color/text_color_light_white"
+                    android:textSize="@dimen/custom_text_size_wee"/>
+
+            <ImageView
+                    android:id="@+id/img_home_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_toLeftOf="@id/text_home_city"
+                    android:src="@drawable/document_pay_finish"/>
+        </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/ll_bottom_btns"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentBottom="true"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/home_selector" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_teamwork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/teamwork_selector" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/more_selector" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom_btns"
+        android:layout_below="@id/home_actionbar" />
+   
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/viewPager"
+        android:background="#cdcdcd" />
+
+</RelativeLayout>
