@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/commen_gray_bg">
+    <include
+        android:id="@+id/layout_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_actionbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/custom_margin_wee" >
+
+      
+       <RelativeLayout 
+           android:id="@+id/order_detail"
+           android:layout_width="match_parent"
+	       android:layout_height="wrap_content">
+	       <TextView
+	           android:id="@+id/order_detail_gamename"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:singleLine="true"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_very_medium"
+	           android:text="英雄联盟"
+	           />
+	       <TextView
+	           android:id="@+id/order_detail_shopname"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_toRightOf="@id/order_detail_gamename" 
+	           android:singleLine="true"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_very_medium"
+	           android:text="董导代练团"
+	           />
+	        
+       </RelativeLayout>
+       <RelativeLayout 
+           android:layout_width="match_parent"
+	       android:layout_height="wrap_content"	       
+	       android:layout_below="@id/order_detail">
+	       <Button 
+	           android:id="@+id/order_detail_call_service"
+	           android:layout_width="wrap_content"
+	           android:layout_height="30dp"
+	           android:layout_alignParentRight="true"
+	           android:layout_marginRight="@dimen/custom_margin_tiny"
+	           android:text="联系客服"
+	           android:textSize="@dimen/custom_text_size_mini"/>
+
+	       <TextView
+	           android:id="@+id/order_detail_ordername"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:layout_alignParentLeft="true"
+	           android:layout_centerVertical="true"
+	           android:singleLine="true"
+	           android:text="钻二大神带你飞"
+	           android:textSize="@dimen/custom_text_size_very_small" />
+
+	   </RelativeLayout>
+   
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.0px"
+        android:background="@color/div_line_color" />
+    <RelativeLayout
+        android:id="@+id/order_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/custom_margin_wee" >
+
+      
+	       <TextView
+	           android:id="@+id/order_description_content"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_mini"
+	           android:text="订单描述：电信区均衡教派钻三，脾气好声音柔和，每晚8：00到23：00接单，欢迎体验"
+	           />
+	       <TextView
+	           android:id="@+id/order_finish_condition"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_below="@id/order_description_content" 
+	           android:layout_marginTop="@dimen/custom_margin_tiny"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_mini"
+	           android:text="完成条件：陪练至指定时间"
+	           />
+	</RelativeLayout>
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="1.0px"
+        android:background="@color/div_line_color" />
+	<RelativeLayout
+        android:id="@+id/order_price_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/custom_margin_wee" >
+	       <Button 
+	           android:id="@+id/order_time"
+	           android:layout_width="wrap_content"
+	           android:layout_height="30dp"
+	           android:layout_alignParentRight="true"
+	           android:layout_marginRight="@dimen/custom_margin_tiny"
+	           android:layout_centerVertical="true"
+	           android:text="选择时长"
+	           android:textSize="@dimen/custom_text_size_mini"/>
+
+	       <TextView
+	           android:id="@+id/order_price_text"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_alignParentLeft="true"
+	           android:layout_centerVertical="true"
+	           android:layout_marginLeft="19dp"
+	           android:text="价格："
+	           android:textSize="@dimen/custom_text_size_mini" />
+
+	       <TextView
+	           android:id="@+id/order_price"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_toRightOf="@+id/order_price_text"
+	           android:layout_centerVertical="true"
+	           android:singleLine="true"
+	           android:text="25元/小时"
+	           android:textSize="@dimen/custom_text_size_mini" />
+
+	</RelativeLayout>
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="1.0px"
+        android:background="@color/div_line_color" />
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="1.0px"
+        android:layout_marginTop="@dimen/custom_margin_tiny"
+        android:background="@color/div_line_color" />
+	<RelativeLayout
+        android:id="@+id/order_account_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/custom_margin_wee" >
+	       <Button 
+	           android:id="@+id/order_account"
+	           android:layout_width="wrap_content"
+	           android:layout_height="30dp"
+	           android:layout_alignParentRight="true"
+	           android:layout_marginRight="@dimen/custom_margin_tiny"
+	           android:layout_centerVertical="true"
+	           android:text="结算：50元"
+	           android:textSize="@dimen/custom_text_size_mini"/>
+
+	</RelativeLayout>
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="1.0px"
+        android:background="@color/div_line_color" />
+
+</LinearLayout>

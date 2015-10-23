@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import com.easyplay.easygame.R;
 
-public class MainActivity extends Activity {
+public class ShopTabActivity extends Activity {
 
   private ViewPager viewPager;
   private ImageView imageView;
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.activity_shop_detail);
 
     imageView = (ImageView) findViewById(R.id.cursor);
     textView1 = (TextView) findViewById(R.id.textView1);
@@ -50,9 +50,9 @@ public class MainActivity extends Activity {
     textView1
         .setTextColor(getResources().getColor(R.color.text_color_sky_blue));
 
-    lists.add(getLayoutInflater().inflate(R.layout.layout1, null));
-    lists.add(getLayoutInflater().inflate(R.layout.layout2, null));
-    lists.add(getLayoutInflater().inflate(R.layout.layout3, null));
+    lists.add(getLayoutInflater().inflate(R.layout.layout_shoptab1, null));
+    lists.add(getLayoutInflater().inflate(R.layout.layout_shoptab2, null));
+    lists.add(getLayoutInflater().inflate(R.layout.layout_shoptab3, null));
 
     initeCursor();
 
