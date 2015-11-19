@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import cn.bmob.v3.BmobQuery;
@@ -26,7 +28,7 @@ import com.easyplay.easygame.view.SlideShowView;
  * @author chuwe1
  * 
  */
-public class SparringFragment extends Fragment {
+public class SparringFragment extends Fragment implements OnItemClickListener {
   private static final String TAG = "SparringFragment";
 
   private View rootView;
@@ -71,6 +73,7 @@ public class SparringFragment extends Fragment {
     shopAdapter = new MyShopListAdapter(mContext, shopListInfo);
     shopListView.setAdapter(shopAdapter);
     shopListView.setVisibility(View.VISIBLE);
+    shopListView.setOnItemClickListener(this);
     queryShopInfo();
   }
 
@@ -93,5 +96,14 @@ public class SparringFragment extends Fragment {
         AppLog.d(TAG, "查询失败：" + code + msg);
       }
     });
+  }
+
+  @Override
+  public void onItemClick(AdapterView<?> parent, View view, int position,
+      long id) {
+    // TODO Auto-generated method stub
+    if (position <= shopListInfo.size()) {
+
+    }
   }
 }
