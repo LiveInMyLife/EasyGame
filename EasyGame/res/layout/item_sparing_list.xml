@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_std_item_selector"
-    android:padding="@dimen/custom_margin_tiny"
+    android:padding="@dimen/custom_margin_tiny"	    
     android:orientation="vertical" >
     <RelativeLayout
         android:id="@+id/layout_content"
@@ -146,3 +146,4 @@
     </LinearLayout>
 
 </LinearLayout>
+

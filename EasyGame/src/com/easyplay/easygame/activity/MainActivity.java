@@ -10,20 +10,14 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import cn.bmob.v3.Bmob;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyFragmentPagerAdapter;
-import com.easyplay.easygame.fragment.LevelingFragment;
 import com.easyplay.easygame.fragment.MineFragment;
 import com.easyplay.easygame.fragment.OrderFragment;
 import com.easyplay.easygame.fragment.SparringFragment;
 
-/**
- * ViewPager底部导航
- * 
- * @author chuwe1
- * 
- */
 public class MainActivity extends FragmentActivity {
 
   private ViewPager viewPager;
@@ -36,6 +30,7 @@ public class MainActivity extends FragmentActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    Bmob.initialize(this, "8b302b1049c8faaa45951ebf8a8770ed");
 
     viewPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -58,7 +53,7 @@ public class MainActivity extends FragmentActivity {
   private void initData() {
     mList = new ArrayList<Class<?>>();
     mList.add(SparringFragment.class);
-    mList.add(LevelingFragment.class);
+    // mList.add(LevelingFragment.class);
     mList.add(OrderFragment.class);
     mList.add(MineFragment.class);
   }
@@ -72,10 +67,10 @@ public class MainActivity extends FragmentActivity {
         viewPager.setCurrentItem(0);
         break;
       case R.id.btn_teamwork:
-        viewPager.setCurrentItem(2);
+        viewPager.setCurrentItem(1);
         break;
       case R.id.btn_more:
-        viewPager.setCurrentItem(3);
+        viewPager.setCurrentItem(2);
         break;
       }
     }

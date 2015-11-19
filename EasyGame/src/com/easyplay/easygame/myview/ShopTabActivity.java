@@ -1,4 +1,4 @@
-package com.example.myview;
+package com.easyplay.easygame.myview;
 
 import java.util.ArrayList;
 import java.util.List;

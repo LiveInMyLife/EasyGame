@@ -1,4 +1,4 @@
-package com.example.myview;
+package com.easyplay.easygame.myview;
 
 import java.util.List;
 import android.support.v4.view.PagerAdapter;

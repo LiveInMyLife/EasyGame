@@ -24,6 +24,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.tools.AppLog;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -76,6 +77,7 @@ public class SlideShowView extends FrameLayout {
 
   public SlideShowView(Context context) {
     this(context, null);
+    AppLog.d("SlideShowView", "on new");
     // TODO Auto-generated constructor stub
   }
 
