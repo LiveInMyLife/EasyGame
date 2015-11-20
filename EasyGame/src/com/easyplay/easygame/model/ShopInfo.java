@@ -1,8 +1,10 @@
 package com.easyplay.easygame.model;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
-public class ShopInfo extends BmobObject {
+public class ShopInfo extends BmobObject implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public String getShopName() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.activity.ShopDetailActivity;
 import com.easyplay.easygame.adapter.MyShopListAdapter;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.tools.AppLog;
@@ -43,7 +45,7 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    rootView = inflater.inflate(R.layout.sparring_fragment, null);
+    rootView = inflater.inflate(R.layout.fragment_sparring, null);
     mContext = this.getActivity().getApplicationContext();
     bindView();
     bindListener();
@@ -60,7 +62,7 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
 
     shopListView = (ListView) rootView.findViewById(R.id.list_car_brand_select);
     sparring_header = (LinearLayout) View.inflate(mContext,
-        R.layout.sparring_list_header, null);
+        R.layout.item_sparring_list_header, null);
     slideShowView = (SlideShowView) sparring_header
         .findViewById(R.id.slideshowView);
     shopListView.addHeaderView(sparring_header);
@@ -102,8 +104,14 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
   public void onItemClick(AdapterView<?> parent, View view, int position,
       long id) {
     // TODO Auto-generated method stub
-    if (position <= shopListInfo.size()) {
-
+    if (position <= shopListInfo.size() + 1) {
+      ShopInfo shop = shopListInfo.get(position - 1);
+      Intent intent = new Intent(mContext, ShopDetailActivity.class);
+      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      Bundle bundle = new Bundle();
+      bundle.putSerializable("shop_info", shop);
+      intent.putExtras(bundle);
+      mContext.startActivity(intent);
     }
   }
 }

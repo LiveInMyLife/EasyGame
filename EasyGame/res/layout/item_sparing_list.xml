@@ -17,7 +17,7 @@
            android:layout_width="@dimen/item_img_weight"
            android:layout_height="@dimen/item_img_height"
            android:layout_gravity = "left|top"           
-           android:background="@drawable/lol"
+           android:src="@drawable/lol"
        />
        <RelativeLayout 
            android:layout_width="match_parent"
@@ -50,7 +50,7 @@
 	           android:layout_below="@id/sparing_list_item_gamename"
 	           android:layout_alignLeft="@id/sparing_list_item_gamename"
 	           android:layout_marginTop="@dimen/custom_margin_tiny"    
-	           android:background="@drawable/item_shop_score"
+	           android:src="@drawable/item_shop_score"
 	       />
 	       <TextView
 	           android:id="@+id/sparing_list_item_sellnum"

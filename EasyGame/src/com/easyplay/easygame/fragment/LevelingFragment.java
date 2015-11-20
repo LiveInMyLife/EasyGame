@@ -26,7 +26,7 @@ public class LevelingFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.leveling_fragment, null);
+    View view = inflater.inflate(R.layout.fragment_leveling, null);
 
     textView = (TextView) view.findViewById(R.id.textView);
     button = (Button) view.findViewById(R.id.button);

@@ -26,7 +26,7 @@ public class OrderFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.teamwork_fragment, null);
+    View view = inflater.inflate(R.layout.fragment_teamwork, null);
 
     textView = (TextView) view.findViewById(R.id.textView);
     button = (Button) view.findViewById(R.id.button);
