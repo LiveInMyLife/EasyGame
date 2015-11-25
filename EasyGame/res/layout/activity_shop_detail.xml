@@ -35,7 +35,7 @@
 	           
 	           android:singleLine="true"
 	           android:layout_marginLeft="@dimen/custom_margin_tiny"
-	           android:textSize="@dimen/custom_text_size_very_medium"
+	           android:textSize="@dimen/custom_text_size_medium"
 	           android:text="英雄联盟"
 	           />
 	       <TextView
@@ -45,7 +45,7 @@
 	           android:layout_toRightOf="@id/shop_detail_gamename" 
 	           android:singleLine="true"
 	           android:layout_marginLeft="@dimen/custom_margin_tiny"
-	           android:textSize="@dimen/custom_text_size_very_medium"
+	           android:textSize="@dimen/custom_text_size_medium"
 	           android:text="董导代练团"
 	           />
 	       <RelativeLayout
@@ -54,7 +54,7 @@
 	           android:layout_below="@id/shop_detail_gamename"
 	           android:layout_alignLeft="@id/shop_detail_gamename"
 	           android:layout_marginTop="@dimen/custom_margin_tiny"  
-	           android:background="@color/color_std_red_pressed" >
+	            >
 		       <ImageView
 		           android:id="@+id/sparing_list_item_score"
 		           android:layout_width="15dp"

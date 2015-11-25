@@ -18,16 +18,26 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.adapter.MyShopOrderListAdapter;
+import com.easyplay.easygame.adapter.MyShopSuggestionListAdapter;
 import com.easyplay.easygame.model.ShopInfo;
+import com.easyplay.easygame.model.ShopOrder;
+import com.easyplay.easygame.model.ShopSuggestion;
 import com.easyplay.easygame.myview.MyAdapter;
+import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.tools.ImageUtils;
 import com.easyplay.easygame.tools.Tools;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ShopDetailActivity extends BaseActivity implements OnClickListener {
+  private static final String TAG = "ShopDetailActivity";
   private TextView shopName;
   private TextView shopGame;
   private TextView shopDescription;
@@ -49,6 +59,15 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
   private TextView textView2;
   private TextView textView3;
   private int textWidth;
+
+  private LinearLayout layout_ordertab, layout_suggestiontab, layout_shoptab;
+  private MyShopOrderListAdapter orderAdapter;
+  private ListView orderList;
+  private final List<ShopOrder> orderListInfo = new ArrayList<ShopOrder>();
+
+  private MyShopSuggestionListAdapter suggestionAdapter;
+  private ListView suggestionList;
+  private final List<ShopSuggestion> suggestionListInfo = new ArrayList<ShopSuggestion>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +97,19 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     textView1.setTextColor(this.getResources().getColor(
         R.color.text_color_sky_blue));
 
-    lists.add(getLayoutInflater().inflate(R.layout.layout_shoptab1, null));
-    lists.add(getLayoutInflater().inflate(R.layout.layout_shoptab2, null));
-    lists.add(getLayoutInflater().inflate(R.layout.layout_shoptab3, null));
+    layout_ordertab = (LinearLayout) getLayoutInflater().inflate(
+        R.layout.layout_shoptab1, null);
+    layout_suggestiontab = (LinearLayout) getLayoutInflater().inflate(
+        R.layout.layout_shoptab2, null);
+    layout_shoptab = (LinearLayout) getLayoutInflater().inflate(
+        R.layout.layout_shoptab3, null);
+
+    lists.add(layout_ordertab);
+    lists.add(layout_suggestiontab);
+    lists.add(layout_shoptab);
+    orderList = (ListView) layout_ordertab.findViewById(R.id.shop_order_list);
+    suggestionList = (ListView) layout_suggestiontab
+        .findViewById(R.id.shop_suggestion_list);
   }
 
   @Override
@@ -111,6 +140,56 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     viewPager.setAdapter(myAdapter);
     viewPager.setOnPageChangeListener(new OnPageChangeListener());
 
+    orderAdapter = new MyShopOrderListAdapter(this, orderListInfo);
+    orderList.setAdapter(orderAdapter);
+
+    suggestionAdapter = new MyShopSuggestionListAdapter(this,
+        suggestionListInfo);
+    suggestionList.setAdapter(suggestionAdapter);
+    queryShopOrder();
+  }
+
+  public void queryShopOrder() {
+    BmobQuery<ShopOrder> query = new BmobQuery<ShopOrder>();
+    query.findObjects(this, new FindListener<ShopOrder>() {
+      @Override
+      public void onSuccess(List<ShopOrder> object) {
+        // TODO Auto-generated method stub
+        AppLog.d(TAG, "查询成功：记录条数：" + object.size());
+        for (ShopOrder shopOrder : object) {
+          orderListInfo.add(shopOrder);
+        }
+        orderAdapter.notifyDataSetChanged();
+      }
+
+      @Override
+      public void onError(int code, String msg) {
+        // TODO Auto-generated method stub
+        AppLog.d(TAG, "查询失败：" + code + msg);
+      }
+    });
+  }
+
+  public void queryShopSuggestion() {
+    BmobQuery<ShopSuggestion> query = new BmobQuery<ShopSuggestion>();
+    query.findObjects(this, new FindListener<ShopSuggestion>() {
+      @Override
+      public void onSuccess(List<ShopSuggestion> object) {
+        // TODO Auto-generated method stub
+        AppLog.d(TAG, "查询成功：记录条数：" + object.size());
+        suggestionListInfo.clear();
+        for (ShopSuggestion shopSuggestion : object) {
+          suggestionListInfo.add(shopSuggestion);
+        }
+        suggestionAdapter.notifyDataSetChanged();
+      }
+
+      @Override
+      public void onError(int code, String msg) {
+        // TODO Auto-generated method stub
+        AppLog.d(TAG, "查询失败：" + code + msg);
+      }
+    });
   }
 
   private void initeCursor() {
@@ -170,6 +249,7 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
           animation = new TranslateAnimation(2 * offSet + 2 * bmWidth, offSet
               * 2 + bmWidth, 0, 0);
         }
+        queryShopSuggestion();
         break;
       case 2:
         textView1.setTextColor(getResources()

@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/custom_margin_tiny"
+    android:background="@drawable/bg_std_item_selector"
+    android:padding="@dimen/custom_margin_tiny"
     android:orientation="vertical" >
     <RelativeLayout 
         android:layout_width="match_parent"
@@ -13,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_grey"
-            android:textSize="@dimen/custom_text_size_mini"
+            android:textSize="@dimen/custom_text_size_small"
             android:text="a***e"/>
 
         <TextView
@@ -23,15 +25,31 @@
             android:layout_alignParentRight="true"
             android:text="2015-10-22"
             android:textColor="@color/text_color_grey"
-            android:textSize="@dimen/custom_text_size_mini" />
+            android:textSize="@dimen/custom_text_size_small" />
 
     </RelativeLayout>
-    <ImageView 
-        android:id="@+id/shop_suggestion_score"
-        android:layout_width="@dimen/item_img_weight"
-        android:layout_height="15dp"
-        android:layout_marginTop="@dimen/custom_margin_tiny"    
-        android:background="@drawable/item_shop_score"/>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <ImageView 
+	        android:id="@+id/shop_suggestion_score_iv"
+	        android:layout_width="@dimen/item_img_weight"
+	        android:layout_height="15dp"
+	        android:layout_marginTop="@dimen/custom_margin_tiny"    
+	        android:background="@drawable/item_shop_score"/>
+	    <TextView 
+	        android:id="@+id/shop_suggestion_score_tv"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:layout_toRightOf="@id/shop_suggestion_score_iv"
+	        android:layout_alignBottom="@id/shop_suggestion_score_iv"
+	        android:textColor="@color/text_color_grey"
+	        android:text="4.5"
+	        />
+    </RelativeLayout>
+    "
     <TextView 
         android:id="@+id/shop_suggestion_content"
         android:layout_width="wrap_content"
@@ -40,12 +58,12 @@
         android:textSize="@dimen/custom_text_size_very_small"
         android:layout_marginTop="@dimen/custom_margin_tiny"  
         android:text="挺好的，服务态度也好，打得也不错，声音也好听~"/>
-    <View
+    <!-- <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/div_line_color" />
+        android:background="@color/div_line_color" /> -->
     
 
 </LinearLayout>

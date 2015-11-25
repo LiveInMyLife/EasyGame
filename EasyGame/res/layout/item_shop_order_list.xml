@@ -13,7 +13,7 @@
          >
 
        <ImageView
-           android:id="@+id/sparing_list_item_img"
+           android:id="@+id/order_list_item_img"
            android:layout_width="@dimen/item_img_weight"
            android:layout_height="@dimen/item_img_height"
            android:layout_gravity = "left|top"           
@@ -22,7 +22,7 @@
        <RelativeLayout 
            android:layout_width="match_parent"
 	       android:layout_height="wrap_content"
-	       android:layout_toRightOf="@id/sparing_list_item_img" >
+	       android:layout_toRightOf="@id/order_list_item_img" >
 	       <TextView
 	           android:id="@+id/order_list_item_ordername"
 	           android:layout_width="wrap_content"
@@ -33,16 +33,16 @@
 	           android:text="黄金大神陪练"
 	           />
 
-	       <Button
-	           android:id="@+id/sparing_list_item_shopname"
+	       <!-- <Button
+	           android:id="@+id/order_list_item_orderbtn"
 	           android:layout_width="match_parent"
 	           android:layout_height="wrap_content"
-	           android:layout_alignBottom="@+id/sparing_list_item_sellnum"
+	           android:layout_alignBottom="@+id/order_list_item_sellnum"
 	           android:layout_alignParentTop="true"
 	           android:layout_marginLeft="@dimen/custom_margin_tiny"
 	           android:layout_toRightOf="@id/order_list_item_ordername"
 	           android:text="下单"
-	           android:textSize="@dimen/custom_text_size_very_medium" />
+	           android:textSize="@dimen/custom_text_size_very_medium" /> -->
 
 	       <!-- <ImageView
 	           android:id="@+id/sparing_list_item_score"
@@ -54,7 +54,7 @@
 	           android:background="@drawable/item_shop_score"
 	       /> -->
 	       <TextView
-	           android:id="@+id/sparing_list_item_sellnum"
+	           android:id="@+id/order_list_item_price"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
 	           android:layout_below="@id/order_list_item_ordername"
@@ -67,26 +67,14 @@
 	           android:text="25元/小时"
 	           />
 	       <TextView
-	           android:id="@+id/sellnum"
+	           android:id="@+id/order_list_item_sellnum"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
-	           android:layout_below="@id/sparing_list_item_sellnum"
-	           android:layout_marginTop="@dimen/custom_margin_wee"
-	           android:layout_alignLeft="@id/order_list_item_ordername"
+	           android:layout_toRightOf="@id/order_list_item_price"
+	           android:layout_alignBottom="@id/order_list_item_price"
 	           android:singleLine="true"
-	           android:paddingTop="5dp"
-	           android:textSize="@dimen/custom_text_size_mini"
-	           android:text="月售100单"
-	           />
-	       <TextView
-	           android:id="@+id/service_time"
-	           android:layout_width="wrap_content"
-	           android:layout_height="wrap_content"
-	           android:layout_below="@id/sparing_list_item_sellnum"
-	           android:layout_marginTop="@dimen/custom_margin_wee"
-	           android:layout_alignLeft="@id/order_list_item_ordername"
-	           android:singleLine="true"
-	           android:paddingTop="5dp"
+	           android:gravity="bottom|left"
+	           android:paddingLeft="20dp"
 	           android:textSize="@dimen/custom_text_size_mini"
 	           android:text="月售100单"
 	           />
