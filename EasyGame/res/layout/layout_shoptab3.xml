@@ -1,8 +1,121 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#0000FF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/commen_gray_bg"
     android:orientation="vertical" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:minHeight="45dp"
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:orientation="horizontal"
+		        android:background="@color/color_std_white">
+		        <TextView 
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:gravity="left|center_vertical"
+		            android:layout_gravity="left|center_vertical"
+		            android:layout_marginLeft="20dp"
+		            android:text="联系店铺"
+		            android:textSize="@dimen/custom_text_size_very_medium"
+		            />
+		        <ImageButton 
+		            android:layout_width="40dp"
+		            android:layout_height="40dp"
+		            android:layout_marginRight="5dp"
+		            android:layout_gravity="center_vertical"
+		            android:background="@drawable/shop_call_selector"/>
+		        <ImageButton 
+		            android:layout_width="40dp"
+		            android:layout_height="40dp"
+		            android:layout_marginRight="10dp"
+		            android:layout_gravity="center_vertical"
+		            android:background="@drawable/shop_message_selector"/>
+		        
+		    </LinearLayout>
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:minHeight="45dp"
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:layout_marginTop="10dp"
+		        android:orientation="horizontal"
+		        android:background="@color/color_std_white">
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="left|center_vertical"
+		            android:layout_gravity="left|center_vertical"
+		            android:layout_marginLeft="20dp"
+		            android:text="接单时间"
+		            android:textSize="@dimen/custom_text_size_very_medium"
+		            />
+		        
+		        <TextView 
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:gravity="left|center_vertical"
+		            android:layout_gravity="left|center_vertical"
+		            android:layout_marginLeft="10dp"
+		            android:layout_marginRight="20dp"
+		            android:text="8:00-23:00"
+		            android:textSize="@dimen/custom_text_size_very_medium"
+		            />
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:minHeight="45dp"
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:layout_marginTop="10dp"
+		        android:orientation="horizontal"
+		        android:background="@color/color_std_white">
+		    
+			    <RelativeLayout
+			         android:layout_width="match_parent"
+			         android:layout_height="wrap_content"
+			         android:layout_marginLeft="20dp"
+			         android:layout_marginRight="20dp"
+			         android:layout_below="@id/shop_detail_gamename"
+			         android:layout_alignLeft="@id/shop_detail_gamename"
+			         android:layout_gravity="center_vertical"
+			         android:background="@color/color_std_white"  
+			          >
+				      <ImageView
+				          android:id="@+id/sparing_list_item_score"
+				          android:layout_width="15dp"
+				          android:layout_height="15dp"
+				            
+				          android:background="@drawable/shop_detail_notice"
+				      />
+				      <TextView
+				          android:id="@+id/shop_detail_notice"
+				          android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_toRightOf="@id/sparing_list_item_score"
+				          android:textSize="@dimen/custom_text_size_mini"
+				          android:layout_marginLeft = "2dp"
+				          android:text="董导代练团欢迎下单，安全高效，封号包赔，黄金上钻石100元，黄金上王者500"
+				          />
+			     </RelativeLayout>
+		     </LinearLayout>
+
+     	</LinearLayout>
+     </ScrollView>
 
 </LinearLayout>

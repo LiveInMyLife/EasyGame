@@ -25,12 +25,12 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.adapter.MyAdapter;
 import com.easyplay.easygame.adapter.MyShopOrderListAdapter;
 import com.easyplay.easygame.adapter.MyShopSuggestionListAdapter;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.model.ShopSuggestion;
-import com.easyplay.easygame.myview.MyAdapter;
 import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.tools.ImageUtils;
 import com.easyplay.easygame.tools.Tools;

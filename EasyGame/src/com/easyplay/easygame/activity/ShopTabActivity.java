@@ -1,4 +1,4 @@
-package com.easyplay.easygame.myview;
+package com.easyplay.easygame.activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.adapter.MyAdapter;
 
 public class ShopTabActivity extends Activity {
 
