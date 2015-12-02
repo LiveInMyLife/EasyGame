@@ -59,6 +59,7 @@
     <color name="color_std_yellow">#d7a101</color>
     <color name="color_std_white">#ffffff</color>
     <color name="color_std_light_white">#f8f8f8</color>
+    <color name="color_std_white_light">#33ffffff</color>
     <color name="color_std_black">#333333</color>
     <color name="color_std_light_black">#666666</color>
     <color name="color_std_grey">#999999</color>

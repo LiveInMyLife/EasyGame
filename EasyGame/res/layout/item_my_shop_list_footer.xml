@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sparring_header"
+    android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <ImageView
+        android:id="@+id/my_shop_order_add_btn" 
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:src="@drawable/add_btn_green"/>
+
+</LinearLayout>
