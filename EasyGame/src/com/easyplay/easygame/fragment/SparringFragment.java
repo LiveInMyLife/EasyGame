@@ -19,7 +19,7 @@ import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.activity.ShopDetailActivity;
-import com.easyplay.easygame.adapter.MyShopListAdapter;
+import com.easyplay.easygame.adapter.ShopListAdapter;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.view.SlideShowView;
@@ -38,7 +38,7 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
   private ListView shopListView;
   private LinearLayout sparring_header;
   private final List<ShopInfo> shopListInfo = new ArrayList<ShopInfo>();
-  private MyShopListAdapter shopAdapter;
+  private ShopListAdapter shopAdapter;
 
   private SlideShowView slideShowView;
 
@@ -72,7 +72,7 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
   }
 
   public void init() {
-    shopAdapter = new MyShopListAdapter(mContext, shopListInfo);
+    shopAdapter = new ShopListAdapter(mContext, shopListInfo);
     shopListView.setAdapter(shopAdapter);
     shopListView.setVisibility(View.VISIBLE);
     shopListView.setOnItemClickListener(this);

@@ -15,7 +15,7 @@ import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.tools.Tools;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class MyShopOrderListAdapter extends BaseAdapter {
+public class ShopOrderListAdapter extends BaseAdapter {
   private final Context mContext;
   private final List<ShopOrder> orderList;
   private ViewHolder holder;
@@ -23,12 +23,13 @@ public class MyShopOrderListAdapter extends BaseAdapter {
   class ViewHolder {
     ImageView order_logo;
     TextView order_name;
+    TextView order_sell;
     TextView order_description;
     TextView order_price;
-    TextView order_service_time;
+    TextView order_time;
   }
 
-  public MyShopOrderListAdapter(Context context, List<ShopOrder> data) {
+  public ShopOrderListAdapter(Context context, List<ShopOrder> data) {
     mContext = context;
     orderList = data;
   }
@@ -59,17 +60,20 @@ public class MyShopOrderListAdapter extends BaseAdapter {
     if (convertView == null) {
       holder = new ViewHolder();
       convertView = LayoutInflater.from(mContext).inflate(
-          R.layout.item_my_shop_order_list, null);
+          R.layout.item_shop_order_list, null);
+      // holder.order_game_name = (TextView) convertView
+      // .findViewById(R.id.sparing_list_item_gamename);
       holder.order_name = (TextView) convertView
           .findViewById(R.id.order_list_item_ordername);
+      holder.order_sell = (TextView) convertView
+          .findViewById(R.id.order_list_item_sellnum);
       holder.order_description = (TextView) convertView
           .findViewById(R.id.order_list_item_description);
       holder.order_logo = (ImageView) convertView
           .findViewById(R.id.order_list_item_img);
       holder.order_price = (TextView) convertView
           .findViewById(R.id.order_list_item_price);
-      holder.order_service_time = (TextView) convertView
-          .findViewById(R.id.my_shop_order_servicetime);
+
       convertView.setTag(holder);
     } else {
       holder = (ViewHolder) convertView.getTag();
@@ -78,15 +82,10 @@ public class MyShopOrderListAdapter extends BaseAdapter {
       holder.order_name.setText(Tools.checkString(order.getOrderName()));
       holder.order_description.setText(Tools.checkString(order
           .getOrderDescription()));
-
+      holder.order_sell.setText("月售"
+          + Tools.checkString(order.getOrderSell().toString()));
       holder.order_price.setText(Tools.checkString(order.getOrderPrice()
           .toString()) + "/" + Tools.checkString(order.getOrderTime()));
-      if (order.getStartTime() == null || order.getEndTime() == null) {
-        holder.order_service_time.setText(order.getStartTime() + ":00-"
-            + order.getEndTime() + ":00");
-      } else {
-        holder.order_service_time.setText("");
-      }
       if (order.getOrderLogo() != null) {
         ImageLoader.getInstance().displayImage(order.getOrderLogo(),
             holder.order_logo);

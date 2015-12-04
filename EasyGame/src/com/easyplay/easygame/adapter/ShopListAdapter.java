@@ -15,7 +15,7 @@ import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.tools.Tools;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class MyShopListAdapter extends BaseAdapter {
+public class ShopListAdapter extends BaseAdapter {
   private final Context mContext;
   private final List<ShopInfo> shopList;
   private ViewHolder holder;
@@ -29,7 +29,7 @@ public class MyShopListAdapter extends BaseAdapter {
     TextView shop_description;
   }
 
-  public MyShopListAdapter(Context context, List<ShopInfo> data) {
+  public ShopListAdapter(Context context, List<ShopInfo> data) {
     mContext = context;
     shopList = data;
   }

@@ -5,5 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="shop_detail">商家详情</string>
+    <string name="game_select">选择游戏</string>
 
 </resources>

@@ -55,11 +55,29 @@ public class ShopOrder extends BmobObject implements Serializable {
     this.orderTime = orderTime;
   }
 
+  public Integer getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+  public Integer getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(Integer endTime) {
+    this.endTime = endTime;
+  }
+
   private String orderName;
   private String orderLogo;
   private Integer orderSell;
   private String orderDescription;
   private Integer orderPrice;
   private String orderTime;
+  private Integer startTime;
+  private Integer endTime;
 
 }

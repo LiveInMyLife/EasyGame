@@ -26,8 +26,8 @@ import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyAdapter;
-import com.easyplay.easygame.adapter.MyShopOrderListAdapter;
-import com.easyplay.easygame.adapter.MyShopSuggestionListAdapter;
+import com.easyplay.easygame.adapter.ShopOrderListAdapter;
+import com.easyplay.easygame.adapter.ShopSuggestionListAdapter;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.model.ShopSuggestion;
@@ -61,11 +61,11 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
   private int textWidth;
 
   private LinearLayout layout_ordertab, layout_suggestiontab, layout_shoptab;
-  private MyShopOrderListAdapter orderAdapter;
+  private ShopOrderListAdapter orderAdapter;
   private ListView orderList;
   private final List<ShopOrder> orderListInfo = new ArrayList<ShopOrder>();
 
-  private MyShopSuggestionListAdapter suggestionAdapter;
+  private ShopSuggestionListAdapter suggestionAdapter;
   private ListView suggestionList;
   private final List<ShopSuggestion> suggestionListInfo = new ArrayList<ShopSuggestion>();
 
@@ -140,10 +140,10 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     viewPager.setAdapter(myAdapter);
     viewPager.setOnPageChangeListener(new OnPageChangeListener());
 
-    orderAdapter = new MyShopOrderListAdapter(this, orderListInfo);
+    orderAdapter = new ShopOrderListAdapter(this, orderListInfo);
     orderList.setAdapter(orderAdapter);
 
-    suggestionAdapter = new MyShopSuggestionListAdapter(this,
+    suggestionAdapter = new ShopSuggestionListAdapter(this,
         suggestionListInfo);
     suggestionList.setAdapter(suggestionAdapter);
     queryShopOrder();

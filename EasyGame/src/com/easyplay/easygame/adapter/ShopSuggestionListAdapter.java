@@ -13,7 +13,7 @@ import com.easyplay.easygame.R;
 import com.easyplay.easygame.model.ShopSuggestion;
 import com.easyplay.easygame.tools.Tools;
 
-public class MyShopSuggestionListAdapter extends BaseAdapter {
+public class ShopSuggestionListAdapter extends BaseAdapter {
   private final Context mContext;
   private final List<ShopSuggestion> suggestionList;
   private ViewHolder holder;
@@ -25,7 +25,7 @@ public class MyShopSuggestionListAdapter extends BaseAdapter {
     TextView suggestionScore;
   }
 
-  public MyShopSuggestionListAdapter(Context context, List<ShopSuggestion> data) {
+  public ShopSuggestionListAdapter(Context context, List<ShopSuggestion> data) {
     mContext = context;
     suggestionList = data;
   }

@@ -10,25 +10,18 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyShopOrderListAdapter;
-import com.easyplay.easygame.adapter.MyShopSuggestionListAdapter;
-import com.easyplay.easygame.model.ShopInfo;
+import com.easyplay.easygame.adapter.ShopSuggestionListAdapter;
 import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.model.ShopSuggestion;
 import com.easyplay.easygame.tools.AppLog;
 
 public class MyShopActivity extends BaseActivity implements OnClickListener {
-  private static final String TAG = "ShopDetailActivity";
-  private TextView myShopName;
-  private TextView myShopGame;
-  private TextView mtShopDescription;
-  private ImageView myShopLogo;
-  private ShopInfo myShopInfo;
+  private static final String TAG = "myShopActivity";
 
   private ImageView addOrder;
 
@@ -37,14 +30,14 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
   private ListView orderList;
   private final List<ShopOrder> orderListInfo = new ArrayList<ShopOrder>();
 
-  private MyShopSuggestionListAdapter suggestionAdapter;
+  private ShopSuggestionListAdapter suggestionAdapter;
   private ListView suggestionList;
   private final List<ShopSuggestion> suggestionListInfo = new ArrayList<ShopSuggestion>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_shop_detail);
+    setContentView(R.layout.activity_my_shop);
     initActionBar(this.getResources().getString(R.string.shop_detail));
     bindViews();
     setListener();
@@ -61,12 +54,6 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
         R.layout.item_my_shop_list_footer, null);
     addOrder = (ImageView) my_shop_footer
         .findViewById(R.id.my_shop_order_add_btn);
-
-    myShopName = (TextView) my_shop_header.findViewById(R.id.my_shop_shopname);
-    myShopGame = (TextView) my_shop_header.findViewById(R.id.my_shop_gamename);
-    mtShopDescription = (TextView) my_shop_header
-        .findViewById(R.id.my_shop_notice_tv);
-    myShopLogo = (ImageView) my_shop_header.findViewById(R.id.my_shop_img);
 
     orderList = (ListView) findViewById(R.id.my_shop_order_list);
     orderList.addHeaderView(my_shop_header);
@@ -89,8 +76,7 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
     orderAdapter = new MyShopOrderListAdapter(this, orderListInfo);
     orderList.setAdapter(orderAdapter);
 
-    suggestionAdapter = new MyShopSuggestionListAdapter(this,
-        suggestionListInfo);
+    suggestionAdapter = new ShopSuggestionListAdapter(this, suggestionListInfo);
     suggestionList.setAdapter(suggestionAdapter);
     queryShopOrder();
   }

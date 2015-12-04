@@ -47,7 +47,7 @@
 	           android:text="25元/小时"
 	           />
 	       <TextView
-	           android:id="@+id/my_shop_order_sellnum"
+	           android:id="@+id/my_shop_order_servicetime"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
 	           android:layout_toRightOf="@id/my_shop_order_price"
@@ -56,7 +56,7 @@
 	           android:gravity="bottom|left"
 	           android:paddingLeft="20dp"
 	           android:textSize="@dimen/custom_text_size_mini"
-	           android:text="月售100单"
+	           android:text="19:00-明天2:00"
 	           />
 	        
        </RelativeLayout>
