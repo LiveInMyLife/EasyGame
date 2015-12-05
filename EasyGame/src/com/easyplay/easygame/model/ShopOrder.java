@@ -71,6 +71,14 @@ public class ShopOrder extends BmobObject implements Serializable {
     this.endTime = endTime;
   }
 
+  public ShopInfo getOrderShop() {
+    return orderShop;
+  }
+
+  public void setOrderShop(ShopInfo orderShop) {
+    this.orderShop = orderShop;
+  }
+
   private String orderName;
   private String orderLogo;
   private Integer orderSell;
@@ -79,5 +87,6 @@ public class ShopOrder extends BmobObject implements Serializable {
   private String orderTime;
   private Integer startTime;
   private Integer endTime;
+  private ShopInfo orderShop;
 
 }

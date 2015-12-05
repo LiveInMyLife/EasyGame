@@ -10,11 +10,29 @@
         android:layout_height="wrap_content"
         layout="@layout/layout_actionbar" />
      
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
     <ListView
         android:id="@+id/my_shop_order_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:divider="@null"/>
+    
+    <!-- <include
+        android:id="@+id/layout_actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        layout="@layout/item_my_shop_list_footer" /> -->
+    <ImageView
+        android:id="@+id/my_shop_order_add_btn" 
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:src="@drawable/add_btn_green"/>
+    </FrameLayout>
 
 </LinearLayout>

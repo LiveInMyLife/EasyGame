@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.model.ShopOrder;
+import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.tools.Tools;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -55,19 +56,20 @@ public class MyShopOrderListAdapter extends BaseAdapter {
   public View getView(int position, View convertView, ViewGroup parent) {
     // TODO Auto-generated method stub
     holder = null;
+    AppLog.d("orderAdapter", "position=" + position);
     ShopOrder order = orderList.get(position);
     if (convertView == null) {
       holder = new ViewHolder();
       convertView = LayoutInflater.from(mContext).inflate(
           R.layout.item_my_shop_order_list, null);
       holder.order_name = (TextView) convertView
-          .findViewById(R.id.order_list_item_ordername);
+          .findViewById(R.id.my_shop_order_ordername);
       holder.order_description = (TextView) convertView
-          .findViewById(R.id.order_list_item_description);
+          .findViewById(R.id.my_shop_order_description);
       holder.order_logo = (ImageView) convertView
-          .findViewById(R.id.order_list_item_img);
+          .findViewById(R.id.my_shop_order_img);
       holder.order_price = (TextView) convertView
-          .findViewById(R.id.order_list_item_price);
+          .findViewById(R.id.my_shop_order_price);
       holder.order_service_time = (TextView) convertView
           .findViewById(R.id.my_shop_order_servicetime);
       convertView.setTag(holder);

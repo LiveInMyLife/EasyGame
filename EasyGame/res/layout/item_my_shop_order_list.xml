@@ -18,6 +18,7 @@
            android:layout_height="@dimen/item_img_height"
            android:layout_gravity = "left|top"           
            android:background="@drawable/lol"
+           android:visibility="gone"
        />
        <RelativeLayout 
            android:layout_width="match_parent"
@@ -71,11 +72,11 @@
         android:layout_marginBottom="5dp"
         android:background="@color/div_line_color" />
     <TextView 
-        android:id="@+id/order_list_item_description"
+        android:id="@+id/my_shop_order_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/custom_text_size_mini"
-        android:text="电信区均衡教派钻三，脾气好声音柔和，每晚8：00到23：00接单，欢迎体验"/>
+        android:text="电信区均衡教派钻三，脾气好声音柔和，每天8：00到23：00接单，欢迎体验"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"

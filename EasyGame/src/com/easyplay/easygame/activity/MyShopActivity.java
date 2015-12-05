@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,9 +16,7 @@ import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyShopOrderListAdapter;
-import com.easyplay.easygame.adapter.ShopSuggestionListAdapter;
 import com.easyplay.easygame.model.ShopOrder;
-import com.easyplay.easygame.model.ShopSuggestion;
 import com.easyplay.easygame.tools.AppLog;
 
 public class MyShopActivity extends BaseActivity implements OnClickListener {
@@ -29,10 +28,6 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
   private MyShopOrderListAdapter orderAdapter;
   private ListView orderList;
   private final List<ShopOrder> orderListInfo = new ArrayList<ShopOrder>();
-
-  private ShopSuggestionListAdapter suggestionAdapter;
-  private ListView suggestionList;
-  private final List<ShopSuggestion> suggestionListInfo = new ArrayList<ShopSuggestion>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +47,11 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
         R.layout.item_my_shop_list_header, null);
     my_shop_footer = (LinearLayout) View.inflate(this,
         R.layout.item_my_shop_list_footer, null);
-    addOrder = (ImageView) my_shop_footer
-        .findViewById(R.id.my_shop_order_add_btn);
+    addOrder = (ImageView) findViewById(R.id.my_shop_order_add_btn);
 
     orderList = (ListView) findViewById(R.id.my_shop_order_list);
     orderList.addHeaderView(my_shop_header);
-    orderList.addFooterView(my_shop_footer);
+    // orderList.addFooterView(my_shop_footer);
 
   }
 
@@ -76,8 +70,6 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
     orderAdapter = new MyShopOrderListAdapter(this, orderListInfo);
     orderList.setAdapter(orderAdapter);
 
-    suggestionAdapter = new ShopSuggestionListAdapter(this, suggestionListInfo);
-    suggestionList.setAdapter(suggestionAdapter);
     queryShopOrder();
   }
 
@@ -102,36 +94,20 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
     });
   }
 
-  public void queryShopSuggestion() {
-    BmobQuery<ShopSuggestion> query = new BmobQuery<ShopSuggestion>();
-    query.findObjects(this, new FindListener<ShopSuggestion>() {
-      @Override
-      public void onSuccess(List<ShopSuggestion> object) {
-        // TODO Auto-generated method stub
-        AppLog.d(TAG, "查询成功：记录条数：" + object.size());
-        suggestionListInfo.clear();
-        for (ShopSuggestion shopSuggestion : object) {
-          suggestionListInfo.add(shopSuggestion);
-        }
-        suggestionAdapter.notifyDataSetChanged();
-      }
-
-      @Override
-      public void onError(int code, String msg) {
-        // TODO Auto-generated method stub
-        AppLog.d(TAG, "查询失败：" + code + msg);
-      }
-    });
-  }
-
   @Override
   public void onClick(View v) {
     // TODO Auto-generated method stub
     switch (v.getId()) {
     case R.id.my_shop_order_add_btn:
-
+      toAddOrderActicvity();
       break;
     }
 
+  }
+
+  private void toAddOrderActicvity() {
+    Intent intent = new Intent(this, MyShopAddOrderActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    this.startActivity(intent);
   }
 }

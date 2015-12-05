@@ -82,6 +82,7 @@
     <color name="order_submit_success_divider_bg">#c8c7cc</color>
     <color name="order_pay_success_left_text_grey">#888888</color>
     <color name="color_call_black">#252d3a</color>
+    <color name="btn_bg_blue">#4f91e1</color>
 
     <color name="dash_line_color">#c9c9c9</color>
 

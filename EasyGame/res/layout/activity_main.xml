@@ -40,7 +40,7 @@
                     android:textSize="@dimen/custom_text_size_wee"/>
 
             <ImageView
-                    android:id="@+id/img_home_city"
+                    android:id="@+id/img_my_shop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

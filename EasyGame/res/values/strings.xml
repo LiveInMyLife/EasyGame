@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="shop_detail">商家详情</string>
     <string name="game_select">选择游戏</string>
+    <string name="order_add">添加订单</string>
 
 </resources>

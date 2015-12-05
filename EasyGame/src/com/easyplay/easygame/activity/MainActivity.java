@@ -3,6 +3,7 @@ package com.easyplay.easygame.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import cn.bmob.v3.Bmob;
 
 import com.easyplay.easygame.R;
@@ -25,6 +27,7 @@ public class MainActivity extends FragmentActivity {
   private List<Class<?>> mList;
   // 底部三个按钮
   private Button btn_home, btn_teamwork, btn_more;
+  private ImageView myShop;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,9 @@ public class MainActivity extends FragmentActivity {
     btn_home.setOnClickListener(clickListener);
     btn_teamwork.setOnClickListener(clickListener);
     btn_more.setOnClickListener(clickListener);
+
+    myShop = (ImageView) findViewById(R.id.img_my_shop);
+    myShop.setOnClickListener(clickListener);
 
     initData();
     adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), this,
@@ -72,6 +78,8 @@ public class MainActivity extends FragmentActivity {
       case R.id.btn_more:
         viewPager.setCurrentItem(2);
         break;
+      case R.id.img_my_shop:
+        toMyShop();
       }
     }
   };
@@ -132,5 +140,11 @@ public class MainActivity extends FragmentActivity {
       btn_more.setSelected(true);
       break;
     }
+  }
+
+  private void toMyShop() {
+    Intent intent = new Intent(this, MyShopActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    this.startActivity(intent);
   }
 }
