@@ -37,7 +37,7 @@
 		                android:paddingTop="8dp"
 		                android:paddingBottom="8dp"
 		                android:singleLine="true"
-		                android:text="英雄联盟"
+		                android:text="选择游戏"
 		                android:textSize="@dimen/custom_text_size_medium" />
 		
 		            <EditText
@@ -47,6 +47,7 @@
 		                android:paddingTop="8dp"
 		                android:paddingBottom="8dp"
 		                android:layout_marginLeft="@dimen/custom_margin_tiny"
+		                android:layout_marginRight="@dimen/custom_margin_tiny"
 		                android:layout_toRightOf="@id/my_shop_gamename"
 		                android:layout_alignBottom="@id/my_shop_gamename"
 		                android:gravity="right"
@@ -195,6 +196,7 @@
 		                android:textSize="14sp"
 		                android:text="手机"/>
 		            <EditText 
+		                android:id="@+id/my_shop_contact_phone"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentRight="true"
@@ -217,6 +219,7 @@
 		                android:textSize="14sp"
 		                android:text="QQ"/>
 		            <EditText 
+		                android:id="@+id/my_shop_contact_QQ"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentRight="true"
@@ -231,7 +234,8 @@
 		            android:layout_height="wrap_content"
 		            android:paddingTop="15dp"
 		            android:paddingLeft="10dp"
-		            android:paddingBottom="15dp">
+		            android:paddingBottom="15dp"
+		            android:visibility="gone">
 		            <TextView 
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
@@ -241,6 +245,7 @@
 			 
 			 </LinearLayout>
 			 <RelativeLayout 
+			     android:id="@+id/my_shop_add_order"
 			     android:layout_width="match_parent"
 			     android:layout_margin="20dp"
 			     android:layout_height="50dp"
@@ -249,7 +254,7 @@
 			         android:layout_width="wrap_content"
 			         android:layout_height="wrap_content"
 			         android:layout_centerInParent="true"
-			         android:text="添加订单"
+			         android:text="保存"
 			         android:textSize="16sp"
 			         android:textColor="@color/color_std_white"
 			         />

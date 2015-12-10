@@ -17,6 +17,8 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -40,6 +42,7 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
   private static final String TAG = "ShopDetailActivity";
   private TextView shopName;
   private TextView shopGame;
+  private TextView gameServer;
   private TextView shopDescription;
   private ImageView shopLogo;
   private ShopInfo shopInfo;
@@ -87,6 +90,7 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     shopGame = (TextView) findViewById(R.id.shop_detail_gamename);
     shopDescription = (TextView) findViewById(R.id.shop_detail_notice);
     shopLogo = (ImageView) findViewById(R.id.shop_detail_img);
+    gameServer = (TextView) findViewById(R.id.shop_detail_gameserver);
 
     // shopTabLayout = (LinearLayout)
     // this.findViewById(R.id.layout_shoptabview);
@@ -118,6 +122,7 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     textView1.setOnClickListener(this);
     textView2.setOnClickListener(this);
     textView3.setOnClickListener(this);
+    orderList.setOnItemClickListener(new OrderClickListener());
   }
 
   @Override
@@ -127,6 +132,7 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     if (shopInfo != null) {
       shopName.setText(Tools.checkString(shopInfo.getShopName()));
       shopGame.setText(Tools.checkString(shopInfo.getShopGame()));
+      gameServer.setText(Tools.checkString(shopInfo.getGameServer()));
       shopDescription.setText(Tools.checkString(shopInfo.getShopDescription()));
       if (shopInfo.getShopLogo() != null) {
         ImageLoader.getInstance()
@@ -143,14 +149,14 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     orderAdapter = new ShopOrderListAdapter(this, orderListInfo);
     orderList.setAdapter(orderAdapter);
 
-    suggestionAdapter = new ShopSuggestionListAdapter(this,
-        suggestionListInfo);
+    suggestionAdapter = new ShopSuggestionListAdapter(this, suggestionListInfo);
     suggestionList.setAdapter(suggestionAdapter);
     queryShopOrder();
   }
 
   public void queryShopOrder() {
     BmobQuery<ShopOrder> query = new BmobQuery<ShopOrder>();
+    query.addWhereEqualTo("orderShop", shopInfo);
     query.findObjects(this, new FindListener<ShopOrder>() {
       @Override
       public void onSuccess(List<ShopOrder> object) {
@@ -307,5 +313,18 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
       break;
     }
 
+  }
+
+  private class OrderClickListener implements OnItemClickListener {
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position,
+        long id) {
+      // TODO Auto-generated method stub
+      toNewOrderActivity();
+    }
+  }
+
+  private void toNewOrderActivity() {
   }
 }

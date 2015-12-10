@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.READ_LOGS"/>
     
     <application
+        android:name=".context.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -44,6 +45,18 @@
             android:label="@string/app_name"></activity>
         <activity 
             android:name="com.easyplay.easygame.activity.MyShopActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/app_name"></activity>
+        <activity 
+            android:name="com.easyplay.easygame.activity.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/app_name"></activity>
+        <activity 
+            android:name="com.easyplay.easygame.activity.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/app_name"></activity>
+        <activity 
+            android:name="com.easyplay.easygame.activity.ShopSettingActivity"
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/app_name"></activity>
     </application>

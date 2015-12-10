@@ -79,5 +79,10 @@
     <dimen name="item_img_height">50dp</dimen>
     <dimen name="item_img_weight">70dp</dimen>
     
+    <dimen name="base_action_bar_height">48dip</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="register_margin">10.0dp</dimen>
+    
+    
 
 </resources>

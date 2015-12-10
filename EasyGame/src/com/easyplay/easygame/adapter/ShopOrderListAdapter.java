@@ -79,16 +79,39 @@ public class ShopOrderListAdapter extends BaseAdapter {
       holder = (ViewHolder) convertView.getTag();
     }
     if (order != null) {
-      holder.order_name.setText(Tools.checkString(order.getOrderName()));
-      holder.order_description.setText(Tools.checkString(order
-          .getOrderDescription()));
-      holder.order_sell.setText("月售"
-          + Tools.checkString(order.getOrderSell().toString()));
-      holder.order_price.setText(Tools.checkString(order.getOrderPrice()
-          .toString()) + "/" + Tools.checkString(order.getOrderTime()));
+      if (order.getOrderName() != null) {
+        holder.order_name.setVisibility(View.VISIBLE);
+        holder.order_name.setText(Tools.checkString(order.getOrderName()));
+      } else {
+        holder.order_name.setVisibility(View.GONE);
+      }
+      if (order.getOrderDescription() != null) {
+        holder.order_description.setVisibility(View.VISIBLE);
+        holder.order_description.setText(Tools.checkString(order
+            .getOrderDescription()));
+      } else {
+        holder.order_description.setVisibility(View.GONE);
+      }
+      if (order.getOrderSell() != null) {
+        holder.order_sell.setVisibility(View.VISIBLE);
+        holder.order_sell.setText("月售"
+            + Tools.checkString(order.getOrderSell().toString()));
+      } else {
+        holder.order_sell.setVisibility(View.GONE);
+      }
+      if (order.getOrderPrice() != null) {
+        holder.order_price.setVisibility(View.VISIBLE);
+        holder.order_price.setText(Tools.checkString(order.getOrderPrice()
+            .toString()) + "/" + Tools.checkString(order.getOrderTime()));
+      } else {
+        holder.order_price.setVisibility(View.GONE);
+      }
       if (order.getOrderLogo() != null) {
+        holder.order_logo.setVisibility(View.VISIBLE);
         ImageLoader.getInstance().displayImage(order.getOrderLogo(),
             holder.order_logo);
+      } else {
+        holder.order_logo.setVisibility(View.GONE);
       }
     }
     return convertView;

@@ -23,30 +23,42 @@
 	       android:layout_height="wrap_content"
 	       android:layout_toRightOf="@id/my_shop_img" >
 	       <TextView
+	           android:id="@+id/my_shop_shopname"
+	           
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"	            
+	           android:singleLine="true"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_medium"
+	           android:text="董导代练团"           
+	           />
+	       <TextView
 	           android:id="@+id/my_shop_gamename"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
-	            
+	           android:layout_toRightOf="@id/my_shop_shopname" 
 	           android:singleLine="true"
 	           android:layout_marginLeft="@dimen/custom_margin_tiny"
 	           android:textSize="@dimen/custom_text_size_medium"
 	           android:text="英雄联盟"
 	           />
 	       <TextView
-	           android:id="@+id/my_shop_shopname"
-	           android:layout_width="match_parent"
+	           android:id="@+id/my_shop_gameserver"
+	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
 	           android:layout_toRightOf="@id/my_shop_gamename" 
+	           android:layout_alignBottom="@id/my_shop_gamename"
 	           android:singleLine="true"
 	           android:layout_marginLeft="@dimen/custom_margin_tiny"
-	           android:textSize="@dimen/custom_text_size_medium"
-	           android:text="董导代练团"
+	           android:textSize="@dimen/custom_text_size_small"
+	           android:textColor="@color/text_color_light_dark"
+	           android:text="均衡教派"
 	           />
 	       <RelativeLayout
 	           android:layout_width="match_parent"
 	           android:layout_height="wrap_content"
 	           android:layout_below="@id/my_shop_gamename"
-	           android:layout_alignLeft="@id/my_shop_gamename"
+	           android:layout_alignLeft="@id/my_shop_shopname"
 	           android:layout_marginTop="@dimen/custom_margin_tiny"  
 	            >
 		       <ImageView

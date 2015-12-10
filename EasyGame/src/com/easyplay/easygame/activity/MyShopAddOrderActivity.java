@@ -1,20 +1,18 @@
 package com.easyplay.easygame.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.SaveListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.model.ShopOrder;
-import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.tools.Tools;
 
 public class MyShopAddOrderActivity extends BaseActivity implements
@@ -27,7 +25,7 @@ public class MyShopAddOrderActivity extends BaseActivity implements
 
   private String order_name, order_description, order_price, order_unit;
   private int start_time, end_time;
-  private ShopInfo orderShop;
+  private ShopInfo mShopInfo;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +61,8 @@ public class MyShopAddOrderActivity extends BaseActivity implements
   @Override
   protected void init() {
     // TODO Auto-generated method stub
-    queryShopInfo();
+    // queryShopInfo();
+    mShopInfo = (ShopInfo) this.getIntent().getSerializableExtra("shop_info");
   }
 
   @Override
@@ -108,30 +107,30 @@ public class MyShopAddOrderActivity extends BaseActivity implements
     return true;
   }
 
-  public void queryShopInfo() {
-    BmobQuery<ShopInfo> query = new BmobQuery<ShopInfo>();
-    query.getObject(this, "zHE9CCCn", new GetListener<ShopInfo>() {
-
-      @Override
-      public void onFailure(int code, String arg0) {
-        // TODO Auto-generated method stub
-        AppLog.d(TAG, "查询Shop失败");
-      }
-
-      @Override
-      public void onSuccess(ShopInfo arg0) {
-        // TODO Auto-generated method stub
-        AppLog.d(TAG, "查询Shop成功");
-        orderShop = arg0;
-      }
-
-    });
-  }
+  // public void queryShopInfo() {
+  // BmobQuery<ShopInfo> query = new BmobQuery<ShopInfo>();
+  // query.getObject(this, "zHE9CCCn", new GetListener<ShopInfo>() {
+  //
+  // @Override
+  // public void onFailure(int code, String arg0) {
+  // // TODO Auto-generated method stub
+  // AppLog.d(TAG, "查询Shop失败");
+  // }
+  //
+  // @Override
+  // public void onSuccess(ShopInfo arg0) {
+  // // TODO Auto-generated method stub
+  // AppLog.d(TAG, "查询Shop成功");
+  // orderShop = arg0;
+  // }
+  //
+  // });
+  // }
 
   private void addOrder() {
 
-    ShopOrder shopOrder = new ShopOrder();
-    shopOrder.setOrderShop(orderShop);
+    final ShopOrder shopOrder = new ShopOrder();
+    shopOrder.setOrderShop(mShopInfo);
     shopOrder.setOrderName(order_name);
     shopOrder.setOrderDescription(order_description);
     shopOrder.setOrderPrice(Integer.parseInt(order_price));
@@ -143,11 +142,21 @@ public class MyShopAddOrderActivity extends BaseActivity implements
       @Override
       public void onSuccess() {
         // TODO Auto-generated method stub
+        showSuccessToast("^_^添加成功");
+        Intent intent = new Intent(MyShopAddOrderActivity.this,
+            MyShopActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("shop_order", shopOrder);
+        intent.putExtras(bundle);
+        MyShopAddOrderActivity.this.setResult(RESULT_OK);
+        MyShopAddOrderActivity.this.finish();
       }
 
       @Override
       public void onFailure(int code, String msg) {
         // TODO Auto-generated method stub
+        showErrorToast("T_T添加失败，请检查网络后重试");
       }
     });
   }

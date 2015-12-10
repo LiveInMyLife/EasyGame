@@ -55,6 +55,7 @@ public class GameSelectActivity extends BaseActivity implements OnClickListener 
 
   public void queryGameList() {
     BmobQuery<GameInfo> query = new BmobQuery<GameInfo>();
+    GameInfo test = new GameInfo();
     query.findObjects(this, new FindListener<GameInfo>() {
       @Override
       public void onSuccess(List<GameInfo> object) {

@@ -12,13 +12,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import cn.bmob.v3.Bmob;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyFragmentPagerAdapter;
+import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.fragment.MineFragment;
 import com.easyplay.easygame.fragment.OrderFragment;
 import com.easyplay.easygame.fragment.SparringFragment;
+import com.easyplay.easygame.tools.ActivityUtils;
 
 public class MainActivity extends FragmentActivity {
 
@@ -33,7 +34,6 @@ public class MainActivity extends FragmentActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Bmob.initialize(this, "8b302b1049c8faaa45951ebf8a8770ed");
 
     viewPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -143,8 +143,12 @@ public class MainActivity extends FragmentActivity {
   }
 
   private void toMyShop() {
-    Intent intent = new Intent(this, MyShopActivity.class);
-    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    this.startActivity(intent);
+    if (BaseApplication.userManager.getCurrentUser() != null) {
+      Intent intent = new Intent(this, MyShopActivity.class);
+      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      this.startActivity(intent);
+    } else {
+      ActivityUtils.toLoginActivity(this);
+    }
   }
 }
