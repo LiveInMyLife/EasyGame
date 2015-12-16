@@ -7,6 +7,9 @@
     <string name="shop_detail">商家详情</string>
     <string name="game_select">选择游戏</string>
     <string name="order_add">添加订单</string>
+    <string name="order_confirm">订单确认</string>
+    <string name="shop_setting">店铺设置</string>
+    <string name="pay_success">支付成功</string>
     
     <string name="login_username_hint">请输入用户名&#8230;</string>
     <string name="login_password_hint">请输入密码&#8230;</string>

@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
@@ -16,17 +19,19 @@ import com.easyplay.easygame.adapter.GameListAdapter;
 import com.easyplay.easygame.model.GameInfo;
 import com.easyplay.easygame.tools.AppLog;
 
-public class GameSelectActivity extends BaseActivity implements OnClickListener {
+public class GameSelectActivity extends BaseActivity implements
+    OnClickListener, OnItemClickListener {
   private static final String TAG = "GameSelectActivity";
 
   private GameListAdapter gameListAdapter;
   private ListView gameList;
-  private final List<GameInfo> gameListInfo = new ArrayList<GameInfo>();
+  private List<GameInfo> gameListInfo;
+  private GameInfo gameSelected;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_shop_detail);
+    setContentView(R.layout.activity_game_select);
     initActionBar(this.getResources().getString(R.string.game_select));
     bindViews();
     setListener();
@@ -48,9 +53,11 @@ public class GameSelectActivity extends BaseActivity implements OnClickListener 
   @Override
   protected void init() {
     // TODO Auto-generated method stub
+    gameListInfo = new ArrayList<GameInfo>();
     gameListAdapter = new GameListAdapter(this, gameListInfo);
     gameList.setAdapter(gameListAdapter);
     queryGameList();
+    gameList.setOnItemClickListener(this);
   }
 
   public void queryGameList() {
@@ -84,5 +91,19 @@ public class GameSelectActivity extends BaseActivity implements OnClickListener 
       break;
     }
 
+  }
+
+  @Override
+  public void onItemClick(AdapterView<?> parent, View view, int position,
+      long id) {
+    // TODO Auto-generated method stub
+    gameSelected = gameListInfo.get(position);
+    AppLog.d(TAG, "selectgame:" + gameSelected.getGameName());
+    Intent intent = new Intent();
+    Bundle bundle = new Bundle();
+    bundle.putSerializable("game_info", gameSelected);
+    intent.putExtras(bundle);
+    GameSelectActivity.this.setResult(RESULT_OK, intent);
+    GameSelectActivity.this.finish();
   }
 }

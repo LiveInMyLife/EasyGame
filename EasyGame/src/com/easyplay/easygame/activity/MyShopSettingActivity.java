@@ -12,12 +12,16 @@ import cn.bmob.v3.listener.SaveListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.context.BaseApplication;
+import com.easyplay.easygame.model.GameInfo;
 import com.easyplay.easygame.model.ShopInfo;
+import com.easyplay.easygame.tools.AppLog;
 
-public class ShopSettingActivity extends BaseActivity implements
+public class MyShopSettingActivity extends BaseActivity implements
     OnClickListener {
   private static final String TAG = "ShopSettingActivity";
+  private static final int GAME_INFO = 30;
   private ShopInfo shopInfo;
+  private GameInfo gameInfo;
   private TextView gameName;
   private EditText gameServer, shopName, shopNotice, contactPhone, contactQQ;
   private RelativeLayout btnAddOrder;
@@ -28,8 +32,8 @@ public class ShopSettingActivity extends BaseActivity implements
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_shop_detail);
-    initActionBar(this.getResources().getString(R.string.shop_detail));
+    setContentView(R.layout.activity_my_shop_setting);
+    initActionBar(this.getResources().getString(R.string.shop_setting));
     bindViews();
     setListener();
     init();
@@ -86,6 +90,9 @@ public class ShopSettingActivity extends BaseActivity implements
     case R.id.my_shop_add_order:
       saveInfo();
       break;
+    case R.id.my_shop_gamename:
+      toGameSelect();
+      break;
     }
 
   }
@@ -101,6 +108,7 @@ public class ShopSettingActivity extends BaseActivity implements
       }
       info.setShopLogo("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3043342069,229207001&fm=116&gp=0.jpg");
       info.setShopGame(gameNameStr);
+      info.setGameServer(gameServerStr);
       info.setShopName(shopNameStr);
       info.setShopDescription(shopNoticeStr);
       info.setContactPhone(contactPhoneStr);
@@ -111,18 +119,19 @@ public class ShopSettingActivity extends BaseActivity implements
         public void onSuccess() {
           // TODO Auto-generated method stub
           showSuccessToast("^_^操作成功");
-          Intent intent = new Intent(ShopSettingActivity.this,
+          Intent intent = new Intent(MyShopSettingActivity.this,
               MyShopActivity.class);
           Bundle bundle = new Bundle();
           bundle.putSerializable("shop_info", info);
           intent.putExtras(bundle);
-          ShopSettingActivity.this.setResult(RESULT_OK, intent);
-          ShopSettingActivity.this.finish();
+          MyShopSettingActivity.this.setResult(RESULT_OK, intent);
+          MyShopSettingActivity.this.finish();
         }
 
         @Override
         public void onFailure(int code, String msg) {
           // TODO Auto-generated method stub
+          AppLog.d(TAG, "code:" + code + "; msg:" + msg);
           showErrorToast("T_T操作失败，请检查网络后重试");
         }
       });
@@ -132,6 +141,9 @@ public class ShopSettingActivity extends BaseActivity implements
 
   private boolean checkInput() {
     boolean flag = true;
+    if (gameInfo != null) {
+      gameNameStr = gameInfo.getGameName();
+    }
     gameServerStr = gameServer.getEditableText().toString();
     shopNameStr = shopName.getEditableText().toString();
     shopNoticeStr = shopNotice.getEditableText().toString();
@@ -154,5 +166,36 @@ public class ShopSettingActivity extends BaseActivity implements
       showErrorToast("请至少填写一种联系方式");
     }
     return flag;
+  }
+
+  private void toGameSelect() {
+    Intent intent = new Intent(this, GameSelectActivity.class);
+    // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    this.startActivityForResult(intent, GAME_INFO);
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    AppLog.d(TAG, "onActivityResult:" + requestCode + ";" + resultCode + ";"
+        + data);
+    if (resultCode == RESULT_OK) {
+
+      switch (requestCode) { // resultCode为回传的标记，我在B中回传的是RESULT_OK
+      case GAME_INFO:
+        GameInfo result = (GameInfo) data.getSerializableExtra("game_info");
+        AppLog.d(TAG, "result=" + result);
+        if (result != null) {
+          gameInfo = result;
+          if (gameInfo.getGameName() != null) {
+            gameName.setText(gameInfo.getGameName());
+          }
+        } else {
+
+        }
+        break;
+      default:
+        break;
+      }
+    }
   }
 }

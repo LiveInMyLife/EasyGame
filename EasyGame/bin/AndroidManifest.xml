@@ -13,23 +13,30 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>  
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
     
     <application
         android:name=".context.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.NoTitleBar"  >
         <activity
-            android:name="com.easyplay.easygame.activity.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:name="com.easyplay.easygame.activity.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar" 
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.easyplay.easygame.activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity 
             android:name="com.easyplay.easygame.activity.ShopDetailActivity"
@@ -56,9 +63,32 @@
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/app_name"></activity>
         <activity 
-            android:name="com.easyplay.easygame.activity.ShopSettingActivity"
+            android:name="com.easyplay.easygame.activity.MyShopSettingActivity"
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/app_name"></activity>
+        <activity 
+            android:name="com.easyplay.easygame.activity.ShopOrderConfirmActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/app_name"></activity>
+        
+        <activity
+            android:name="com.easyplay.easygame.activity.PayActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/app_name" >
+        </activity>
+        
+        <!--支付SDK声明的Activity-->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.bmob.pay.tool.PayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" />
     </application>
 
 </manifest>

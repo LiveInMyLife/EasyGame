@@ -4,6 +4,9 @@ public class AppContent {
   public static final int ORDER_STATE_FINISH = 0;
   public static final int ORDER_STATE_GOING = 1;
   public static final int ORDER_STATE_ORDERED = 2;
+  public static final int ORDER_STATE_UNPAYED = 3;
+  public static final String PAY_FAIL = "NOTPAY";
+  public static final String PAY_SUCCESS = "SUCCESS";
 
   public static String getOrderStateString(int state) {
     String result = "";

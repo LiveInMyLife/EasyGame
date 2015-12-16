@@ -56,7 +56,7 @@ public class GameListAdapter extends BaseAdapter {
     if (convertView == null) {
       holder = new ViewHolder();
       convertView = LayoutInflater.from(mContext).inflate(
-          R.layout.item_shop_suggestion, null);
+          R.layout.item_game_select, null);
       holder.gameName = (TextView) convertView
           .findViewById(R.id.item_game_name);
       holder.gameLogo = (ImageView) convertView

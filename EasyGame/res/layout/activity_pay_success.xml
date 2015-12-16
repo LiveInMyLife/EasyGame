@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_std_grey_pressed"
+    android:orientation="vertical" >
+    <include
+        android:id="@+id/layout_actionbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_actionbar" />
+    <ScrollView 
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center"
+	            
+	            android:paddingTop="30dp"
+	            android:paddingBottom="5dp">
+	
+		        <ImageView
+		                android:layout_width="30dp"
+		                android:layout_height="30dp"
+		                android:src="@drawable/insurance_order_success_icon"/>
+		
+		        <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="5dp"
+		                android:text="订单支付成功"
+		                android:textSize="@dimen/custom_text_size_medium"
+		                android:textStyle="bold"/>
+		
+		    </LinearLayout>
+			<!-- android:background="@color/order_submit_success_hint_bg"
+	    	<View
+	            android:layout_width="match_parent"
+	            android:layout_height="1dp"
+	            android:background="@color/order_submit_success_divider_bg"/> -->
+
+			<LinearLayout
+			    android:id="@+id/pay_success_tips"
+			    android:layout_width="match_parent" 
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"
+			    android:paddingLeft="17dp"
+			    android:paddingRight="17dp">
+			    <TextView
+		            android:id="@+id/pay_success_tip1"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="5dp"
+		            android:textColor="@color/text_color_dark"
+		            android:textSize="@dimen/custom_text_size_medium"
+		            android:text="建议您联系对方确定具体接单流程，祝您游戏愉快"/>
+			
+			    <!-- <TextView
+		            android:id="@+id/offline_pay_info_text_2"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="31dp"
+		            android:textColor="@color/text_color_dark"
+		            android:textSize="@dimen/custom_text_size_medium"/> -->
+		    </LinearLayout>
+
+		    <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:paddingLeft="17dp"
+	            android:paddingRight="17dp"
+	            android:layout_marginTop="31dp"
+	            android:orientation="horizontal"
+	            android:gravity="center">
+		
+		        <Button
+	                android:id="@+id/pay_success_order_detail"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:paddingBottom="10dp"
+	                android:paddingTop="10dp"
+	                android:text="订单详情"
+	                android:textColor="@color/order_submit_success_btn_blue"
+	                android:background="@drawable/bg_blue_border_white_solid"/>
+		
+		        <Button
+	                android:id="@+id/pay_success_contact_server"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:paddingBottom="10dp"
+	                android:paddingTop="10dp"
+	                android:text="联系对方"
+	                android:textColor="@color/order_submit_success_btn_blue"
+	                android:background="@drawable/bg_blue_border_white_solid"
+	                android:layout_marginLeft="20dp"/>
+		
+		    </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    
+
+</LinearLayout>

@@ -37,7 +37,7 @@
 		            android:layout_toRightOf="@id/my_shop_img" >
 		
 		            <TextView
-		                android:id="@+id/new_order_name"
+		                android:id="@+id/pay_order_name"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_marginLeft="@dimen/custom_margin_tiny"
@@ -47,16 +47,16 @@
 		                android:text="订单名称"
 		                android:textSize="@dimen/custom_text_size_medium" />
 		
-		            <EditText
-		                android:id="@+id/et_new_order_name"
+		            <TextView
+		                android:id="@+id/tv_pay_order_name"
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
 		                android:paddingTop="8dp"
 		                android:paddingBottom="8dp"
 		                android:paddingRight="20dp"
 		                android:layout_marginLeft="@dimen/custom_margin_tiny"
-		                android:layout_toRightOf="@id/new_order_name"
-		                android:layout_alignBottom="@id/new_order_name"
+		                android:layout_toRightOf="@id/pay_order_name"
+		                android:layout_alignBottom="@id/pay_order_name"
 		                android:gravity="right"
 		                android:background="@null"
 		                android:singleLine="true"
@@ -67,24 +67,24 @@
 		            <RelativeLayout
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
-		                android:layout_alignLeft="@id/new_order_name"
-		                android:layout_below="@id/new_order_name"
+		                android:layout_alignLeft="@id/pay_order_name"
+		                android:layout_below="@id/pay_order_name"
 		                android:paddingTop="8dp"
 		                android:paddingBottom="8dp" >
 		
 		                <ImageView
-		                    android:id="@+id/iv_new_order_description"
+		                    android:id="@+id/iv_pay_order_description"
 		                    android:layout_width="15dp"
 		                    android:layout_height="15dp"
 		                    android:layout_marginTop="10dp"
 		                    android:background="@drawable/shop_detail_notice" />
 		
-		                <EditText
-		                    android:id="@+id/et_new_order_description"
+		                <TextView
+		                    android:id="@+id/pay_order_description"
 		                    android:layout_width="match_parent"
 		                    android:layout_height="wrap_content"
 		                    android:layout_marginLeft="2dp"
-		                    android:layout_toRightOf="@id/iv_new_order_description"
+		                    android:layout_toRightOf="@id/iv_pay_order_description"
 		                    android:paddingTop="10dp"
 		                    android:paddingBottom="10dp"
 		                    android:background="@null"
@@ -123,22 +123,19 @@
 		            android:paddingLeft="10dp"
 		            android:paddingRight="10dp">
 		            <TextView 
-		                android:id="@+id/tv_new_order_price"
+		                android:id="@+id/pay_order_price"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:textSize="14sp"
 		                android:text="单价(元)"/>
-		            <EditText 
-		                android:id="@+id/et_new_order_price"
+		            <TextView 
+		                android:id="@+id/tv_pay_order_price"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentRight="true"
 		                android:paddingRight="10dp"
 		                android:textSize="14sp"
-		                android:inputType="numberDecimal"
-		                android:background="@null"
-		                android:singleLine="true"
-		                android:hint="请输入"/>
+		                android:text="¥25.0"/>
 		        </RelativeLayout>
 		        <RelativeLayout 
 		            android:layout_width="wrap_content"
@@ -151,17 +148,41 @@
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:textSize="14sp"
-		                android:text="计费单位(小时/局/月等)"/>
-		            <EditText 
-		                android:id="@+id/et_new_order_unit"
+		                android:text="数量"/>
+		            
+		            <LinearLayout 
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
+		                android:orientation="horizontal"
 		                android:layout_alignParentRight="true"
 		                android:paddingRight="10dp"
-		                android:textSize="14sp"
-		                android:background="@null"
-		                android:singleLine="true"
-		                android:hint="请输入"/>
+		                >
+		                <TextView 
+		                    android:id="@+id/pay_order_num_cut"
+			                android:layout_width="40dp"
+			                android:layout_height="wrap_content"
+			                android:textSize="20sp"
+			                android:padding="10dp"
+			                android:gravity="center"
+			                android:text="-"/>
+			            <TextView 
+			                android:id="@+id/pay_order_num"
+			                android:layout_width="50dp"
+			                android:layout_height="wrap_content"
+			                android:textSize="14sp"
+			                android:gravity="center"
+			                android:layout_marginLeft="5dp"
+			                android:layout_marginRight="5dp"
+			                android:text="0"/>
+			            <TextView 
+			                android:id="@+id/pay_order_num_add"
+			                android:layout_width="40dp"
+			                android:layout_height="wrap_content"
+			                android:textSize="20sp"
+			                android:padding="10dp"
+			                android:gravity="center"
+			                android:text="+"/>
+		            </LinearLayout>
 		        </RelativeLayout>
 			 
 			 </LinearLayout>
@@ -192,7 +213,7 @@
 		            android:paddingLeft="10dp"
 		            android:paddingRight="10dp">
 		            <TextView 
-		                android:id="@+id/tv_new_select_time"
+		                android:id="@+id/tv_select_service_time"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:paddingTop="15dp"
@@ -201,7 +222,7 @@
 		                android:textColor="@color/text_color_light_dark"
 		                android:text="0:00-24:00"/>
 		            <TextView 
-		                android:id="@+id/btn_new_select_time"
+		                android:id="@+id/btn_select_service_time"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentRight="true"
@@ -214,16 +235,17 @@
 			 
 			 </LinearLayout>
 			 <RelativeLayout 
-			     android:id="@+id/btn_new_order_add"
+			     android:id="@+id/btn_pay_order_account"
 			     android:layout_width="match_parent"
 			     android:layout_margin="20dp"
 			     android:layout_height="50dp"
-			     android:background="@drawable/selector_bg_blue_btn">
-			     <TextView 
+			     android:background="@drawable/usercenter_setting_exitbtn">
+			     <TextView
+			         android:id="@+id/tv_pay_order_account" 
 			         android:layout_width="wrap_content"
 			         android:layout_height="wrap_content"
 			         android:layout_centerInParent="true"
-			         android:text="添加订单"
+			         android:text="¥50 结算"
 			         android:textSize="16sp"
 			         android:textColor="@color/color_std_white"
 			         />

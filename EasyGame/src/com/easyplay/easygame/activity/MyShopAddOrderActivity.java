@@ -133,7 +133,7 @@ public class MyShopAddOrderActivity extends BaseActivity implements
     shopOrder.setOrderShop(mShopInfo);
     shopOrder.setOrderName(order_name);
     shopOrder.setOrderDescription(order_description);
-    shopOrder.setOrderPrice(Integer.parseInt(order_price));
+    shopOrder.setOrderPrice(Float.parseFloat(order_price));
     shopOrder.setStartTime(start_time);
     shopOrder.setEndTime(end_time);
     shopOrder.setOrderTime(order_unit);

@@ -39,14 +39,6 @@ public class ShopOrder extends BmobObject implements Serializable {
     this.orderDescription = orderDescription;
   }
 
-  public Integer getOrderPrice() {
-    return orderPrice;
-  }
-
-  public void setOrderPrice(Integer orderPrice) {
-    this.orderPrice = orderPrice;
-  }
-
   public String getOrderTime() {
     return orderTime;
   }
@@ -79,11 +71,19 @@ public class ShopOrder extends BmobObject implements Serializable {
     this.orderShop = orderShop;
   }
 
+  public Float getOrderPrice() {
+    return orderPrice;
+  }
+
+  public void setOrderPrice(Float orderPrice) {
+    this.orderPrice = orderPrice;
+  }
+
   private String orderName;
   private String orderLogo;
   private Integer orderSell;
   private String orderDescription;
-  private Integer orderPrice;
+  private Float orderPrice;
   private String orderTime;
   private Integer startTime;
   private Integer endTime;

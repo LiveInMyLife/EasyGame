@@ -4,6 +4,11 @@
     android:layout_height="match_parent"      
     android:background="@color/commen_gray_bg"
     android:orientation="vertical" >
+    <include
+        android:id="@+id/layout_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_actionbar" />
 	<ScrollView 
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent">

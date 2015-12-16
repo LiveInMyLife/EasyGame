@@ -5,13 +5,21 @@
     android:background="@color/theme_bg_color"
     android:orientation="vertical" >
 
-    <include
+    <!-- <include
         android:id="@+id/common_actionbar"
-        layout="@layout/include_action_bar" />
+        layout="@layout/include_action_bar" /> -->
+    <include
+        android:id="@+id/layout_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_actionbar" />
 
-    <LinearLayout style="@style/Register_Input" >
+    <LinearLayout
+        
+         style="@style/Register_Input" >
 
         <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
@@ -28,6 +36,7 @@
     <LinearLayout style="@style/Register_Input" >
 
         <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
@@ -46,6 +55,7 @@
         style="@style/Register_Input" >
 
         <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"

@@ -30,7 +30,7 @@ public class RegisterActivity extends BaseActivity {
     // TODO Auto-generated method stub
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_register);
-
+    initActionBar(this.getResources().getString(R.string.register));
     // initTopBarForLeft("注册");
 
     et_username = (EditText) findViewById(R.id.et_username);

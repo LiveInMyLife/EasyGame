@@ -75,7 +75,9 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
   @Override
   protected void setListener() {
     // TODO Auto-generated method stub
-    addOrder.setOnClickListener(new OnClickListener() {
+    addOrder.setOnClickListener(this);
+
+    my_shop_header.setOnClickListener(new OnClickListener() {
 
       @Override
       public void onClick(View v) {
@@ -83,8 +85,6 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
         toShopSetting();
       }
     });
-    my_shop_header.setOnClickListener(this);
-    my_shop_footer.setOnClickListener(this);
   }
 
   @Override
@@ -93,17 +93,19 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
 
     orderAdapter = new MyShopOrderListAdapter(this, orderListInfo);
     orderList.setAdapter(orderAdapter);
+    queryShopInfo();
 
-    queryShopOrder();
   }
 
   public void queryShopOrder() {
     BmobQuery<ShopOrder> query = new BmobQuery<ShopOrder>();
+    query.addWhereEqualTo("orderShop", mShopInfo);
     query.findObjects(this, new FindListener<ShopOrder>() {
       @Override
       public void onSuccess(List<ShopOrder> object) {
         // TODO Auto-generated method stub
-        AppLog.d(TAG, "查询成功：记录条数：" + object.size());
+        AppLog.d(TAG, "ShopOrder查询成功：记录条数：" + object.size());
+        orderListInfo.removeAll(orderListInfo);
         for (ShopOrder shopOrder : object) {
           orderListInfo.add(shopOrder);
         }
@@ -126,12 +128,13 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
       @Override
       public void onSuccess(List<ShopInfo> object) {
         // TODO Auto-generated method stub
-        AppLog.d(TAG, "查询成功：记录条数：" + object.size());
+        AppLog.d(TAG, "ShopInfo查询成功：记录条数：" + object.size());
         if (object.size() > 0) {
           for (ShopInfo shopInfo : object) {
             mShopInfo = shopInfo;
             updateData(mShopInfo);
           }
+          queryShopOrder();
         } else {
           toShopSetting();
         }
@@ -158,7 +161,6 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
 
   private void toAddOrderActicvity() {
     Intent intent = new Intent(this, MyShopAddOrderActivity.class);
-    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     Bundle bundle = new Bundle();
     bundle.putSerializable("shop_info", mShopInfo);
     intent.putExtras(bundle);
@@ -166,8 +168,7 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
   }
 
   private void toShopSetting() {
-    Intent intent = new Intent(this, ShopSettingActivity.class);
-    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    Intent intent = new Intent(this, MyShopSettingActivity.class);
     Bundle bundle = new Bundle();
     bundle.putSerializable("shop_info", mShopInfo);
     intent.putExtras(bundle);
@@ -191,12 +192,13 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
         }
         break;
       case ORDER_ADD:
-        ShopOrder orderResult = (ShopOrder) data
-            .getSerializableExtra("shop_order");
-        if (orderResult != null) {
-          orderListInfo.add(orderResult);
-          orderAdapter.notifyDataSetChanged();
-        }
+        // ShopOrder orderResult = (ShopOrder) data
+        // .getSerializableExtra("shop_order");
+        // if (orderResult != null) {
+        // orderListInfo.add(orderResult);
+        // orderAdapter.notifyDataSetChanged();
+        // }
+        queryShopOrder();
         break;
       default:
         break;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -30,9 +31,11 @@ import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyAdapter;
 import com.easyplay.easygame.adapter.ShopOrderListAdapter;
 import com.easyplay.easygame.adapter.ShopSuggestionListAdapter;
+import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.model.ShopSuggestion;
+import com.easyplay.easygame.tools.ActivityUtils;
 import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.tools.ImageUtils;
 import com.easyplay.easygame.tools.Tools;
@@ -321,10 +324,20 @@ public class ShopDetailActivity extends BaseActivity implements OnClickListener 
     public void onItemClick(AdapterView<?> parent, View view, int position,
         long id) {
       // TODO Auto-generated method stub
-      toNewOrderActivity();
+      if (BaseApplication.userManager.getCurrentUser() == null) {
+        ActivityUtils.toLoginActivity(ShopDetailActivity.this);
+      } else {
+        toOrderConfirmActivity(orderListInfo.get(position));
+      }
     }
   }
 
-  private void toNewOrderActivity() {
+  private void toOrderConfirmActivity(ShopOrder orderInfo) {
+    Intent intent = new Intent(this, ShopOrderConfirmActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    Bundle bundle = new Bundle();
+    bundle.putSerializable("order_info", orderInfo);
+    intent.putExtras(bundle);
+    this.startActivity(intent);
   }
 }

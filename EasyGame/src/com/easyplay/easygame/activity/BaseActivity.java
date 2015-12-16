@@ -1,6 +1,7 @@
 package com.easyplay.easygame.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.bmob.im.BmobUserManager;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.tools.Tools;
@@ -29,11 +31,13 @@ public abstract class BaseActivity extends ActionBarActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getSupportActionBar().hide();
+    // checkLogin();
   }
 
   @Override
   protected void onResume() {
     super.onResume();
+    // checkLogin();
   }
 
   protected abstract void bindViews();
@@ -140,5 +144,23 @@ public abstract class BaseActivity extends ActionBarActivity {
     if (progress != null && progress.isShowing()) {
       progress.dismiss();
     }
+  }
+
+  // 检测是否有其他设备登录了同一账号
+  public void checkLogin() {
+    BmobUserManager userManager = BmobUserManager.getInstance(this);
+    if (userManager.getCurrentUser() == null) {
+      showErrorToast("您的账号已在其他设备上登录!");
+      startActivity(new Intent(this, LoginActivity.class));
+      finish();
+    }
+  }
+
+  public void startAnimActivity(Class<?> cla) {
+    this.startActivity(new Intent(this, cla));
+  }
+
+  public void startAnimActivity(Intent intent) {
+    this.startActivity(intent);
   }
 }
