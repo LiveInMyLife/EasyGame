@@ -113,25 +113,55 @@
            android:layout_height="match_parent"
            android:layout_marginLeft="@dimen/custom_margin_tiny"
            android:gravity="left|center_vertical"
-           android:text="总计: 100 元"
+           android:text="总计:100.0元"
            android:textColor="@color/text_color_red"/> 
        <TextView 
            android:id="@+id/item_myorder_complaint"
-           android:layout_width="80dp"
+           android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:layout_marginLeft="@dimen/custom_margin_tiny"
+           android:paddingLeft="20dp"
+           android:paddingRight="20dp"
            android:gravity="center"
            android:text="投诉"
            android:textColor="@color/text_color_white"
-           android:background="@color/text_color_red"/>
+           android:background="@color/text_color_red"
+           android:visibility="gone"/>
        <TextView 
            android:id="@+id/item_myorder_suggestion"
-           android:layout_width="80dp"
+           android:layout_width="wrap_content"
            android:layout_height="match_parent"
+           android:paddingLeft="20dp"
+           android:paddingRight="20dp"
            android:gravity="center"
            android:text="评价"
            android:textColor="@color/text_color_white"
-           android:background="@color/color_std_blue"/>
+           android:background="@color/color_std_blue"
+           android:visibility="gone"/>
+       
+       <TextView 
+           android:id="@+id/item_myorder_contact_server"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_marginLeft="@dimen/custom_margin_tiny"
+           android:paddingLeft="20dp"
+           android:paddingRight="20dp"
+           android:gravity="center"
+           android:text="联系对方"
+           android:textColor="@color/text_color_white"
+           android:background="@color/text_color_red"
+		/>
+       <TextView 
+           android:id="@+id/item_myorder_complete_confirm"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:paddingLeft="20dp"
+           android:paddingRight="20dp"
+           android:gravity="center"
+           android:text="确认完成"
+           android:textColor="@color/text_color_white"
+           android:background="@color/color_std_blue"
+           />
     </LinearLayout>
     <View
         android:layout_width="match_parent"

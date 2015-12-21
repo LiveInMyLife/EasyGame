@@ -26,13 +26,13 @@ import com.bmob.pay.tool.PayListener;
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.config.Config;
 import com.easyplay.easygame.context.BaseApplication;
+import com.easyplay.easygame.model.PayOrder;
 import com.easyplay.easygame.model.ShopOrder;
-import com.easyplay.easygame.model.payOrder;
 import com.easyplay.easygame.tools.AppContent;
 
 public class PayActivity extends BaseActivity implements
     OnCheckedChangeListener {
-
+  private final String testOrderId = "078b8e43231caf898ef7a5a5c1b23c92";
   String APPID = Config.applicationId;
   BmobPay bmobPay;
 
@@ -45,7 +45,7 @@ public class PayActivity extends BaseActivity implements
 
   private ShopOrder mShopOrder;
   private int buyNum;
-  private float total;
+  private double total;
   private String payOrderID;
 
   @Override
@@ -226,7 +226,7 @@ public class PayActivity extends BaseActivity implements
         // hideDialog();
         if (status.equalsIgnoreCase(AppContent.PAY_SUCCESS)) {
           showSuccessToast("支付成功！");
-          addPayOrder(AppContent.ORDER_STATE_FINISH);
+          addPayOrder(AppContent.ORDER_STATE_ORDERED);
         } else {
           showErrorToast("支付失败,请再次确认");
           addPayOrder(AppContent.ORDER_STATE_UNPAYED);
@@ -374,16 +374,17 @@ public class PayActivity extends BaseActivity implements
         if (!checkOrder()) {
           return;
         }
+        addPayOrder(AppContent.ORDER_STATE_ORDERED);
         // 当选择的是支付宝支付时
-        if (type.getCheckedRadioButtonId() == R.id.pay_alipay) {
-          payByAli();
-        } else if (type.getCheckedRadioButtonId() == R.id.pay_wxpay) {
-          // 调用插件用微信支付
-          payByWeiXin();
-        } else if (type.getCheckedRadioButtonId() == R.id.pay_query) {
-          // 选择查询时
-          query(getOrder());
-        }
+        // if (type.getCheckedRadioButtonId() == R.id.pay_alipay) {
+        // payByAli();
+        // } else if (type.getCheckedRadioButtonId() == R.id.pay_wxpay) {
+        // // 调用插件用微信支付
+        // payByWeiXin();
+        // } else if (type.getCheckedRadioButtonId() == R.id.pay_query) {
+        // // 选择查询时
+        // query(getOrder());
+        // }
       }
     });
   }
@@ -394,19 +395,24 @@ public class PayActivity extends BaseActivity implements
     mShopOrder = (ShopOrder) this.getIntent()
         .getSerializableExtra("order_info");
     buyNum = this.getIntent().getIntExtra("buy_num", 0);
-    total = this.getIntent().getFloatExtra("total", 0);
+    total = this.getIntent().getDoubleExtra("total", 0);
   }
 
   private void addPayOrder(int state) {
-    final payOrder payOrder = new payOrder();
+    final PayOrder payOrder = new PayOrder();
     payOrder.setTagOrder(mShopOrder);
     payOrder.setBuyNum(buyNum);
     payOrder.setCustomer(BaseApplication.userManager.getCurrentUser());
-    payOrder.setServer(mShopOrder.getOrderShop().getOwner());
+    payOrder.setServer(mShopOrder.getServer());
+    // payOrder.setServer(BaseApplication.userManager.getCurrentUser());
     payOrder.setServerShop(mShopOrder.getOrderShop());
-    payOrder.setPayOrderID(payOrderID);
+    // payOrder.setPayOrderID(payOrderID);
+    payOrder.setPayOrderID(testOrderId);
     payOrder.setTotal(total);
     payOrder.setState(state);
+    payOrder.setDescription(mShopOrder.getOrderDescription());
+    payOrder.setPrice(mShopOrder.getOrderPrice());
+    payOrder.setUnit(mShopOrder.getOrderTime());
     payOrder.save(this, new SaveListener() {
 
       @Override
@@ -427,7 +433,7 @@ public class PayActivity extends BaseActivity implements
       public void onFailure(int code, String msg) {
         // TODO Auto-generated method stub
         hideDialog();
-        showErrorToast("提交订单失败，请检查网络后重试");
+        showErrorToast("提交订单失败," + msg);
       }
     });
   }

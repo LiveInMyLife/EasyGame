@@ -31,6 +31,7 @@ public class MineFragment extends Fragment {
 
   @Override
   public void onResume() {
+    super.onResume();
     if (BaseApplication.userManager.getCurrentUser() != null) {
     } else {
       ActivityUtils.toLoginActivity(mContext);

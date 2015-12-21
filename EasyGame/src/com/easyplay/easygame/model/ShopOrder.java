@@ -3,6 +3,7 @@ package com.easyplay.easygame.model;
 import java.io.Serializable;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobUser;
 
 public class ShopOrder extends BmobObject implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -71,22 +72,30 @@ public class ShopOrder extends BmobObject implements Serializable {
     this.orderShop = orderShop;
   }
 
-  public Float getOrderPrice() {
+  public Double getOrderPrice() {
     return orderPrice;
   }
 
-  public void setOrderPrice(Float orderPrice) {
+  public void setOrderPrice(Double orderPrice) {
     this.orderPrice = orderPrice;
+  }
+
+  public BmobUser getServer() {
+    return server;
+  }
+
+  public void setServer(BmobUser server) {
+    this.server = server;
   }
 
   private String orderName;
   private String orderLogo;
   private Integer orderSell;
   private String orderDescription;
-  private Float orderPrice;
+  private Double orderPrice;
   private String orderTime;
   private Integer startTime;
   private Integer endTime;
   private ShopInfo orderShop;
-
+  private BmobUser server;
 }

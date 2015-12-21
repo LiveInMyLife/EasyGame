@@ -10,6 +10,7 @@
     <string name="order_confirm">订单确认</string>
     <string name="shop_setting">店铺设置</string>
     <string name="pay_success">支付成功</string>
+    <string name="suggestion_edit">编辑评论</string>
     
     <string name="login_username_hint">请输入用户名&#8230;</string>
     <string name="login_password_hint">请输入密码&#8230;</string>

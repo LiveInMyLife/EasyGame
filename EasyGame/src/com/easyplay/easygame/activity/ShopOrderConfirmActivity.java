@@ -29,7 +29,7 @@ public class ShopOrderConfirmActivity extends BaseActivity implements
 
   private ShopOrder mShopOrder;
   private int orderNum = 1;
-  private float total;
+  private double total;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +142,7 @@ public class ShopOrderConfirmActivity extends BaseActivity implements
     Bundle bundle = new Bundle();
     bundle.putSerializable("order_info", mShopOrder);
     bundle.putInt("buy_num", orderNum);
-    bundle.putFloat("total", total);
+    bundle.putDouble("total", total);
     intent.putExtras(bundle);
     this.startActivity(intent);
   }

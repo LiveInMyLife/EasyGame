@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"      
+    android:background="@color/color_std_white"
+    android:orientation="vertical" >
+    <include
+        android:id="@+id/layout_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_actionbar" />
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	    <LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"      
+		    android:orientation="vertical" >
+		    
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical"
+		        android:background="@color/color_std_white">
+		        <LinearLayout 
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal"
+			        android:background="@color/color_std_white">
+			        <TextView 
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="评分"
+			            android:layout_marginLeft="10dp"
+			            android:layout_marginTop="10dp"
+			            android:textColor="@color/color_call_black"
+			            android:textSize="14sp"/>
+			        <TextView 
+			            android:id="@+id/suggestion_edit_score"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:text="请赏个评分吧"
+			            android:layout_marginRight="10dp"
+						android:layout_marginTop="10dp"
+			            android:gravity="right"
+			            android:textColor="@color/color_call_black"
+			            android:textSize="14sp"/>
+		        </LinearLayout>
+		        
+		        <SeekBar
+		            android:id="@+id/suggestion_eidt_progress"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="10dp"
+		            android:max="100">
+		        </SeekBar>
+		        
+		        <View
+			        android:layout_width="match_parent"
+			        android:layout_height="1px"
+			        android:layout_marginTop="5dp"
+			        android:layout_marginBottom="5dp"
+			        android:background="@color/div_line_color" />
+
+				    <EditText 
+				        android:id="@+id/suggestion_edit_et"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:padding="5dp"
+				        android:layout_marginLeft="10dp"
+				        android:layout_marginRight="10dp"
+				        android:textSize="13sp"
+				        android:gravity="left|top"
+				        android:minLines="3"
+				        android:background="@color/commen_gray_bg"
+				        android:hint="请留下您宝贵的评价吧"
+				        />
+			 		<TextView 
+			 		    android:id="@+id/suggestion_edit_limit"
+			 		    android:layout_width="wrap_content"
+			 		    android:layout_height="wrap_content"
+			 		    android:padding="10dp"
+			 		    android:layout_gravity="right"
+			 		    android:text="0/200字"
+			 		    android:textSize="13sp"
+			 		    android:textColor="@color/text_color_light_dark"
+			 		    />
+			 </LinearLayout>
+			 
+		    <RelativeLayout 
+			     android:id="@+id/suggestion_send"
+			     android:layout_width="match_parent"
+			     android:layout_margin="20dp"
+			     android:layout_height="50dp"
+			     android:background="@drawable/btn_send_bg">
+			     <TextView 
+			         android:layout_width="wrap_content"
+			         android:layout_height="wrap_content"
+			         android:layout_centerInParent="true"
+			         android:text="发表"
+			         android:textSize="16sp"
+			         android:textColor="@color/color_std_white"
+			         />
+			 </RelativeLayout>
+			
+	    </LinearLayout>
+	</ScrollView>
+    
+ </LinearLayout>
+

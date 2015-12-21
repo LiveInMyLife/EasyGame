@@ -17,7 +17,8 @@ import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyOrderListAdapter;
-import com.easyplay.easygame.model.MyOrder;
+import com.easyplay.easygame.context.BaseApplication;
+import com.easyplay.easygame.model.PayOrder;
 import com.easyplay.easygame.tools.AppLog;
 
 public class OrderFragment extends Fragment implements OnItemClickListener {
@@ -27,7 +28,7 @@ public class OrderFragment extends Fragment implements OnItemClickListener {
   private Context mContext;
   private ListView orderListView;
   private MyOrderListAdapter orderAdapter;
-  private final List<MyOrder> orderListInfo = new ArrayList<MyOrder>();
+  private final List<PayOrder> orderListInfo = new ArrayList<PayOrder>();
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,13 +58,15 @@ public class OrderFragment extends Fragment implements OnItemClickListener {
   }
 
   public void queryOrderInfo() {
-    BmobQuery<MyOrder> query = new BmobQuery<MyOrder>();
-    query.findObjects(mContext, new FindListener<MyOrder>() {
+    BmobQuery<PayOrder> query = new BmobQuery<PayOrder>();
+    query.addWhereEqualTo("customer",
+        BaseApplication.userManager.getCurrentUser());
+    query.findObjects(mContext, new FindListener<PayOrder>() {
       @Override
-      public void onSuccess(List<MyOrder> object) {
+      public void onSuccess(List<PayOrder> object) {
         // TODO Auto-generated method stub
         AppLog.d(TAG, "查询成功：记录条数：" + object.size());
-        for (MyOrder orderInfo : object) {
+        for (PayOrder orderInfo : object) {
           orderListInfo.add(orderInfo);
         }
         orderAdapter.notifyDataSetChanged();

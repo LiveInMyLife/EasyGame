@@ -3,20 +3,25 @@ package com.easyplay.easygame.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.easyplay.easygame.R;
-import com.easyplay.easygame.model.MyOrder;
+import com.easyplay.easygame.activity.SuggestionActivity;
+import com.easyplay.easygame.model.PayOrder;
+import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.tools.AppContent;
 import com.easyplay.easygame.tools.Tools;
 
 public class MyOrderListAdapter extends BaseAdapter {
   private final Context mContext;
-  private final List<MyOrder> suggestionList;
+  private final List<PayOrder> suggestionList;
   private ViewHolder holder;
 
   class ViewHolder {
@@ -29,9 +34,11 @@ public class MyOrderListAdapter extends BaseAdapter {
     TextView orderTotal;
     TextView complaint;
     TextView suggest;
+    TextView contact;
+    TextView completetConfirm;
   }
 
-  public MyOrderListAdapter(Context context, List<MyOrder> data) {
+  public MyOrderListAdapter(Context context, List<PayOrder> data) {
     mContext = context;
     suggestionList = data;
   }
@@ -58,7 +65,7 @@ public class MyOrderListAdapter extends BaseAdapter {
   public View getView(int position, View convertView, ViewGroup parent) {
     // TODO Auto-generated method stub
     holder = null;
-    MyOrder order = suggestionList.get(position);
+    final PayOrder order = suggestionList.get(position);
     if (convertView == null) {
       holder = new ViewHolder();
       convertView = LayoutInflater.from(mContext).inflate(
@@ -83,27 +90,57 @@ public class MyOrderListAdapter extends BaseAdapter {
           .findViewById(R.id.item_myorder_complaint);
       holder.suggest = (TextView) convertView
           .findViewById(R.id.item_myorder_suggestion);
+      holder.contact = (TextView) convertView
+          .findViewById(R.id.item_myorder_contact_server);
+      holder.completetConfirm = (TextView) convertView
+          .findViewById(R.id.item_myorder_complete_confirm);
 
       convertView.setTag(holder);
     } else {
       holder = (ViewHolder) convertView.getTag();
     }
     if (order != null) {
-      holder.shopName.setText(Tools.checkString(order.getShopName()));
+      holder.shopName.setText(Tools.checkString(order.getServerShop()
+          .getShopName()));
       holder.orderDate.setText(Tools.checkString(order.getCreatedAt()));
-      if (order.getOrderPrice() > 0 && order.getOrderUnit() != null) {
-        holder.orderPrice.setText(order.getOrderPrice() + "/"
-            + order.getOrderUnit());
+      if (order.getPrice() > 0 && order.getUnit() != null) {
+        holder.orderPrice.setText(order.getPrice() + "/" + order.getUnit());
       }
-      if (order.getOrderNum() > 0 && order.getOrderUnit() != null) {
-        holder.orderNum.setText(order.getOrderNum() + order.getOrderUnit());
+      if (order.getBuyNum() > 0 && order.getUnit() != null) {
+        holder.orderNum.setText(order.getBuyNum() + order.getUnit());
       }
-      holder.orderDescription.setText(Tools.checkString(order
-          .getOrderDescription()));
+      holder.orderDescription
+          .setText(Tools.checkString(order.getDescription()));
       holder.orderState.setText(Tools.checkString(AppContent
-          .getOrderStateString(order.getOrderState())));
-      if (order.getOrderTotal() >= 0) {
-        holder.orderTotal.setText(order.getOrderTotal() + "");
+          .getOrderStateString(order.getState())));
+      if (order.getState() == AppContent.ORDER_STATE_FINISH) {
+        holder.complaint.setVisibility(View.VISIBLE);
+        holder.suggest.setVisibility(View.VISIBLE);
+        holder.contact.setVisibility(View.GONE);
+        holder.completetConfirm.setVisibility(View.GONE);
+        holder.suggest.setOnClickListener(new OnClickListener() {
+
+          @Override
+          public void onClick(View v) {
+            // TODO Auto-generated method stub
+            ShopInfo shop = order.getServerShop();
+            Intent intent = new Intent(mContext, SuggestionActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("tag_shop", shop);
+            intent.putExtras(bundle);
+            mContext.startActivity(intent);
+          }
+
+        });
+      } else {
+        holder.complaint.setVisibility(View.GONE);
+        holder.suggest.setVisibility(View.GONE);
+        holder.contact.setVisibility(View.VISIBLE);
+        holder.completetConfirm.setVisibility(View.VISIBLE);
+      }
+      if (order.getTotal() >= 0) {
+        holder.orderTotal.setText(order.getTotal() + "");
       }
     }
     return convertView;

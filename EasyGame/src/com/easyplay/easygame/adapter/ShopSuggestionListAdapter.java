@@ -78,8 +78,7 @@ public class ShopSuggestionListAdapter extends BaseAdapter {
           .getSuggestionContent()));
       holder.suggestionTime
           .setText(Tools.checkString(suggestion.getCreatedAt()));
-      holder.suggestionScore.setText(Tools.checkString(suggestion
-          .getSuggestionScore().toString()));
+      holder.suggestionScore.setText(suggestion.getSuggestionScore());
 
     }
     return convertView;

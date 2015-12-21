@@ -11,6 +11,7 @@ import android.widget.TextView;
 import cn.bmob.v3.listener.SaveListener;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.tools.Tools;
@@ -131,9 +132,10 @@ public class MyShopAddOrderActivity extends BaseActivity implements
 
     final ShopOrder shopOrder = new ShopOrder();
     shopOrder.setOrderShop(mShopInfo);
+    shopOrder.setServer(BaseApplication.userManager.getCurrentUser());
     shopOrder.setOrderName(order_name);
     shopOrder.setOrderDescription(order_description);
-    shopOrder.setOrderPrice(Float.parseFloat(order_price));
+    shopOrder.setOrderPrice(Double.parseDouble(order_price));
     shopOrder.setStartTime(start_time);
     shopOrder.setEndTime(end_time);
     shopOrder.setOrderTime(order_unit);
