@@ -66,6 +66,7 @@ public class OrderFragment extends Fragment implements OnItemClickListener {
       public void onSuccess(List<PayOrder> object) {
         // TODO Auto-generated method stub
         AppLog.d(TAG, "查询成功：记录条数：" + object.size());
+        orderListInfo.clear();
         for (PayOrder orderInfo : object) {
           orderListInfo.add(orderInfo);
         }

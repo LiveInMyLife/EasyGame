@@ -73,12 +73,16 @@ public class ShopSuggestionListAdapter extends BaseAdapter {
       holder = (ViewHolder) convertView.getTag();
     }
     if (suggestion != null) {
-      holder.userName.setText(Tools.checkString(suggestion.getUserName()));
+      if (suggestion.getUserName() == null) {
+        holder.userName.setText("匿名");
+      } else {
+        holder.userName.setText(Tools.checkString(suggestion.getUserName()));
+      }
       holder.suggestionContent.setText(Tools.checkString(suggestion
           .getSuggestionContent()));
       holder.suggestionTime
           .setText(Tools.checkString(suggestion.getCreatedAt()));
-      holder.suggestionScore.setText(suggestion.getSuggestionScore());
+      holder.suggestionScore.setText(suggestion.getSuggestionScore() + "");
 
     }
     return convertView;

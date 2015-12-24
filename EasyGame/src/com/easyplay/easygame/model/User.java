@@ -41,6 +41,8 @@ public class User extends BmobChatUser {
 
   private Integer hight;
 
+  private String nickName;
+
   public Integer getHight() {
     return hight;
   }
@@ -79,6 +81,14 @@ public class User extends BmobChatUser {
 
   public void setSortLetters(String sortLetters) {
     this.sortLetters = sortLetters;
+  }
+
+  public String getNickName() {
+    return nickName;
+  }
+
+  public void setNickName(String nickName) {
+    this.nickName = nickName;
   }
 
 }

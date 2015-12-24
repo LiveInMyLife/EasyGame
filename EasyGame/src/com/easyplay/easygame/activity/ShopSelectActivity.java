@@ -15,24 +15,25 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
-import com.easyplay.easygame.adapter.GameListAdapter;
+import com.easyplay.easygame.adapter.ShopListAdapter;
 import com.easyplay.easygame.model.GameInfo;
+import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.tools.AppLog;
 
-public class GameSelectActivity extends BaseActivity implements
+public class ShopSelectActivity extends BaseActivity implements
     OnClickListener, OnItemClickListener {
   private static final String TAG = "GameSelectActivity";
 
-  private GameListAdapter gameListAdapter;
-  private ListView gameList;
-  private List<GameInfo> gameListInfo;
-  private GameInfo gameSelected;
-  private String fromWhere;
+  private ShopListAdapter shopListAdapter;
+  private ListView shopList;
+  private List<ShopInfo> shopListInfo;
+  private ShopInfo shopSelected;
+  private GameInfo gameInfo;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_game_select);
+    setContentView(R.layout.activity_shop_select);
     initActionBar(this.getResources().getString(R.string.game_select));
     bindViews();
     setListener();
@@ -43,7 +44,7 @@ public class GameSelectActivity extends BaseActivity implements
   @SuppressLint("InflateParams")
   protected void bindViews() {
     // TODO Auto-generated method stub
-    gameList = (ListView) this.findViewById(R.id.game_select_list);
+    shopList = (ListView) this.findViewById(R.id.shop_select_list);
   }
 
   @Override
@@ -54,26 +55,26 @@ public class GameSelectActivity extends BaseActivity implements
   @Override
   protected void init() {
     // TODO Auto-generated method stub
-    fromWhere = this.getIntent().getStringExtra("from_where");
-    gameListInfo = new ArrayList<GameInfo>();
-    gameListAdapter = new GameListAdapter(this, gameListInfo);
-    gameList.setAdapter(gameListAdapter);
-    queryGameList();
-    gameList.setOnItemClickListener(this);
+    gameInfo = (GameInfo) this.getIntent().getSerializableExtra("game_info");
+    shopListInfo = new ArrayList<ShopInfo>();
+    shopListAdapter = new ShopListAdapter(this, shopListInfo);
+    shopList.setAdapter(shopListAdapter);
+    queryShopInfo();
+    shopList.setOnItemClickListener(this);
   }
 
-  public void queryGameList() {
-    BmobQuery<GameInfo> query = new BmobQuery<GameInfo>();
-    GameInfo test = new GameInfo();
-    query.findObjects(this, new FindListener<GameInfo>() {
+  public void queryShopInfo() {
+    BmobQuery<ShopInfo> query = new BmobQuery<ShopInfo>();
+    query.addWhereEqualTo("shopGame", gameInfo.getGameName());
+    query.findObjects(ShopSelectActivity.this, new FindListener<ShopInfo>() {
       @Override
-      public void onSuccess(List<GameInfo> object) {
+      public void onSuccess(List<ShopInfo> object) {
         // TODO Auto-generated method stub
         AppLog.d(TAG, "查询成功：记录条数：" + object.size());
-        for (GameInfo gameInfo : object) {
-          gameListInfo.add(gameInfo);
+        for (ShopInfo shopInfo : object) {
+          shopListInfo.add(shopInfo);
         }
-        gameListAdapter.notifyDataSetChanged();
+        shopListAdapter.notifyDataSetChanged();
       }
 
       @Override
@@ -99,24 +100,15 @@ public class GameSelectActivity extends BaseActivity implements
   public void onItemClick(AdapterView<?> parent, View view, int position,
       long id) {
     // TODO Auto-generated method stub
-    gameSelected = gameListInfo.get(position);
-    AppLog.d(TAG, "selectgame:" + gameSelected.getGameName());
-    if (fromWhere == null) {
-      Intent intent = new Intent();
-      Bundle bundle = new Bundle();
-      bundle.putSerializable("game_info", gameSelected);
-      intent.putExtras(bundle);
-      GameSelectActivity.this.setResult(RESULT_OK, intent);
-      GameSelectActivity.this.finish();
-    } else if (fromWhere.equals("SparringFragment")) {
-      Intent intent = new Intent(GameSelectActivity.this,
-          ShopSelectActivity.class);
+    if (position <= shopListInfo.size()) {
+      ShopInfo shop = shopListInfo.get(position);
+      Intent intent = new Intent(ShopSelectActivity.this,
+          ShopDetailActivity.class);
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       Bundle bundle = new Bundle();
-      bundle.putSerializable("game_info", gameSelected);
+      bundle.putSerializable("shop_info", shop);
       intent.putExtras(bundle);
-      GameSelectActivity.this.startActivity(intent);
-      GameSelectActivity.this.finish();
+      ShopSelectActivity.this.startActivity(intent);
     }
   }
 }

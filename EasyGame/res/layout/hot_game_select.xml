@@ -6,6 +6,7 @@
     android:background="@color/color_std_white"
     android:orientation="vertical" >
     <RelativeLayout 
+        android:id="@+id/select_game"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:paddingLeft="@dimen/custom_margin_tiny"

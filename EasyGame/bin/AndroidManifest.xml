@@ -76,6 +76,16 @@
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.easyplay.easygame.activity.SuggestionActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.easyplay.easygame.activity.ShopSelectActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/app_name" >
+        </activity>
         
         <!--支付SDK声明的Activity-->
         <activity

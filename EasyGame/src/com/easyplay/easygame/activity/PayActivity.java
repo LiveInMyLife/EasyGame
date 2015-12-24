@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -18,6 +21,8 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.bmob.v3.AsyncCustomEndpoints;
+import cn.bmob.v3.listener.CloudCodeListener;
 import cn.bmob.v3.listener.SaveListener;
 
 import com.bmob.pay.tool.BmobPay;
@@ -29,6 +34,7 @@ import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.model.PayOrder;
 import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.tools.AppContent;
+import com.easyplay.easygame.tools.AppLog;
 
 public class PayActivity extends BaseActivity implements
     OnCheckedChangeListener {
@@ -73,7 +79,8 @@ public class PayActivity extends BaseActivity implements
       @Override
       public void unknow() {
         tv.append(name + "'s pay status is unknow\n\n");
-        orderPayedConfirm(payOrderID);
+        // orderPayedConfirm(payOrderID);
+        // addPayOrder(AppContent.ORDER_STATE_ORDERED);
         // hideDialog();
       }
 
@@ -83,7 +90,8 @@ public class PayActivity extends BaseActivity implements
         // Toast.makeText(PayActivity.this, "支付成功!", Toast.LENGTH_SHORT).show();
         showSuccessToast("支付成功!");
         tv.append(name + "'s pay status is success\n\n");
-        orderPayedConfirm(payOrderID);
+        // orderPayedConfirm(payOrderID);
+        addPayOrder(AppContent.ORDER_STATE_ORDERED);
       }
 
       // 无论成功与否,返回订单号
@@ -103,7 +111,7 @@ public class PayActivity extends BaseActivity implements
         tv.append(name + "'s pay status is fail, error code is " + code
             + " ,reason is " + reason + "\n\n");
         // hideDialog();
-        addPayOrder(AppContent.ORDER_STATE_UNPAYED);
+        // addPayOrder(AppContent.ORDER_STATE_UNPAYED);
       }
     });
   }
@@ -122,7 +130,8 @@ public class PayActivity extends BaseActivity implements
         tv.append(name + "'s pay status is unknow\n\n");
         // query(getOrder());
         // hideDialog();
-        orderPayedConfirm(payOrderID);
+        // orderPayedConfirm(payOrderID);
+        // addPayOrder(AppContent.ORDER_STATE_ORDERED);
       }
 
       // 支付成功,如果金额较大请手动查询确认
@@ -131,7 +140,8 @@ public class PayActivity extends BaseActivity implements
         // Toast.makeText(PayActivity.this, "支付成功!", Toast.LENGTH_SHORT).show();
         showSuccessToast("支付成功!");
         tv.append(name + "'s pay status is success\n\n");
-        orderPayedConfirm(payOrderID);
+        // orderPayedConfirm(payOrderID);
+        addPayOrder(AppContent.ORDER_STATE_ORDERED);
       }
 
       // 无论成功与否,返回订单号
@@ -175,7 +185,7 @@ public class PayActivity extends BaseActivity implements
         }
         tv.append(name + "'s pay status is fail, error code is " + code
             + " ,reason is " + reason + "\n\n");
-        addPayOrder(AppContent.ORDER_STATE_UNPAYED);
+        // addPayOrder(AppContent.ORDER_STATE_UNPAYED);
       }
     });
   }
@@ -203,44 +213,6 @@ public class PayActivity extends BaseActivity implements
         tv.append("query order fail, error code is " + code + " ,reason is "
             + reason + "\n\n");
         hideDialog();
-      }
-    });
-  }
-
-  // 确保已经支付成功
-  private void orderPayedConfirm(final String orderId) {
-    if (payOrderID == null) {
-      return;
-    }
-    // showDialog("正在查询订单");
-    // final String orderId = getOrder();
-
-    bmobPay.query(orderId, new OrderQueryListener() {
-
-      @Override
-      public void succeed(String status) {
-        // Toast.makeText(PayActivity.this, "查询成功!该订单状态为 : " + status,
-        // Toast.LENGTH_SHORT).show();
-
-        tv.append("pay status of" + orderId + " is " + status + "\n\n");
-        // hideDialog();
-        if (status.equalsIgnoreCase(AppContent.PAY_SUCCESS)) {
-          showSuccessToast("支付成功！");
-          addPayOrder(AppContent.ORDER_STATE_ORDERED);
-        } else {
-          showErrorToast("支付失败,请再次确认");
-          addPayOrder(AppContent.ORDER_STATE_UNPAYED);
-        }
-      }
-
-      @Override
-      public void fail(int code, String reason) {
-        // Toast.makeText(PayActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-        showErrorToast("查询失败,请检查网络连接后再确认");
-        tv.append("query order fail, error code is " + code + " ,reason is "
-            + reason + "\n\n");
-        // hideDialog();
-        addPayOrder(AppContent.ORDER_STATE_UNPAYED);
       }
     });
   }
@@ -374,7 +346,8 @@ public class PayActivity extends BaseActivity implements
         if (!checkOrder()) {
           return;
         }
-        addPayOrder(AppContent.ORDER_STATE_ORDERED);
+        // addPayOrder(AppContent.ORDER_STATE_ORDERED);
+        updateUserCash();
         // 当选择的是支付宝支付时
         // if (type.getCheckedRadioButtonId() == R.id.pay_alipay) {
         // payByAli();
@@ -418,8 +391,9 @@ public class PayActivity extends BaseActivity implements
       @Override
       public void onSuccess() {
         // TODO Auto-generated method stub
-        hideDialog();
+
         showSuccessToast("^_^订单提交成功");
+        updateUserCash();
         // Intent intent = new Intent(PayActivity.this, MyShopActivity.class);
         // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // Bundle bundle = new Bundle();
@@ -436,6 +410,75 @@ public class PayActivity extends BaseActivity implements
         showErrorToast("提交订单失败," + msg);
       }
     });
+  }
+
+  // 确保已经支付成功
+  // private void orderPayedConfirm(final String orderId) {
+
+  // bmobPay.query(orderId, new OrderQueryListener() {
+  //
+  // @Override
+  // public void succeed(String status) {
+  //
+  // tv.append("pay status of" + orderId + " is " + status + "\n\n");
+  // if (status.equalsIgnoreCase(AppContent.PAY_SUCCESS)) {
+  // showSuccessToast("支付成功！");
+  // addPayOrder(AppContent.ORDER_STATE_ORDERED);
+  // } else {
+  // showErrorToast("支付失败,请再次确认");
+  // addPayOrder(AppContent.ORDER_STATE_UNPAYED);
+  // }
+  // }
+  //
+  // @Override
+  // public void fail(int code, String reason) {
+  // showErrorToast("查询失败,请检查网络连接后再确认");
+  // tv.append("query order fail, error code is " + code + " ,reason is "
+  // + reason + "\n\n");
+  // addPayOrder(AppContent.ORDER_STATE_UNPAYED);
+  // }
+  // });
+  // }
+
+  // 添加订单后更新用户余额
+  private void updateUserCash() {
+    // if (payOrderID == null) {
+    // return;
+    // }
+    // 添加订单
+    String cloudCodeName = "add_order";
+    JSONObject params = new JSONObject();
+    // name是上传到云端的参数名称，值是bmob，云端代码可以通过调用request.body.name获取这个值
+    try {
+      params.put("userId", "135247");
+      params.put("orderId", "078b8e43231caf898ef7a5a5c1b23c92");
+      params.put("orderFee", "0.02");
+    } catch (JSONException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    // 创建云端代码对象
+    AsyncCustomEndpoints cloudCode = new AsyncCustomEndpoints();
+    // 异步调用云端代码
+    cloudCode.callEndpoint(PayActivity.this, cloudCodeName, params,
+        new CloudCodeListener() {
+
+          // 请求成功时调用，返回result对象，结果可能是success也可能是失败
+          @Override
+          public void onSuccess(Object result) {
+            hideDialog();
+            AppLog.i("updateUserCash", "result = " + result.toString());
+          }
+
+          // 请求失败，网络问题或后台问题
+          @Override
+          public void onFailure(int arg0, String err) {
+            // TODO Auto-generated method stub
+            hideDialog();
+            AppLog.i("updateUserCash", "请求失败，请检查网络或联系客服");
+          }
+
+        });
   }
 
   private boolean checkOrder() {

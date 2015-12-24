@@ -87,6 +87,8 @@ public class SuggestionActivity extends BaseActivity implements OnClickListener 
       suggestion.setAuther(BaseApplication.userManager.getCurrentUser());
       suggestion.setSuggestionContent(suggestion_content);
       suggestion.setSuggestionScore(score);
+      AppLog.d(TAG, "userName:"
+          + BaseApplication.userManager.getCurrentUser().getNick());
       suggestion.setUserName(BaseApplication.userManager.getCurrentUser()
           .getNick());
       suggestion.setTagShop(tagShop);

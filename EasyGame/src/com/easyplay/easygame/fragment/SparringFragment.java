@@ -9,15 +9,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.activity.GameSelectActivity;
 import com.easyplay.easygame.activity.ShopDetailActivity;
 import com.easyplay.easygame.adapter.ShopListAdapter;
 import com.easyplay.easygame.model.ShopInfo;
@@ -39,6 +42,7 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
   private LinearLayout sparring_header;
   private final List<ShopInfo> shopListInfo = new ArrayList<ShopInfo>();
   private ShopListAdapter shopAdapter;
+  private RelativeLayout gameSelect;
 
   private SlideShowView slideShowView;
 
@@ -66,9 +70,23 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
     slideShowView = (SlideShowView) sparring_header
         .findViewById(R.id.slideshowView);
     shopListView.addHeaderView(sparring_header);
+    gameSelect = (RelativeLayout) shopListView.findViewById(R.id.select_game);
   }
 
   public void bindListener() {
+    gameSelect.setOnClickListener(new OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        Intent intent = new Intent(mContext, GameSelectActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle bundle = new Bundle();
+        bundle.putString("from_where", "SparringFragment");
+        intent.putExtras(bundle);
+        mContext.startActivity(intent);
+      }
+    });
   }
 
   public void init() {

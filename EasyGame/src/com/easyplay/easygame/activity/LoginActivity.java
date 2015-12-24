@@ -124,6 +124,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     User user = new User();
     user.setUsername(name);
     user.setPassword(password);
+    user.setNick(name);
     BaseApplication.userManager.login(user, new SaveListener() {
 
       @Override

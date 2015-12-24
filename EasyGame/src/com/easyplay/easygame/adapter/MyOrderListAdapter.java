@@ -138,6 +138,21 @@ public class MyOrderListAdapter extends BaseAdapter {
         holder.suggest.setVisibility(View.GONE);
         holder.contact.setVisibility(View.VISIBLE);
         holder.completetConfirm.setVisibility(View.VISIBLE);
+        holder.completetConfirm.setOnClickListener(new OnClickListener() {
+
+          @Override
+          public void onClick(View v) {
+            // TODO Auto-generated method stub
+            ShopInfo shop = order.getServerShop();
+            Intent intent = new Intent(mContext, SuggestionActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("tag_shop", shop);
+            intent.putExtras(bundle);
+            mContext.startActivity(intent);
+          }
+
+        });
       }
       if (order.getTotal() >= 0) {
         holder.orderTotal.setText(order.getTotal() + "");
