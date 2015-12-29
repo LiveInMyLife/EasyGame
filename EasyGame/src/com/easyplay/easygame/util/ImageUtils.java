@@ -1,4 +1,4 @@
-package com.easyplay.easygame.tools;
+package com.easyplay.easygame.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;

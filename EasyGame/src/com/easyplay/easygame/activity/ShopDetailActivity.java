@@ -35,10 +35,10 @@ import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.model.ShopOrder;
 import com.easyplay.easygame.model.ShopSuggestion;
-import com.easyplay.easygame.tools.ActivityUtils;
 import com.easyplay.easygame.tools.AppLog;
-import com.easyplay.easygame.tools.ImageUtils;
 import com.easyplay.easygame.tools.Tools;
+import com.easyplay.easygame.util.ActivityUtils;
+import com.easyplay.easygame.util.ImageUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ShopDetailActivity extends BaseActivity implements OnClickListener {

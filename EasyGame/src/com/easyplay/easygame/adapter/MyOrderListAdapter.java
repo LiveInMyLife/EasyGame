@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.activity.ChatActivity;
 import com.easyplay.easygame.activity.SuggestionActivity;
 import com.easyplay.easygame.model.PayOrder;
 import com.easyplay.easygame.model.ShopInfo;
@@ -152,6 +153,17 @@ public class MyOrderListAdapter extends BaseAdapter {
             mContext.startActivity(intent);
           }
 
+        });
+        holder.contact.setOnClickListener(new OnClickListener() {
+
+          @Override
+          public void onClick(View v) {
+            // TODO Auto-generated method stub
+            Intent intent = new Intent(mContext, ChatActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("userId", order.getServer().getObjectId());
+            mContext.startActivity(intent);
+          }
         });
       }
       if (order.getTotal() >= 0) {

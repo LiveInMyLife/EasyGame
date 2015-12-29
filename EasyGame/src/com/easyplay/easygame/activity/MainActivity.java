@@ -19,7 +19,7 @@ import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.fragment.MineFragment;
 import com.easyplay.easygame.fragment.OrderFragment;
 import com.easyplay.easygame.fragment.SparringFragment;
-import com.easyplay.easygame.tools.ActivityUtils;
+import com.easyplay.easygame.util.ActivityUtils;
 
 public class MainActivity extends FragmentActivity {
 

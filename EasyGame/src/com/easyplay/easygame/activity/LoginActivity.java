@@ -20,7 +20,7 @@ import com.easyplay.easygame.R;
 import com.easyplay.easygame.config.AppConstants;
 import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.model.User;
-import com.easyplay.easygame.tools.CommonUtils;
+import com.easyplay.easygame.util.CommonUtils;
 import com.easyplay.easygame.view.DialogTips;
 
 /**
