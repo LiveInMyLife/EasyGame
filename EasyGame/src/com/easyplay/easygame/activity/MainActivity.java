@@ -3,7 +3,13 @@ package com.easyplay.easygame.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -11,7 +17,14 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import cn.bmob.im.BmobChatManager;
+import cn.bmob.im.bean.BmobInvitation;
+import cn.bmob.im.bean.BmobMsg;
+import cn.bmob.im.config.BmobConfig;
+import cn.bmob.im.inteface.EventListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyFragmentPagerAdapter;
@@ -19,16 +32,26 @@ import com.easyplay.easygame.context.BaseApplication;
 import com.easyplay.easygame.fragment.MineFragment;
 import com.easyplay.easygame.fragment.OrderFragment;
 import com.easyplay.easygame.fragment.SparringFragment;
+import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.util.ActivityUtils;
+import com.easyplay.easygame.view.DialogTips;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements EventListener,
+    OnClickListener {
+  private static final String TAG = "MainActivity";
 
   private ViewPager viewPager;
   private MyFragmentPagerAdapter adapter;
   private List<Class<?>> mList;
   // 底部三个按钮
   private Button btn_home, btn_teamwork, btn_more;
-  private ImageView myShop;
+  private TextView myShop;
+  private TextView tv_sparing, tv_leveling;
+  private LinearLayout orderTypeLayout;
+
+  private TextView fragmentTitle;
+
+  private int orderType = 0;// 用来标记用户选择的订单类型 0陪练，1代练
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +65,28 @@ public class MainActivity extends FragmentActivity {
     btn_more = (Button) findViewById(R.id.btn_more);
 
     viewPager.setOnPageChangeListener(pageChangeListener);
-    btn_home.setOnClickListener(clickListener);
-    btn_teamwork.setOnClickListener(clickListener);
-    btn_more.setOnClickListener(clickListener);
+    btn_home.setOnClickListener(this);
+    btn_teamwork.setOnClickListener(this);
+    btn_more.setOnClickListener(this);
 
-    myShop = (ImageView) findViewById(R.id.img_my_shop);
-    myShop.setOnClickListener(clickListener);
+    myShop = (TextView) findViewById(R.id.tv_my_shop);
+    tv_sparing = (TextView) findViewById(R.id.tv_order_type_sparing);
+    tv_leveling = (TextView) findViewById(R.id.tv_order_type_leveling);
+    orderTypeLayout = (LinearLayout) findViewById(R.id.ll_order_type_switch);
+    orderTypeLayout.setOnClickListener(this);
+
+    fragmentTitle = (TextView) findViewById(R.id.tv_fragment_title);
+
+    myShop.setOnClickListener(this);
 
     initData();
     adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), this,
         mList);
     viewPager.setAdapter(adapter);
     btn_home.setSelected(true);
+
+    initNewMessageBroadCast();
+    initTagMessageBroadCast();
   }
 
   private void initData() {
@@ -63,26 +96,6 @@ public class MainActivity extends FragmentActivity {
     mList.add(OrderFragment.class);
     mList.add(MineFragment.class);
   }
-
-  private final OnClickListener clickListener = new OnClickListener() {
-
-    @Override
-    public void onClick(View v) {
-      switch (v.getId()) {
-      case R.id.btn_home:
-        viewPager.setCurrentItem(0);
-        break;
-      case R.id.btn_teamwork:
-        viewPager.setCurrentItem(1);
-        break;
-      case R.id.btn_more:
-        viewPager.setCurrentItem(2);
-        break;
-      case R.id.img_my_shop:
-        toMyShop();
-      }
-    }
-  };
 
   private final OnPageChangeListener pageChangeListener = new OnPageChangeListener() {
 
@@ -151,4 +164,255 @@ public class MainActivity extends FragmentActivity {
       ActivityUtils.toLoginActivity(this);
     }
   }
+
+  /**
+   * 刷新界面
+   * 
+   * @Title: refreshNewMsg
+   * @Description: TODO
+   * @param @param message
+   * @return void
+   * @throws
+   */
+  private void refreshNewMsg(BmobMsg message) {
+    // 声音提示
+    boolean isAllow = BaseApplication.getInstance().getSpUtil().isAllowVoice();
+    if (isAllow) {
+      BaseApplication.getInstance().getMediaPlayer().start();
+    }
+    // iv_recent_tips.setVisibility(View.VISIBLE);
+    // 也要存储起来
+    if (message != null) {
+      BmobChatManager.getInstance(MainActivity.this).saveReceiveMessage(true,
+          message);
+    }
+    // if (currentTabIndex == 0) {
+    // // 当前页面如果为会话页面，刷新此页面
+    // if (recentFragment != null) {
+    // recentFragment.refresh();
+    // }
+    // }
+  }
+
+  NewBroadcastReceiver newReceiver;
+
+  private void initNewMessageBroadCast() {
+    // 注册接收消息广播
+    newReceiver = new NewBroadcastReceiver();
+    IntentFilter intentFilter = new IntentFilter(
+        BmobConfig.BROADCAST_NEW_MESSAGE);
+    // 优先级要低于ChatActivity
+    intentFilter.setPriority(3);
+    registerReceiver(newReceiver, intentFilter);
+  }
+
+  /**
+   * 新消息广播接收者
+   * 
+   */
+  private class NewBroadcastReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      // 刷新界面
+      refreshNewMsg(null);
+      // 记得把广播给终结掉
+      abortBroadcast();
+    }
+  }
+
+  TagBroadcastReceiver userReceiver;
+
+  private void initTagMessageBroadCast() {
+    // 注册接收消息广播
+    userReceiver = new TagBroadcastReceiver();
+    IntentFilter intentFilter = new IntentFilter(
+        BmobConfig.BROADCAST_ADD_USER_MESSAGE);
+    // 优先级要低于ChatActivity
+    intentFilter.setPriority(3);
+    registerReceiver(userReceiver, intentFilter);
+  }
+
+  /**
+   * 标签消息广播接收者
+   */
+  private class TagBroadcastReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      BmobInvitation message = (BmobInvitation) intent
+          .getSerializableExtra("invite");
+      // refreshInvite(message);
+      // 记得把广播给终结掉
+      AppLog.d(TAG, "接收到消息：" + message.toString());
+      abortBroadcast();
+    }
+  }
+
+  @Override
+  public void onNetChange(boolean isNetConnected) {
+    // TODO Auto-generated method stub
+    if (isNetConnected) {
+      ShowToast(R.string.network_tips);
+    }
+  }
+
+  @Override
+  public void onAddUser(BmobInvitation message) {
+    // TODO Auto-generated method stub
+    // refreshInvite(message);
+  }
+
+  /**
+   * 刷新好友请求
+   * 
+   * @Title: notifyAddUser
+   * @Description: TODO
+   * @param @param message
+   * @return void
+   * @throws
+   */
+  // private void refreshInvite(BmobInvitation message) {
+  // boolean isAllow = BaseApplication.getInstance().getSpUtil().isAllowVoice();
+  // if (isAllow) {
+  // BaseApplication.getInstance().getMediaPlayer().start();
+  // }
+  // iv_contact_tips.setVisibility(View.VISIBLE);
+  // if (currentTabIndex == 1) {
+  // if (contactFragment != null) {
+  // contactFragment.refresh();
+  // }
+  // } else {
+  // // 同时提醒通知
+  // String tickerText = message.getFromname() + "请求添加好友";
+  // boolean isAllowVibrate = BaseApplication.getInstance().getSpUtil()
+  // .isAllowVibrate();
+  // BmobNotifyManager.getInstance(this).showNotify(isAllow, isAllowVibrate,
+  // R.drawable.ic_launcher, tickerText, message.getFromname(),
+  // tickerText.toString(), NewFriendActivity.class);
+  // }
+  // }
+
+  @Override
+  public void onOffline() {
+    // TODO Auto-generated method stub
+    showOfflineDialog(this);
+  }
+
+  @Override
+  public void onMessage(BmobMsg message) {
+    // TODO Auto-generated method stub
+    refreshNewMsg(message);
+  }
+
+  @Override
+  public void onReaded(String conversionId, String msgTime) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  protected void onDestroy() {
+    // TODO Auto-generated method stub
+    super.onDestroy();
+    try {
+      unregisterReceiver(newReceiver);
+    } catch (Exception e) {
+    }
+    try {
+      unregisterReceiver(userReceiver);
+    } catch (Exception e) {
+    }
+    // 取消定时检测服务
+    // BmobChat.getInstance(this).stopPollService();
+  }
+
+  protected void ShowToast(int tipResId) {
+    Toast.makeText(this, getString(tipResId), Toast.LENGTH_SHORT).show();
+  }
+
+  /**
+   * 显示下线的对话框 showOfflineDialog
+   * 
+   * @return void
+   * @throws
+   */
+  public void showOfflineDialog(final Context context) {
+    DialogTips dialog = new DialogTips(this, "您的账号已在其他设备上登录!", "重新登录");
+    // 设置成功事件
+    dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
+      @Override
+      public void onClick(DialogInterface dialogInterface, int userId) {
+        BaseApplication.getInstance().logout();
+        startActivity(new Intent(context, LoginActivity.class));
+        finish();
+        dialogInterface.dismiss();
+      }
+    });
+    // 显示确认对话框
+    dialog.show();
+    dialog = null;
+  }
+
+  @SuppressLint("NewApi")
+  private void switchOrderType() {
+    if (orderType == 0) {
+      orderType = 1;
+      tv_sparing.setBackgroundColor(Color.TRANSPARENT);
+      tv_sparing.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
+      tv_leveling.setBackground(this.getResources().getDrawable(
+          R.drawable.bg_sky_blue_button));
+      tv_leveling.setTextColor(this.getResources().getColor(
+          R.color.text_color_white));
+    } else {
+      orderType = 0;
+      tv_sparing.setBackground(this.getResources().getDrawable(
+          R.drawable.bg_sky_blue_button));
+      tv_sparing.setTextColor(this.getResources().getColor(
+          R.color.text_color_white));
+      tv_leveling.setBackgroundColor(Color.TRANSPARENT);
+      tv_leveling.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
+
+    }
+  }
+
+  private void setSwitchVisible(boolean visible) {
+    if (visible) {
+      orderTypeLayout.setVisibility(View.VISIBLE);
+      myShop.setVisibility(View.VISIBLE);
+    } else {
+      orderTypeLayout.setVisibility(View.GONE);
+      myShop.setVisibility(View.GONE);
+    }
+  }
+
+  @Override
+  public void onClick(View v) {
+    // TODO Auto-generated method stub
+    switch (v.getId()) {
+    case R.id.btn_home:
+      viewPager.setCurrentItem(0);
+      fragmentTitle.setVisibility(View.GONE);
+      setSwitchVisible(true);
+      break;
+    case R.id.btn_teamwork:
+      viewPager.setCurrentItem(1);
+      fragmentTitle.setVisibility(View.VISIBLE);
+      fragmentTitle.setText("订单");
+      setSwitchVisible(false);
+      break;
+    case R.id.btn_more:
+      viewPager.setCurrentItem(2);
+      fragmentTitle.setVisibility(View.VISIBLE);
+      fragmentTitle.setText("我");
+      setSwitchVisible(false);
+      break;
+    case R.id.tv_my_shop:
+      toMyShop();
+      break;
+    case R.id.ll_order_type_switch:
+      switchOrderType();
+    }
+  }
+
 }

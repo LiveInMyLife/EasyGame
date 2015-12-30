@@ -9,6 +9,7 @@ import android.os.Message;
 import cn.bmob.im.BmobChat;
 
 import com.easyplay.easygame.R;
+import com.easyplay.easygame.config.Config;
 import com.easyplay.easygame.context.BaseApplication;
 
 /**
@@ -36,9 +37,8 @@ public class SplashActivity extends Activity {
     setContentView(R.layout.activity_splash);
     // 可设置调试模式，当为true的时候，会在logcat的BmobChat下输出一些日志，包括推送服务是否正常运行，如果服务端返回错误，也会一并打印出来。方便开发者调试
     BmobChat.DEBUG_MODE = true;
-    // BmobIM SDK初始化--只需要这一段代码即可完成初始化
-    // 请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
-    // BmobChat.getInstance(this).init(Config.applicationId);
+    BmobChat.getInstance(this).init(Config.applicationId);
+    BmobChat.getInstance(this).startPollService(30);
     // 开启定位
     // initLocClient();
     // 注册地图 SDK 广播监听者

@@ -14,7 +14,6 @@ import cn.bmob.im.BmobChatManager;
 import cn.bmob.im.BmobUserManager;
 import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.im.db.BmobDB;
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 
 import com.baidu.location.BDLocation;
@@ -22,7 +21,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.SDKInitializer;
 import com.easyplay.easygame.R;
-import com.easyplay.easygame.config.Config;
 import com.easyplay.easygame.util.CollectionUtils;
 import com.easyplay.easygame.util.SharePreferenceUtil;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -46,7 +44,7 @@ public class BaseApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
-    Bmob.initialize(this, Config.applicationId);
+    // Bmob.initialize(this, Config.applicationId);
     userManager = BmobUserManager.getInstance(this);
     manager = BmobChatManager.getInstance(this);
     instance = this;

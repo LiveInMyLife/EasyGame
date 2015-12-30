@@ -12,34 +12,83 @@
                 android:layout_height="40dp">
 
             <TextView
-                    android:id="@+id/action_bar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/custom_margin_tiny"
-                    android:text="@string/app_name"
-                    android:textColor="@color/text_color_light_white"
-                    android:textSize="@dimen/custom_text_size_small"/>
-            <Button
+                android:id="@+id/action_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/custom_margin_tiny"
+                android:text="@string/app_name"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/custom_text_size_medium"/>
+            <!-- <Button
 			        android:id="@+id/sparring_or_leveling_button"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_centerInParent="true"
 			        android:layout_gravity = "center_vertical"
-			        android:text="陪练 |代练" />
+			        android:text="陪练 |代练" /> -->
+            <LinearLayout 
+                android:id="@+id/ll_order_type_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity = "center_vertical"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_blue_border_white_solid"
+                android:padding="1px"
+                >
+                <TextView 
+                    android:id="@+id/tv_order_type_sparing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_sky_blue_button"
+                    android:textSize="@dimen/custom_text_size_small"
+                    android:textColor="@color/text_color_white"
+                    android:text="陪练"/>
+                <View 
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="#ffffff"
+                    />
+                <TextView 
+                    android:id="@+id/tv_order_type_leveling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textSize="@dimen/custom_text_size_small"
+                    android:textColor="@color/text_color_light_grey2"
+                    android:text="代练"/>
+                
+            </LinearLayout>
+            
+            <TextView 
+                android:id="@+id/tv_fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:gravity="center"
+				android:layout_gravity="center"
+                android:textSize="@dimen/custom_text_size_small"
+                android:textColor="@color/text_color_black"
+                android:text="订单"
+                android:visibility="gone"/>
 
             <TextView
-                    android:id="@+id/text_home_city"
+                    android:id="@+id/tv_my_shop"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:layout_alignParentRight="true"
                     android:includeFontPadding="false"
                     android:paddingRight="@dimen/custom_margin_mini"
-                    android:textColor="@color/text_color_light_white"
-                    android:textSize="@dimen/custom_text_size_wee"/>
+                    android:textColor="@color/order_submit_success_btn_blue"
+                    android:textSize="@dimen/custom_text_size_small"
+                    android:text="接单中心"/>
 
-            <ImageView
+            <!-- <ImageView
                     android:id="@+id/img_my_shop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -48,15 +97,17 @@
                     android:paddingLeft="4dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:layout_toLeftOf="@id/text_home_city"
-                    android:src="@drawable/document_pay_finish"/>
+                    android:layout_toLeftOf="@id/tv_my_shop"
+                    android:src="@drawable/document_pay_finish"/> -->
+            
+            
             
         </RelativeLayout>
     
     <LinearLayout
         android:id="@+id/ll_bottom_btns"
         android:layout_width="match_parent"
-        android:layout_height="60dip"
+        android:layout_height="50dip"
         android:layout_alignParentBottom="true"
         android:baselineAligned="false"
         android:orientation="horizontal" >

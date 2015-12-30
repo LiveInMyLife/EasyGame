@@ -106,6 +106,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
   String targetId = "";
 
   BmobChatUser targetUser;
+  BmobChatManager manager;
 
   private static int MsgPagerNum;
 
@@ -129,7 +130,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
     // TODO Auto-generated method stub
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_chat);
-    BaseApplication.manager = BmobChatManager.getInstance(this);
+    manager = BmobChatManager.getInstance(this);
     MsgPagerNum = 0;
     // 组装聊天对象
     // targetUser = (BmobChatUser) getIntent().getSerializableExtra("user");
@@ -283,28 +284,27 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
    * @throws
    */
   private void sendVoiceMessage(String local, int length) {
-    BaseApplication.manager.sendVoiceMessage(targetUser, local, length,
-        new UploadListener() {
+    manager.sendVoiceMessage(targetUser, local, length, new UploadListener() {
 
-          @Override
-          public void onStart(BmobMsg msg) {
-            // TODO Auto-generated method stub
-            refreshMessage(msg);
-          }
+      @Override
+      public void onStart(BmobMsg msg) {
+        // TODO Auto-generated method stub
+        refreshMessage(msg);
+      }
 
-          @Override
-          public void onSuccess() {
-            // TODO Auto-generated method stub
-            mAdapter.notifyDataSetChanged();
-          }
+      @Override
+      public void onSuccess() {
+        // TODO Auto-generated method stub
+        mAdapter.notifyDataSetChanged();
+      }
 
-          @Override
-          public void onFailure(int error, String arg1) {
-            // TODO Auto-generated method stub
-            AppLog.d(TAG, "上传语音失败 -->arg1：" + arg1);
-            mAdapter.notifyDataSetChanged();
-          }
-        });
+      @Override
+      public void onFailure(int error, String arg1) {
+        // TODO Auto-generated method stub
+        AppLog.d(TAG, "上传语音失败 -->arg1：" + arg1);
+        mAdapter.notifyDataSetChanged();
+      }
+    });
   }
 
   Toast toast;
@@ -743,7 +743,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
       BmobMsg message = BmobMsg.createTextSendMsg(this, targetId, msg);
       message.setExtra("Bmob");
       // 默认发送完成，将数据保存到本地消息表和最近会话表中
-      BaseApplication.manager.sendTextMessage(targetUser, message);
+      manager.sendTextMessage(targetUser, message);
       // 刷新界面
       refreshMessage(message);
 
@@ -885,7 +885,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
     BmobMsg message = BmobMsg.createLocationSendMsg(this, targetId, address,
         latitude, longtitude);
     // 默认发送完成，将数据保存到本地消息表和最近会话表中
-    BaseApplication.manager.sendTextMessage(targetUser, message);
+    manager.sendTextMessage(targetUser, message);
     // 刷新界面
     refreshMessage(message);
   }
@@ -905,30 +905,28 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
       layout_add.setVisibility(View.GONE);
       layout_emo.setVisibility(View.GONE);
     }
-    BaseApplication.manager.sendImageMessage(targetUser, local,
-        new UploadListener() {
+    manager.sendImageMessage(targetUser, local, new UploadListener() {
 
-          @Override
-          public void onStart(BmobMsg msg) {
-            // TODO Auto-generated method stub
-            showToast("开始上传onStart：" + msg.getContent() + ",状态："
-                + msg.getStatus());
-            refreshMessage(msg);
-          }
+      @Override
+      public void onStart(BmobMsg msg) {
+        // TODO Auto-generated method stub
+        showToast("开始上传onStart：" + msg.getContent() + ",状态：" + msg.getStatus());
+        refreshMessage(msg);
+      }
 
-          @Override
-          public void onSuccess() {
-            // TODO Auto-generated method stub
-            mAdapter.notifyDataSetChanged();
-          }
+      @Override
+      public void onSuccess() {
+        // TODO Auto-generated method stub
+        mAdapter.notifyDataSetChanged();
+      }
 
-          @Override
-          public void onFailure(int error, String arg1) {
-            // TODO Auto-generated method stub
-            showToast("上传失败 -->arg1：" + arg1);
-            mAdapter.notifyDataSetChanged();
-          }
-        });
+      @Override
+      public void onFailure(int error, String arg1) {
+        // TODO Auto-generated method stub
+        showToast("上传失败 -->arg1：" + arg1);
+        mAdapter.notifyDataSetChanged();
+      }
+    });
   }
 
   /**

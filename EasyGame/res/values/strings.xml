@@ -11,6 +11,7 @@
     <string name="shop_setting">店铺设置</string>
     <string name="pay_success">支付成功</string>
     <string name="suggestion_edit">编辑评论</string>
+    <string name="message_acitvity">消息</string>
     
     <string name="login_username_hint">请输入用户名&#8230;</string>
     <string name="login_password_hint">请输入密码&#8230;</string>
@@ -55,4 +56,5 @@
     <string name="logout">退出登陆</string>
     <string name="pop_photo">拍照</string>
     <string name="pop_choose">从手机相册选中</string>
+    <string name="message_search_hint">搜索&#8230;</string>
 </resources>
