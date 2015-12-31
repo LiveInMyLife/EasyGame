@@ -70,8 +70,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 				android:gravity="center"
-				android:layout_gravity="center"
-                android:textSize="@dimen/custom_text_size_small"
+				android:layout_centerInParent="true"
+                android:textSize="@dimen/custom_text_size_medium"
                 android:textColor="@color/text_color_black"
                 android:text="订单"
                 android:visibility="gone"/>

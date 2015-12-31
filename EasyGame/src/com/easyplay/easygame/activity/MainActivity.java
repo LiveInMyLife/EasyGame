@@ -50,6 +50,7 @@ public class MainActivity extends FragmentActivity implements EventListener,
   private LinearLayout orderTypeLayout;
 
   private TextView fragmentTitle;
+  private TextView appTitle;
 
   private int orderType = 0;// 用来标记用户选择的订单类型 0陪练，1代练
 
@@ -76,6 +77,7 @@ public class MainActivity extends FragmentActivity implements EventListener,
     orderTypeLayout.setOnClickListener(this);
 
     fragmentTitle = (TextView) findViewById(R.id.tv_fragment_title);
+    appTitle = (TextView) findViewById(R.id.action_bar_title);
 
     myShop.setOnClickListener(this);
 
@@ -394,18 +396,21 @@ public class MainActivity extends FragmentActivity implements EventListener,
       viewPager.setCurrentItem(0);
       fragmentTitle.setVisibility(View.GONE);
       setSwitchVisible(true);
+      appTitle.setVisibility(View.VISIBLE);
       break;
     case R.id.btn_teamwork:
       viewPager.setCurrentItem(1);
       fragmentTitle.setVisibility(View.VISIBLE);
       fragmentTitle.setText("订单");
       setSwitchVisible(false);
+      appTitle.setVisibility(View.GONE);
       break;
     case R.id.btn_more:
       viewPager.setCurrentItem(2);
       fragmentTitle.setVisibility(View.VISIBLE);
       fragmentTitle.setText("我");
       setSwitchVisible(false);
+      appTitle.setVisibility(View.GONE);
       break;
     case R.id.tv_my_shop:
       toMyShop();
