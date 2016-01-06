@@ -109,12 +109,14 @@
 		            android:layout_marginTop="10dp"
 		            android:textColor="@color/color_call_black"
 		            android:textSize="14sp"/>
+		      
 		        <View
 			        android:layout_width="match_parent"
 			        android:layout_height="1px"
 			        android:layout_marginTop="5dp"
-			        android:layout_marginBottom="5dp"
-			        android:background="@color/div_line_color" />
+			        android:layout_marginLeft="@dimen/custom_margin_tiny"
+			        android:layout_marginRight="@dimen/custom_margin_tiny"
+			        android:background="@color/grey_line_bg" />
 		        <RelativeLayout 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
@@ -205,8 +207,9 @@
 			        android:layout_width="match_parent"
 			        android:layout_height="1px"
 			        android:layout_marginTop="5dp"
-			        android:layout_marginBottom="5dp"
-			        android:background="@color/div_line_color" />
+			        android:layout_marginLeft="@dimen/custom_margin_tiny"
+			        android:layout_marginRight="@dimen/custom_margin_tiny"
+			        android:background="@color/grey_line_bg" />
 		        <RelativeLayout 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"

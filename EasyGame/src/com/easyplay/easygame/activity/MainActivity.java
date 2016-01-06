@@ -16,7 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,13 +44,16 @@ public class MainActivity extends FragmentActivity implements EventListener,
   private MyFragmentPagerAdapter adapter;
   private List<Class<?>> mList;
   // 底部三个按钮
-  private Button btn_home, btn_teamwork, btn_more;
+  private LinearLayout btn_home, btn_order, btn_user;
   private TextView myShop;
   private TextView tv_sparing, tv_leveling;
   private LinearLayout orderTypeLayout;
 
   private TextView fragmentTitle;
   private TextView appTitle;
+
+  private ImageView iv_home, iv_order, iv_user;
+  private TextView tv_home, tv_order, tv_user;
 
   private int orderType = 0;// 用来标记用户选择的订单类型 0陪练，1代练
 
@@ -61,14 +64,22 @@ public class MainActivity extends FragmentActivity implements EventListener,
 
     viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-    btn_home = (Button) findViewById(R.id.btn_home);
-    btn_teamwork = (Button) findViewById(R.id.btn_teamwork);
-    btn_more = (Button) findViewById(R.id.btn_more);
+    btn_home = (LinearLayout) findViewById(R.id.btn_home);
+    btn_order = (LinearLayout) findViewById(R.id.btn_order);
+    btn_user = (LinearLayout) findViewById(R.id.btn_user);
+
+    iv_home = (ImageView) findViewById(R.id.iv_home);
+    iv_order = (ImageView) findViewById(R.id.iv_order);
+    iv_user = (ImageView) findViewById(R.id.iv_user);
+
+    tv_home = (TextView) findViewById(R.id.tv_home);
+    tv_order = (TextView) findViewById(R.id.tv_order);
+    tv_user = (TextView) findViewById(R.id.tv_user);
 
     viewPager.setOnPageChangeListener(pageChangeListener);
     btn_home.setOnClickListener(this);
-    btn_teamwork.setOnClickListener(this);
-    btn_more.setOnClickListener(this);
+    btn_order.setOnClickListener(this);
+    btn_user.setOnClickListener(this);
 
     myShop = (TextView) findViewById(R.id.tv_my_shop);
     tv_sparing = (TextView) findViewById(R.id.tv_order_type_sparing);
@@ -137,22 +148,62 @@ public class MainActivity extends FragmentActivity implements EventListener,
     }
   };
 
+  @SuppressLint("NewApi")
   private void setSelectedPosition(int position) {
     switch (position) {
     case 0:
       btn_home.setSelected(true);
-      btn_teamwork.setSelected(false);
-      btn_more.setSelected(false);
+      btn_order.setSelected(false);
+      btn_user.setSelected(false);
+
+      iv_home.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_home_pressed));
+      tv_home.setTextColor(this.getResources().getColor(
+          R.color.tab_text_pressed));
+      iv_order.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_order));
+      tv_order.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
+      iv_user.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_user));
+      tv_user.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
       break;
     case 1:
       btn_home.setSelected(false);
-      btn_teamwork.setSelected(true);
-      btn_more.setSelected(false);
+      btn_order.setSelected(true);
+      btn_user.setSelected(false);
+
+      iv_home.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_home));
+      tv_home.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
+      iv_order.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_order_pressed));
+      tv_order.setTextColor(this.getResources().getColor(
+          R.color.tab_text_pressed));
+      iv_user.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_user));
+      tv_user.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
       break;
     case 2:
       btn_home.setSelected(false);
-      btn_teamwork.setSelected(false);
-      btn_more.setSelected(true);
+      btn_order.setSelected(false);
+      btn_user.setPressed(true);
+
+      iv_home.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_home));
+      tv_home.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
+      iv_order.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_order));
+      tv_order.setTextColor(this.getResources().getColor(
+          R.color.text_color_light_grey2));
+      iv_user.setBackground(this.getResources().getDrawable(
+          R.drawable.icon_user_pressed));
+      tv_user.setTextColor(this.getResources().getColor(
+          R.color.tab_text_pressed));
       break;
     }
   }
@@ -398,14 +449,14 @@ public class MainActivity extends FragmentActivity implements EventListener,
       setSwitchVisible(true);
       appTitle.setVisibility(View.VISIBLE);
       break;
-    case R.id.btn_teamwork:
+    case R.id.btn_order:
       viewPager.setCurrentItem(1);
       fragmentTitle.setVisibility(View.VISIBLE);
       fragmentTitle.setText("订单");
       setSwitchVisible(false);
       appTitle.setVisibility(View.GONE);
       break;
-    case R.id.btn_more:
+    case R.id.btn_user:
       viewPager.setCurrentItem(2);
       fragmentTitle.setVisibility(View.VISIBLE);
       fragmentTitle.setText("我");

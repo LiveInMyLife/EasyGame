@@ -107,4 +107,7 @@
     
     <color name="msg_emote_divider">#ffa1a1a1</color>
     
+    <color name="tab_text_normal">#4b4c4e</color>
+    <color name="tab_text_pressed">#52a6e9</color>
+    
 </resources>

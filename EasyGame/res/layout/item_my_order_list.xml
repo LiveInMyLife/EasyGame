@@ -84,27 +84,31 @@
 
         
     </RelativeLayout>
-    <View
+    <!-- <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/div_line_color" />
+        android:background="@color/div_line_color" /> -->
     <TextView 
            android:id="@+id/item_myorder_description"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_marginLeft="@dimen/custom_margin_tiny"
+           android:layout_marginTop="5dp"
            android:textSize="@dimen/custom_text_size_mini"
            android:text="电信区均衡教派钻三，脾气好声音柔和，每晚8：00到23：00接单，欢迎体验"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_marginTop="5dp"
-        android:background="@color/div_line_color" />
+        android:layout_marginLeft="@dimen/custom_margin_tiny"
+        android:layout_marginRight="@dimen/custom_margin_tiny"
+        android:background="@color/grey_line_bg" />
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
        <TextView 
            android:id="@+id/item_myorder_total"
@@ -144,28 +148,29 @@
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:layout_marginLeft="@dimen/custom_margin_tiny"
-           android:paddingLeft="20dp"
-           android:paddingRight="20dp"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
            android:gravity="center"
            android:text="联系对方"
            android:textColor="@color/text_color_white"
-           android:background="@color/text_color_red"
+           android:background="@drawable/selector_bg_red_btn"
 		/>
        <TextView 
            android:id="@+id/item_myorder_complete_confirm"
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
-           android:paddingLeft="20dp"
-           android:paddingRight="20dp"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:layout_marginLeft="15dp"
            android:gravity="center"
            android:text="确认完成"
            android:textColor="@color/text_color_white"
-           android:background="@color/color_std_blue"
+           android:background="@drawable/selector_bg_blue_btn"
            />
     </LinearLayout>
-    <View
+    <!-- <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/div_line_color" />
+        android:background="@color/div_line_color" /> -->
 
 </LinearLayout>
