@@ -57,36 +57,36 @@
 		            android:max="100">
 		        </SeekBar>
 		        
-		        <View
+		        <!-- <View
 			        android:layout_width="match_parent"
 			        android:layout_height="1px"
 			        android:layout_marginTop="5dp"
 			        android:layout_marginBottom="5dp"
-			        android:background="@color/div_line_color" />
+			        android:background="@color/div_line_color" /> -->
 
-				    <EditText 
-				        android:id="@+id/suggestion_edit_et"
-				        android:layout_width="match_parent"
-				        android:layout_height="wrap_content"
-				        android:padding="5dp"
-				        android:layout_marginLeft="10dp"
-				        android:layout_marginRight="10dp"
-				        android:textSize="13sp"
-				        android:gravity="left|top"
-				        android:minLines="3"
-				        android:background="@color/commen_gray_bg"
-				        android:hint="请留下您宝贵的评价吧"
-				        />
-			 		<TextView 
-			 		    android:id="@+id/suggestion_edit_limit"
-			 		    android:layout_width="wrap_content"
-			 		    android:layout_height="wrap_content"
-			 		    android:padding="10dp"
-			 		    android:layout_gravity="right"
-			 		    android:text="0/200字"
-			 		    android:textSize="13sp"
-			 		    android:textColor="@color/text_color_light_dark"
-			 		    />
+			    <EditText 
+			        android:id="@+id/suggestion_edit_et"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:padding="5dp"
+			        android:layout_marginLeft="10dp"
+			        android:layout_marginRight="10dp"
+			        android:textSize="13sp"
+			        android:gravity="left|top"
+			        android:minLines="3"
+			        android:background="@color/commen_gray_bg"
+			        android:hint="请留下您宝贵的评价吧"
+			        />
+		 		<TextView 
+		 		    android:id="@+id/suggestion_edit_limit"
+		 		    android:layout_width="wrap_content"
+		 		    android:layout_height="wrap_content"
+		 		    android:padding="10dp"
+		 		    android:layout_gravity="right"
+		 		    android:text="0/140字"
+		 		    android:textSize="13sp"
+		 		    android:textColor="@color/text_color_light_dark"
+		 		    />
 			 </LinearLayout>
 			 
 		    <RelativeLayout 
