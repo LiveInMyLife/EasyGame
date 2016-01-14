@@ -104,6 +104,101 @@
 		        <TextView 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
+		            android:text="代练信息"
+		            android:layout_marginLeft="10dp"
+		            android:layout_marginTop="10dp"
+		            android:textColor="@color/color_call_black"
+		            android:textSize="14sp"/>
+		      
+		        <View
+			        android:layout_width="match_parent"
+			        android:layout_height="1px"
+			        android:layout_marginTop="5dp"
+			        android:layout_marginLeft="@dimen/custom_margin_tiny"
+			        android:layout_marginRight="@dimen/custom_margin_tiny"
+			        android:background="@color/grey_line_bg" />
+		        <RelativeLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingTop="15dp"
+		            android:paddingBottom="15dp"
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp">
+		            <TextView 
+		                android:id="@+id/pay_order_gameid_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:textSize="14sp"
+		                android:text="游戏账号"/>
+		            <TextView 
+		                android:id="@+id/pay_order_gameid_content"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentRight="true"
+		                android:paddingRight="10dp"
+		                android:textSize="14sp"
+		                android:text="123456789"/>
+		        </RelativeLayout>
+		        <LinearLayout 
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:padding="10dp">
+		            <TextView 
+		                android:id="@+id/pay_order_server_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:textSize="14sp"
+		                android:text="游戏区服"/>
+		            <EditText 
+				        android:id="@+id/pay_order_server_content"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:padding="5dp"
+				        android:layout_marginLeft="10dp"
+				        android:layout_marginRight="10dp"
+				        android:textSize="14sp"
+				        android:hint="请输入游戏区服"
+				        android:gravity="right"
+				        android:background="@null"
+				        />
+		        </LinearLayout>
+		        <LinearLayout 
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:paddingTop="15dp"
+		            android:paddingBottom="15dp"
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp">
+		            <TextView 
+		                android:id="@+id/pay_order_role_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:textSize="14sp"
+		                android:text="角色(昵称)"/>
+		            <EditText 
+				        android:id="@+id/pay_order_role_content"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:padding="5dp"
+				        android:layout_marginLeft="10dp"
+				        android:layout_marginRight="10dp"
+				        android:textSize="14sp"
+				        android:hint="请输入游戏角色"
+				        android:gravity="right"
+				        android:background="@null"
+				        />
+		        </LinearLayout>
+			 
+			 </LinearLayout>
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:orientation="vertical"
+		        android:background="@color/color_std_white">
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
 		            android:text="价格信息"
 		            android:layout_marginLeft="10dp"
 		            android:layout_marginTop="10dp"

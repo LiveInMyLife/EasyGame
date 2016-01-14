@@ -98,6 +98,22 @@ public class PayOrder extends BmobObject implements Serializable {
     this.unit = unit;
   }
 
+  public int getType() {
+    return type;
+  }
+
+  public void setType(int type) {
+    this.type = type;
+  }
+
+  public String getOrderNote() {
+    return orderNote;
+  }
+
+  public void setOrderNote(String orderNote) {
+    this.orderNote = orderNote;
+  }
+
   private int buyNum;
   private Double total;
   private Double price;
@@ -108,4 +124,6 @@ public class PayOrder extends BmobObject implements Serializable {
   private int state;
   private ShopInfo serverShop;
   private String description;
+  private int type;
+  private String orderNote;
 }
