@@ -65,11 +65,29 @@ public class MyOrder extends BmobObject implements Serializable {
     this.orderUnit = orderUnit;
   }
 
+  public int getType() {
+    return type;
+  }
+
+  public void setType(int type) {
+    this.type = type;
+  }
+
+  public String getOrderNote() {
+    return orderNote;
+  }
+
+  public void setOrderNote(String orderNote) {
+    this.orderNote = orderNote;
+  }
+
   private String orderDescription;
   private int orderState;
   private int orderNum;
   private int orderPrice;
   private int orderTotal;
   private String orderUnit;
+  private int type;
+  private String orderNote;
 
 }

@@ -88,6 +88,22 @@ public class ShopOrder extends BmobObject implements Serializable {
     this.server = server;
   }
 
+  public int getType() {
+    return type;
+  }
+
+  public void setType(int type) {
+    this.type = type;
+  }
+
+  public int getTimeNeed() {
+    return timeNeed;
+  }
+
+  public void setTimeNeed(int timeNeed) {
+    this.timeNeed = timeNeed;
+  }
+
   private String orderName;
   private String orderLogo;
   private Integer orderSell;
@@ -98,4 +114,6 @@ public class ShopOrder extends BmobObject implements Serializable {
   private Integer endTime;
   private ShopInfo orderShop;
   private BmobUser server;
+  private int type;
+  private int timeNeed;
 }
