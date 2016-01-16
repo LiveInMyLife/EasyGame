@@ -117,7 +117,7 @@
 			        android:layout_marginLeft="@dimen/custom_margin_tiny"
 			        android:layout_marginRight="@dimen/custom_margin_tiny"
 			        android:background="@color/grey_line_bg" />
-		        <RelativeLayout 
+		        <!-- <RelativeLayout 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:paddingTop="15dp"
@@ -138,7 +138,30 @@
 		                android:paddingRight="10dp"
 		                android:textSize="14sp"
 		                android:text="123456789"/>
-		        </RelativeLayout>
+		        </RelativeLayout> -->
+		        <LinearLayout 
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:padding="10dp">
+		            <TextView 
+		                android:id="@+id/pay_order_gameid_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:textSize="14sp"
+		                android:text="游戏账号"/>
+		            <EditText 
+				        android:id="@+id/pay_order_gameid_content"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:padding="5dp"
+				        android:layout_marginLeft="10dp"
+				        android:layout_marginRight="10dp"
+				        android:textSize="14sp"
+				        android:hint="请输入游戏帐号"
+				        android:gravity="right"
+				        android:background="@null"
+				        />
+		        </LinearLayout>
 		        <LinearLayout 
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"

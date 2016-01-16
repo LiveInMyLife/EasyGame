@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,9 +28,12 @@ public class ShopOrderConfirmActivity extends BaseActivity implements
 
   private RelativeLayout btn_pay_order_account;
 
+  private EditText game_account, game_role, game_server;
+
   private ShopOrder mShopOrder;
   private int orderNum = 1;
   private double total;
+  private int type = 0;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,9 @@ public class ShopOrderConfirmActivity extends BaseActivity implements
         .findViewById(R.id.tv_pay_order_account);
     btn_pay_order_account = (RelativeLayout) this
         .findViewById(R.id.btn_pay_order_account);
+    game_account = (EditText) this.findViewById(R.id.pay_order_gameid_content);
+    game_server = (EditText) this.findViewById(R.id.pay_order_server_content);
+    game_role = (EditText) this.findViewById(R.id.pay_order_role_content);
   }
 
   @Override
@@ -75,6 +82,9 @@ public class ShopOrderConfirmActivity extends BaseActivity implements
     // TODO Auto-generated method stub
     mShopOrder = (ShopOrder) this.getIntent()
         .getSerializableExtra("order_info");
+    if (mShopOrder != null) {
+      type = mShopOrder.getType();
+    }
     if (mShopOrder != null) {
       tv_pay_order_name.setText(Tools.checkString(mShopOrder.getOrderName()));
       pay_order_description.setText(Tools.checkString(mShopOrder
