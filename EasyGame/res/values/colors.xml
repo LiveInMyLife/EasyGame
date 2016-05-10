@@ -110,4 +110,7 @@
     <color name="tab_text_normal">#4b4c4e</color>
     <color name="tab_text_pressed">#52a6e9</color>
     
+    <color name="color_green_light">#a900ffcc</color>
+    <color name="color_red_light">#a9ff4500</color>
+    
 </resources>

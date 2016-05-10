@@ -20,7 +20,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="9dp"
-	        android:text="热门游戏"
+	        android:text="热门分类"
 	        android:textSize="@dimen/custom_text_size_small"
 	        android:textColor="@color/text_color_black"
 	        />
@@ -39,7 +39,7 @@
 			android:layout_centerVertical="true"
 			android:layout_marginRight="3dp"
 			android:layout_toLeftOf="@id/iv_arrow"
-	        android:text="更多游戏"
+	        android:text="更多"
 	        android:textSize="@dimen/custom_text_size_small"
 	        android:textColor="@color/text_color_grey"
 	        />
