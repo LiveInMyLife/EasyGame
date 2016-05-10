@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_std_item_selector" 
+    android:paddingTop="10dp"   
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+         >
+
+       <ImageView
+           android:id="@+id/item_activity_logo"
+           android:layout_width="@dimen/item_img_weight"
+           android:layout_height="@dimen/item_img_height"
+           android:layout_gravity = "left|top"           
+           android:src="@drawable/lol"
+       	/>
+       <!-- <RelativeLayout 
+           android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:layout_toRightOf="@id/sparing_list_item_img" >
+	       <TextView
+	           android:id="@+id/sparing_list_item_gamename"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           
+	           android:singleLine="true"
+	           android:layout_marginLeft="@dimen/custom_margin_tiny"
+	           android:textSize="@dimen/custom_text_size_very_medium"
+	           android:text="英雄联盟"
+	           />
+	        
+       </RelativeLayout> -->
+       <TextView
+           android:id="@+id/item_activity_title"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@id/item_activity_logo"
+           android:singleLine="true"
+           android:layout_marginLeft="@dimen/custom_margin_tiny"
+           android:textSize="@dimen/custom_text_size_very_medium"
+           android:textColor="@color/text_color_black"
+           android:text="RNG打SKT结果那边胜？"
+           />
+       <TextView
+           android:id="@+id/item_activity_end_time"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"  
+           android:layout_marginTop="5dp"
+           android:layout_alignLeft="@id/item_activity_title"
+           android:layout_below="@id/item_activity_title"
+           android:textSize="@dimen/custom_text_size_very_medium"
+           android:text="2016.05.10 15:30"
+           />
+       <TextView
+           android:id="@+id/item_activity_state"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"  
+           android:layout_marginTop="5dp"
+           android:layout_marginLeft="35dp"
+           android:layout_toRightOf="@id/item_activity_end_time"
+           android:layout_alignBottom="@id/item_activity_end_time"
+           android:textSize="@dimen/custom_text_size_mini"
+           android:textColor="@color/color_green_light"
+           android:background="@drawable/bg_green_border_white_solid"
+           android:padding="2dp"
+           android:text="进行中"
+           />
+
+        
+    </RelativeLayout>
+
+    <LinearLayout 
+        android:id="@+id/item_promotion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+       
+       <TextView 
+           android:id="@+id/item_activity_positive"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@drawable/bg_sky_blue_button"
+           android:padding="3dp"
+           android:textSize="@dimen/custom_text_size_medium"
+           android:textColor="@color/text_color_white"
+           android:layout_weight="1"
+           android:layout_marginRight="5dp"
+           android:gravity="center"
+           android:text="能 (60.5W)"/>"
+       <TextView 
+           android:id="@+id/item_activity_negative"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@drawable/bg_red_button"
+           android:padding="3dp"
+           android:textSize="@dimen/custom_text_size_medium"
+           android:textColor="@color/text_color_white"
+           android:layout_weight="1"
+           android:layout_marginLeft="5dp"
+           android:gravity="center"
+           android:text="不能 (20.2W)"/>"
+        
+    </LinearLayout>
+
+</LinearLayout>
+
