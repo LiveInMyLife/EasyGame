@@ -21,20 +21,31 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:background="@color/color_std_white"
-		        android:paddingTop="@dimen/custom_margin_tiny"
-		        android:paddingBottom="@dimen/custom_margin_tiny">
+		        android:paddingTop="@dimen/custom_margin_wee"
+		        android:paddingBottom="@dimen/custom_margin_wee">
 		
-		        <ImageView
+		        <!-- <ImageView
 		            android:id="@+id/my_shop_img"
 		            android:layout_width="@dimen/item_img_weight"
 		            android:layout_height="@dimen/item_img_height"
 		            android:src="@drawable/lol"
-		            android:visibility="gone" />
+		            android:visibility="gone" /> -->
+	            <!-- <TextView 
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:textSize="12sp"
+	                android:textColor="@color/order_pay_success_left_text_grey"
+	                android:text="
+	                tips:1.活动创建者需要支付一定金币作为保证金，保证金金额与设定的参与额度上限有关；
+	                2.一旦创建了活动，活动结束后将原数返还保证金并按照参与金额的一定比例来作为创建者的收益；
+	               3. 活动创建者自身无法参与自己创建的活动；
+	               4. 活动获胜方的收益系数取决于自己的参与额度以及双方参与总额度,自身参与额度越高、对方参与总额度越高我方胜利后收益越高；
+	               5. 活动时间结束后由创建者可以进行封盘和结算，结算错误即视为恶意结算，一旦您被举报恶意结算，将扣除保证金、取消本次活动并返还所有金币，同时将视情节对违规者进行降低评级、封号，降低权限等处罚；
+	               6. 活动结束后24小时不结算视为逾期，逾期不结算者被将视为恶意结算进行处理；"/> -->
 		
 		        <RelativeLayout
 		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_toRightOf="@id/my_shop_img" >
+		            android:layout_height="wrap_content">
 		
 		            <TextView
 		                android:id="@+id/new_order_name"
@@ -44,11 +55,11 @@
 		                android:paddingTop="8dp"
 		                android:paddingBottom="8dp"
 		                android:singleLine="true"
-		                android:text="订单名称"
-		                android:textSize="@dimen/custom_text_size_medium" />
+		                android:text="活动标题"
+		                android:textSize="@dimen/custom_text_size_small" />
 		
 		            <EditText
-		                android:id="@+id/et_new_order_name"
+		                android:id="@+id/et_activity_title"
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
 		                android:paddingTop="8dp"
@@ -62,34 +73,44 @@
 		                android:singleLine="true"
 		                android:hint="请输入"
 		                android:textColor="@color/color_call_black"
-		                android:textSize="@dimen/custom_text_size_medium" />
+		                android:textSize="@dimen/custom_text_size_small" />
 		
 		            <RelativeLayout
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
 		                android:layout_alignLeft="@id/new_order_name"
 		                android:layout_below="@id/new_order_name"
-		                android:paddingTop="8dp"
-		                android:paddingBottom="8dp" >
+		                android:paddingTop="3dp">
 		
-		                <ImageView
+		                <!-- <ImageView
 		                    android:id="@+id/iv_new_order_description"
 		                    android:layout_width="15dp"
 		                    android:layout_height="15dp"
 		                    android:layout_marginTop="10dp"
-		                    android:background="@drawable/shop_detail_notice" />
+		                    android:background="@drawable/shop_detail_notice" /> -->
+		                <TextView
+			                android:id="@+id/tv_new_order_description"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:paddingTop="8dp"
+			                android:paddingBottom="8dp"
+			                android:singleLine="true"
+			                android:text="活动详情"
+			                android:textSize="@dimen/custom_text_size_small" />
 		
 		                <EditText
-		                    android:id="@+id/et_new_order_description"
+		                    android:id="@+id/et_activity_description"
 		                    android:layout_width="match_parent"
 		                    android:layout_height="wrap_content"
 		                    android:layout_marginLeft="2dp"
-		                    android:layout_toRightOf="@id/iv_new_order_description"
+		                    android:layout_toRightOf="@id/tv_new_order_description"
 		                    android:paddingTop="10dp"
 		                    android:paddingBottom="10dp"
+		                    android:paddingRight="20dp"
+		                    android:gravity="right"
 		                    android:background="@null"
 		                    android:ellipsize="end"
-		                    android:hint="请输入订单描述"
+		                    android:hint="如：红方胜还是蓝方胜"
 		                    android:textColor="@color/color_call_black"
 		                    android:textSize="@dimen/custom_text_size_small" />
 		            </RelativeLayout>
@@ -104,9 +125,9 @@
 		        <TextView 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="价格信息"
+		            android:text="选项"
 		            android:layout_marginLeft="10dp"
-		            android:layout_marginTop="10dp"
+		            android:layout_marginTop="5dp"
 		            android:textColor="@color/color_call_black"
 		            android:textSize="14sp"/>
 		        <View
@@ -118,8 +139,8 @@
 		        <RelativeLayout 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:paddingTop="15dp"
-		            android:paddingBottom="15dp"
+		            android:paddingTop="5dp"
+		            android:paddingBottom="5dp"
 		            android:paddingLeft="10dp"
 		            android:paddingRight="10dp">
 		            <TextView 
@@ -127,9 +148,9 @@
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:textSize="14sp"
-		                android:text="单价(元)"/>
+		                android:text="选项一:"/>
 		            <EditText 
-		                android:id="@+id/et_new_order_price"
+		                android:id="@+id/et_activity_select1"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentRight="true"
@@ -138,22 +159,22 @@
 		                android:inputType="numberDecimal"
 		                android:background="@null"
 		                android:singleLine="true"
-		                android:hint="请输入"/>
+		                android:hint="如：红方胜"/>
 		        </RelativeLayout>
 		        <RelativeLayout 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:paddingTop="15dp"
-		            android:paddingBottom="15dp"
+		            android:paddingTop="5dp"
+		            android:paddingBottom="5dp"
 		            android:paddingLeft="10dp"
 		            android:paddingRight="10dp">
 		            <TextView 
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:textSize="14sp"
-		                android:text="计费单位(小时/局/月等)"/>
+		                android:text="选项二:"/>
 		            <EditText 
-		                android:id="@+id/et_new_order_unit"
+		                android:id="@+id/et_activity_select2"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentRight="true"
@@ -161,7 +182,7 @@
 		                android:textSize="14sp"
 		                android:background="@null"
 		                android:singleLine="true"
-		                android:hint="请输入"/>
+		                android:hint="如：蓝方胜"/>
 		        </RelativeLayout>
 			 
 			 </LinearLayout>
@@ -175,9 +196,9 @@
 		        <TextView 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="接单时间"
+		            android:text="截止时间"
 		            android:layout_marginLeft="10dp"
-		            android:layout_marginTop="10dp"
+		            android:layout_marginTop="5dp"
 		            android:textColor="@color/color_call_black"
 		            android:textSize="14sp"/>
 		        <View
@@ -192,20 +213,33 @@
 		            android:paddingLeft="10dp"
 		            android:paddingRight="10dp">
 		            <TextView 
+		                android:id="@+id/tv_new_select_date"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:paddingTop="10dp"
+		            	android:paddingBottom="10dp"
+		            	android:layout_marginRight="10dp"
+		                android:textSize="14sp"
+		                android:textColor="@color/text_color_light_dark"
+		                android:text="2016-06-28"/>
+		            <TextView 
 		                android:id="@+id/tv_new_select_time"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
-		                android:paddingTop="15dp"
-		            	android:paddingBottom="15dp"
+		                android:paddingTop="10dp"
+		            	android:paddingBottom="10dp"
+		            	android:layout_toRightOf="@id/tv_new_select_date"
 		                android:textSize="14sp"
 		                android:textColor="@color/text_color_light_dark"
-		                android:text="0:00-24:00"/>
+		                android:text="0:00"/>
 		            <TextView 
 		                android:id="@+id/btn_new_select_time"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentRight="true"
-		                android:padding="10dp"
+		                android:padding="5dp"
+		                android:layout_marginTop="3dp"
+		                android:layout_marginBottom="3dp"
 		                android:textSize="14sp"
 		                android:background="@drawable/btn_send_bg"
 		                android:textColor="@color/color_std_white"
@@ -216,14 +250,14 @@
 			 <RelativeLayout 
 			     android:id="@+id/btn_new_order_add"
 			     android:layout_width="match_parent"
-			     android:layout_margin="20dp"
-			     android:layout_height="50dp"
+			     android:layout_margin="10dp"
+			     android:layout_height="40dp"
 			     android:background="@drawable/selector_bg_blue_btn">
 			     <TextView 
 			         android:layout_width="wrap_content"
 			         android:layout_height="wrap_content"
 			         android:layout_centerInParent="true"
-			         android:text="添加订单"
+			         android:text="创建活动"
 			         android:textSize="16sp"
 			         android:textColor="@color/color_std_white"
 			         />

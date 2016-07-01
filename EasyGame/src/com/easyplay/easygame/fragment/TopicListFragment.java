@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -21,9 +19,8 @@ import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.activity.GameSelectActivity;
-import com.easyplay.easygame.activity.ShopDetailActivity;
-import com.easyplay.easygame.adapter.ShopListAdapter;
-import com.easyplay.easygame.model.ShopInfo;
+import com.easyplay.easygame.adapter.TopicListAdapter;
+import com.easyplay.easygame.model.Topic;
 import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.view.SlideShowView;
 
@@ -33,15 +30,16 @@ import com.easyplay.easygame.view.SlideShowView;
  * @author chuwe1
  * 
  */
-public class SparringFragment extends Fragment implements OnItemClickListener {
+public class TopicListFragment extends Fragment {// implements
+                                                 // OnItemClickListener {
   private static final String TAG = "SparringFragment";
 
   private View rootView;
   private Context mContext;
   private ListView shopListView;
   private LinearLayout sparring_header;
-  private final List<ShopInfo> shopListInfo = new ArrayList<ShopInfo>();
-  private ShopListAdapter shopAdapter;
+  private final List<Topic> topicListInfo = new ArrayList<Topic>();
+  private TopicListAdapter shopAdapter;
   private RelativeLayout gameSelect;
 
   private SlideShowView slideShowView;
@@ -90,22 +88,22 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
   }
 
   public void init() {
-    shopAdapter = new ShopListAdapter(mContext, shopListInfo);
+    shopAdapter = new TopicListAdapter(mContext, topicListInfo);
     shopListView.setAdapter(shopAdapter);
     shopListView.setVisibility(View.VISIBLE);
-    shopListView.setOnItemClickListener(this);
-    queryShopInfo();
+    // shopListView.setOnItemClickListener(this);
+    queryactivityInfo();
   }
 
-  public void queryShopInfo() {
-    BmobQuery<ShopInfo> query = new BmobQuery<ShopInfo>();
-    query.findObjects(mContext, new FindListener<ShopInfo>() {
+  public void queryactivityInfo() {
+    BmobQuery<Topic> query = new BmobQuery<Topic>();
+    query.findObjects(mContext, new FindListener<Topic>() {
       @Override
-      public void onSuccess(List<ShopInfo> object) {
+      public void onSuccess(List<Topic> object) {
         // TODO Auto-generated method stub
         AppLog.d(TAG, "查询成功：记录条数：" + object.size());
-        for (ShopInfo shopInfo : object) {
-          shopListInfo.add(shopInfo);
+        for (Topic activityInfo : object) {
+          topicListInfo.add(activityInfo);
         }
         shopAdapter.notifyDataSetChanged();
       }
@@ -118,18 +116,18 @@ public class SparringFragment extends Fragment implements OnItemClickListener {
     });
   }
 
-  @Override
-  public void onItemClick(AdapterView<?> parent, View view, int position,
-      long id) {
-    // TODO Auto-generated method stub
-    if (position <= shopListInfo.size() + 1) {
-      ShopInfo shop = shopListInfo.get(position - 1);
-      Intent intent = new Intent(mContext, ShopDetailActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-      Bundle bundle = new Bundle();
-      bundle.putSerializable("shop_info", shop);
-      intent.putExtras(bundle);
-      mContext.startActivity(intent);
-    }
-  }
+  // @Override
+  // public void onItemClick(AdapterView<?> parent, View view, int position,
+  // long id) {
+  // // TODO Auto-generated method stub
+  // if (position <= shopListInfo.size() + 1) {
+  // activityInfo shop = shopListInfo.get(position - 1);
+  // Intent intent = new Intent(mContext, ShopDetailActivity.class);
+  // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+  // Bundle bundle = new Bundle();
+  // bundle.putSerializable("shop_info", shop);
+  // intent.putExtras(bundle);
+  // mContext.startActivity(intent);
+  // }
+  // }
 }

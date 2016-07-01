@@ -11,5 +11,5 @@ package com.easyplay.easygame.config;
 public class Config {
 
   // ����Bmob��ApplicationId,���ڳ�ʼ������
-  public static String applicationId = "8b302b1049c8faaa45951ebf8a8770ed";
+  public static String applicationId = "e82fdfd7820ae9514fa6bf24fa9a9062";
 }

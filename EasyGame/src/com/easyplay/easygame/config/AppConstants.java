@@ -35,4 +35,5 @@ public class AppConstants {
   public static final String EXTRA_STRING = "extra_string";
 
   public static final String ACTION_REGISTER_SUCCESS_FINISH = "register.success.finish";// 注册成功之后登陆页面退出
+
 }

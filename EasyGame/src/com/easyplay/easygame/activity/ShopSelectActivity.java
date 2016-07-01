@@ -15,7 +15,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 import com.easyplay.easygame.R;
-import com.easyplay.easygame.adapter.ShopListAdapter;
+import com.easyplay.easygame.adapter.TopicListAdapter;
+import com.easyplay.easygame.model.Activity;
 import com.easyplay.easygame.model.GameInfo;
 import com.easyplay.easygame.model.ShopInfo;
 import com.easyplay.easygame.tools.AppLog;
@@ -24,9 +25,9 @@ public class ShopSelectActivity extends BaseActivity implements
     OnClickListener, OnItemClickListener {
   private static final String TAG = "GameSelectActivity";
 
-  private ShopListAdapter shopListAdapter;
+  private TopicListAdapter shopListAdapter;
   private ListView shopList;
-  private List<ShopInfo> shopListInfo;
+  private List<Activity> shopListInfo;
   private ShopInfo shopSelected;
   private GameInfo gameInfo;
 
@@ -56,22 +57,22 @@ public class ShopSelectActivity extends BaseActivity implements
   protected void init() {
     // TODO Auto-generated method stub
     gameInfo = (GameInfo) this.getIntent().getSerializableExtra("game_info");
-    shopListInfo = new ArrayList<ShopInfo>();
-    shopListAdapter = new ShopListAdapter(this, shopListInfo);
+    shopListInfo = new ArrayList<Activity>();
+    // shopListAdapter = new TopicListAdapter(this, shopListInfo);
     shopList.setAdapter(shopListAdapter);
     queryShopInfo();
     shopList.setOnItemClickListener(this);
   }
 
   public void queryShopInfo() {
-    BmobQuery<ShopInfo> query = new BmobQuery<ShopInfo>();
+    BmobQuery<Activity> query = new BmobQuery<Activity>();
     query.addWhereEqualTo("shopGame", gameInfo.getGameName());
-    query.findObjects(ShopSelectActivity.this, new FindListener<ShopInfo>() {
+    query.findObjects(ShopSelectActivity.this, new FindListener<Activity>() {
       @Override
-      public void onSuccess(List<ShopInfo> object) {
+      public void onSuccess(List<Activity> object) {
         // TODO Auto-generated method stub
         AppLog.d(TAG, "查询成功：记录条数：" + object.size());
-        for (ShopInfo shopInfo : object) {
+        for (Activity shopInfo : object) {
           shopListInfo.add(shopInfo);
         }
         shopListAdapter.notifyDataSetChanged();
@@ -101,7 +102,7 @@ public class ShopSelectActivity extends BaseActivity implements
       long id) {
     // TODO Auto-generated method stub
     if (position <= shopListInfo.size()) {
-      ShopInfo shop = shopListInfo.get(position);
+      Activity shop = shopListInfo.get(position);
       Intent intent = new Intent(ShopSelectActivity.this,
           ShopDetailActivity.class);
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

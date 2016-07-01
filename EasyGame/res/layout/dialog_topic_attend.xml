@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:padding="2px"
+    android:background="@drawable/bg_white_solid_radius_2_item" >
+
+   <LinearLayout
+       android:layout_width="270dp"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center_horizontal"
+       android:padding="10dp"
+       android:orientation="vertical"
+       >
+       <TextView 
+           android:id="@+id/dialog_topic_attent_title"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:includeFontPadding="false"
+           android:text="欧冠赛7月1日的比赛中意大利对阵英国哪边获胜"
+           android:textColor="@color/text_color_black"
+           android:textSize="@dimen/custom_text_size_medium"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+           android:gravity="center_vertical|left"
+           android:layout_marginTop="10dp"
+           android:orientation="horizontal" >
+           <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:includeFontPadding="false"
+               android:text="您的选择："
+               android:textColor="@color/text_color_black"
+               android:textSize="@dimen/custom_text_size_very_medium"/>
+           <TextView 
+               android:id="@+id/dialog_topic_attent_selection"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:includeFontPadding="false"
+               android:text="RNG获胜"
+               android:textColor="@color/text_color_black"
+               android:textSize="@dimen/custom_text_size_very_medium"/>
+       </LinearLayout>
+       
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+           android:gravity="center_vertical|left"
+           android:layout_marginTop="10dp"
+           android:orientation="horizontal" >
+           <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:includeFontPadding="false"
+               android:text="参与数量："
+               android:textColor="@color/text_color_black"
+               android:textSize="@dimen/custom_text_size_very_medium"/>
+           <EditText 
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="@null"
+               android:inputType="number"
+               android:hint="请输入"
+               android:textSize="@dimen/custom_text_size_very_medium"/>
+       </LinearLayout>
+       
+   </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/div_line_color" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_gravity="bottom"
+       android:background="@drawable/bg_light_white_solid_radius_20_bottom_btn_normal"
+       >
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/bg_std_item_selector"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:includeFontPadding="true"
+        android:text="取消"
+        android:textColor="@color/text_color_cancel"
+        android:textSize="@dimen/custom_text_size_large" />
+    <!--android:layout_alignParentLeft="true"  -->
+    <View
+        android:layout_width="1.0px"
+        android:layout_height="45dp"
+        android:background="@color/div_line_color" />
+
+    <TextView
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/bg_std_item_selector"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:includeFontPadding="true"
+        android:text="确认"
+        android:textColor="@color/text_color_cancel"
+        android:textSize="@dimen/custom_text_size_large" />
+    </LinearLayout>
+
+</LinearLayout>

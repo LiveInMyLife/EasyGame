@@ -29,9 +29,9 @@ import cn.bmob.im.inteface.EventListener;
 import com.easyplay.easygame.R;
 import com.easyplay.easygame.adapter.MyFragmentPagerAdapter;
 import com.easyplay.easygame.context.BaseApplication;
+import com.easyplay.easygame.fragment.TopicListFragment;
 import com.easyplay.easygame.fragment.MineFragment;
 import com.easyplay.easygame.fragment.OrderFragment;
-import com.easyplay.easygame.fragment.SparringFragment;
 import com.easyplay.easygame.tools.AppLog;
 import com.easyplay.easygame.util.ActivityUtils;
 import com.easyplay.easygame.view.DialogTips;
@@ -104,7 +104,7 @@ public class MainActivity extends FragmentActivity implements EventListener,
 
   private void initData() {
     mList = new ArrayList<Class<?>>();
-    mList.add(SparringFragment.class);
+    mList.add(TopicListFragment.class);
     // mList.add(LevelingFragment.class);
     mList.add(OrderFragment.class);
     mList.add(MineFragment.class);
@@ -210,7 +210,7 @@ public class MainActivity extends FragmentActivity implements EventListener,
 
   private void toMyShop() {
     if (BaseApplication.userManager.getCurrentUser() != null) {
-      Intent intent = new Intent(this, MyShopActivity.class);
+      Intent intent = new Intent(this, TopicAddActivity.class);
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       this.startActivity(intent);
     } else {

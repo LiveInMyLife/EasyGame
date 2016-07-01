@@ -160,7 +160,7 @@ public class MyShopActivity extends BaseActivity implements OnClickListener {
   }
 
   private void toAddOrderActicvity() {
-    Intent intent = new Intent(this, MyShopAddOrderActivity.class);
+    Intent intent = new Intent(this, TopicAddActivity.class);
     Bundle bundle = new Bundle();
     bundle.putSerializable("shop_info", mShopInfo);
     intent.putExtras(bundle);

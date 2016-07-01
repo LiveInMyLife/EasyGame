@@ -28,15 +28,13 @@ public class MyOrderListAdapter extends BaseAdapter {
   class ViewHolder {
     TextView shopName;
     TextView orderDate;
-    TextView orderPrice;
-    TextView orderNum;
     TextView orderDescription;
     TextView orderState;
     TextView orderTotal;
     TextView complaint;
     TextView suggest;
     TextView contact;
-    TextView completetConfirm;
+    // TextView completetConfirm;
   }
 
   public MyOrderListAdapter(Context context, List<PayOrder> data) {
@@ -77,10 +75,6 @@ public class MyOrderListAdapter extends BaseAdapter {
           .findViewById(R.id.item_myorder_ordername);
       holder.orderDate = (TextView) convertView
           .findViewById(R.id.order_list_item_date);
-      holder.orderPrice = (TextView) convertView
-          .findViewById(R.id.item_myorder_price);
-      holder.orderNum = (TextView) convertView
-          .findViewById(R.id.order_list_item_time);
       holder.orderDescription = (TextView) convertView
           .findViewById(R.id.item_myorder_description);
       holder.orderState = (TextView) convertView
@@ -93,8 +87,8 @@ public class MyOrderListAdapter extends BaseAdapter {
           .findViewById(R.id.item_myorder_suggestion);
       holder.contact = (TextView) convertView
           .findViewById(R.id.item_myorder_contact_server);
-      holder.completetConfirm = (TextView) convertView
-          .findViewById(R.id.item_myorder_complete_confirm);
+      // holder.completetConfirm = (TextView) convertView
+      // .findViewById(R.id.item_myorder_complete_confirm);
 
       convertView.setTag(holder);
     } else {
@@ -104,12 +98,6 @@ public class MyOrderListAdapter extends BaseAdapter {
       holder.shopName.setText(Tools.checkString(order.getServerShop()
           .getShopName()));
       holder.orderDate.setText(Tools.checkString(order.getCreatedAt()));
-      if (order.getPrice() > 0 && order.getUnit() != null) {
-        holder.orderPrice.setText(order.getPrice() + "/" + order.getUnit());
-      }
-      if (order.getBuyNum() > 0 && order.getUnit() != null) {
-        holder.orderNum.setText(order.getBuyNum() + order.getUnit());
-      }
       holder.orderDescription
           .setText(Tools.checkString(order.getDescription()));
       holder.orderState.setText(Tools.checkString(AppContent
@@ -118,7 +106,7 @@ public class MyOrderListAdapter extends BaseAdapter {
         holder.complaint.setVisibility(View.VISIBLE);
         holder.suggest.setVisibility(View.VISIBLE);
         holder.contact.setVisibility(View.GONE);
-        holder.completetConfirm.setVisibility(View.GONE);
+        // holder.completetConfirm.setVisibility(View.GONE);
         holder.suggest.setOnClickListener(new OnClickListener() {
 
           @Override
@@ -138,22 +126,22 @@ public class MyOrderListAdapter extends BaseAdapter {
         holder.complaint.setVisibility(View.GONE);
         holder.suggest.setVisibility(View.GONE);
         holder.contact.setVisibility(View.VISIBLE);
-        holder.completetConfirm.setVisibility(View.VISIBLE);
-        holder.completetConfirm.setOnClickListener(new OnClickListener() {
-
-          @Override
-          public void onClick(View v) {
-            // TODO Auto-generated method stub
-            ShopInfo shop = order.getServerShop();
-            Intent intent = new Intent(mContext, SuggestionActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("tag_shop", shop);
-            intent.putExtras(bundle);
-            mContext.startActivity(intent);
-          }
-
-        });
+        // holder.completetConfirm.setVisibility(View.VISIBLE);
+        // holder.completetConfirm.setOnClickListener(new OnClickListener() {
+        //
+        // @Override
+        // public void onClick(View v) {
+        // // TODO Auto-generated method stub
+        // ShopInfo shop = order.getServerShop();
+        // Intent intent = new Intent(mContext, SuggestionActivity.class);
+        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // Bundle bundle = new Bundle();
+        // bundle.putSerializable("tag_shop", shop);
+        // intent.putExtras(bundle);
+        // mContext.startActivity(intent);
+        // }
+        //
+        // });
         holder.contact.setOnClickListener(new OnClickListener() {
 
           @Override

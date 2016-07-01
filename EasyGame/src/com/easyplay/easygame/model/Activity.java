@@ -81,7 +81,16 @@ public class Activity extends BmobObject implements Serializable {
     this.activityOverTime = activityOverTime;
   }
 
+  public String getActivityTitle() {
+    return activityTitle;
+  }
+
+  public void setActivityTitle(String activityTitle) {
+    this.activityTitle = activityTitle;
+  }
+
   private BmobUser startUser;
+  private String activityTitle;
   private String activityDescription;
   private String leftSide;
   private String rightSide;
